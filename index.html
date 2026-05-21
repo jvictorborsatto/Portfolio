@@ -900,6 +900,52 @@
     transform: none;
   }
 
+  /* ═══════ LANGUAGE TOGGLE ═══════ */
+  .lang-toggle {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    background: rgba(10,10,10,0.85);
+    border: 1px solid #333;
+    border-radius: 4px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  .lang-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.2s;
+  }
+
+  .lang-btn.active {
+    background: var(--accent-hobbies);
+    color: var(--black);
+    font-weight: 700;
+  }
+
+  .lang-btn:not(.active):hover {
+    color: var(--white);
+    background: #1a1a1a;
+  }
+
+  .lang-sep {
+    width: 1px;
+    height: 16px;
+    background: #333;
+  }
+
   /* ═══════ RESPONSIVE ═══════ */
   @media (max-width: 1024px) {
     #hero {
@@ -969,6 +1015,13 @@
 
 <div class="cursor" id="cursor"></div>
 
+<!-- ═══════════════════════════════ LANGUAGE TOGGLE ═══════════════════════════════ -->
+<div class="lang-toggle">
+  <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+  <div class="lang-sep"></div>
+  <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">PT</button>
+</div>
+
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <section id="hero">
   
@@ -985,12 +1038,12 @@
     </div>
 
     <div>
-      <div class="hero-tag">// Hobbies & Projects</div>
+      <div class="hero-tag" data-i18n="heroLeftTag">// Hobbies & Projects</div>
       <h1 class="hero-title">
-        Creative<br>
-        <span class="accent">Developer</span>
+        <span data-i18n="heroLeftTitle1">Creative</span><br>
+        <span class="accent" data-i18n="heroLeftTitle2">Developer</span>
       </h1>
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" data-i18n="heroLeftSubtitle">
         Developing for Hobby.         
       </p>
 
@@ -999,23 +1052,22 @@
           <span class="hero-item-icon">🎮</span>
           <div class="hero-item-text">
             <div>Jetsauro</div>
-            <div class="hero-item-label">Game Development</div>
+            <div class="hero-item-label" data-i18n="labelGameDev">Game Development</div>
           </div>
         </a>
         <a href="#hobbies" class="hero-item">
           <span class="hero-item-icon">⚽</span>
           <div class="hero-item-text">
             <div>OFFside Detector</div>
-            <div class="hero-item-label">Computer Vision</div>
+            <div class="hero-item-label" data-i18n="labelComputerVision">Computer Vision</div>
           </div>
         </a>
         <a href="#hobbies" class="hero-item">
           <span class="hero-item-icon">🎯</span>
           <div class="hero-item-text">
             <div>Face Tracking</div>
-            <div class="hero-item-label">Real-time CV</div>
+            <div class="hero-item-label" data-i18n="labelRealtimeCV">Real-time CV</div>
           </div>
-        </a>
         </a>
       </div>
     </div>
@@ -1035,12 +1087,12 @@
     </div>
 
     <div>
-      <div class="hero-tag">// Academic & Scientific</div>
+      <div class="hero-tag" data-i18n="heroRightTag">// Academic & Scientific</div>
       <h1 class="hero-title">
-        Analythical<br>
-        <span class="accent">Scientist</span>
+        <span data-i18n="heroRightTitle1">Analythical</span><br>
+        <span class="accent" data-i18n="heroRightTitle2">Scientist</span>
       </h1>
-      <p class="hero-subtitle">
+      <p class="hero-subtitle" data-i18n="heroRightSubtitle">
       Developing for Analythical Chemistry Applications.
       </p>
 
@@ -1049,23 +1101,22 @@
           <span class="hero-item-icon">🔬</span>
           <div class="hero-item-text">
             <div>Virtual LC</div>
-            <div class="hero-item-label">HPLC Simulator</div>
+            <div class="hero-item-label" data-i18n="labelHPLC">HPLC Simulator</div>
           </div>
         </a>
         <a href="#academic" class="hero-item">
           <span class="hero-item-icon">📊</span>
           <div class="hero-item-text">
             <div>OniChromLC</div>
-            <div class="hero-item-label">Data Analysis</div>
+            <div class="hero-item-label" data-i18n="labelDataAnalysis">Data Analysis</div>
           </div>
         </a>
         <a href="#academic" class="hero-item">
           <span class="hero-item-icon">📚</span>
           <div class="hero-item-text">
             <div>Literature Miner</div>
-            <div class="hero-item-label">NLP Pipeline</div>
+            <div class="hero-item-label" data-i18n="labelNLP">NLP Pipeline</div>
           </div>
-        </a>
         </a>
       </div>
     </div>
@@ -1077,8 +1128,8 @@
 <section id="hobbies" class="content-section">
   <div class="container">
     <div class="section-header">
-      <div class="section-eyebrow">01 — Personal Projects</div>
-      <h2 class="section-title">Built for fun.<br>Shipped for real.</h2>
+      <div class="section-eyebrow" data-i18n="hobbiesEyebrow">01 — Personal Projects</div>
+      <h2 class="section-title" data-i18n="hobbiesTitle">Built for fun.<br>Shipped for real.</h2>
     </div>
 
     <div class="projects-grid">
@@ -1086,10 +1137,11 @@
       <!-- Jetsauro -->
       <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Jetsauro_Web/"
            data-name="Jetsauro_Web" data-readme="jetsauro" onclick="openModal(this)">
-        <div class="card-number">01 / GAME</div>
+        <div class="card-number" data-i18n="card01game">01 / GAME</div>
         <h3 class="card-title">Jetsauro</h3>
-        <p class="card-desc">
+        <p class="card-desc" data-i18n="jetsauroDesc">
         My first game project, developed in Godot. Play as a jetpack-powered diplodocus and survive for as long as possible in a hostile world filled with aggressive pterosaurs and deadly carnivorous plants. Click here to see the page!
+        </p>
         <div class="card-tags">
           <span class="tag">GDScript</span>
           <span class="tag">Godot</span>
@@ -1097,16 +1149,16 @@
         </div>
         <div class="card-footer">
           <span class="card-lang">● GDScript</span>
-          <button class="card-btn">Go →</button>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
         </div>
       </div>
 
       <!-- OFFside Detector -->
       <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/OFFside-Detector/"
            data-name="OFFside-Detector" data-readme="offside" onclick="openModal(this)">
-        <div class="card-number">02 / CV TOOL</div>
+        <div class="card-number" data-i18n="card02cv">02 / CV TOOL</div>
         <h3 class="card-title">OFFside Detector</h3>
-        <p class="card-desc">
+        <p class="card-desc" data-i18n="offsideDesc">
           Detects offside situations in soccer from images. 
           Uses projective geometry to correct perspective through vanishing point estimation and compare player positions on the field.
           No IA, just Math. Click here to see the page!
@@ -1119,16 +1171,16 @@
         </div>
         <div class="card-footer">
           <span class="card-lang">● HTML · JS </span>
-          <button class="card-btn">Go →</button>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
         </div>
       </div>
 
       <!-- Face Tracking -->
       <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Face-Tracking/"
            data-name="Face-Tracking" data-readme="facetracking" onclick="openModal(this)">
-        <div class="card-number">03 / TRACKING</div>
+        <div class="card-number" data-i18n="card03tracking">03 / TRACKING</div>
         <h3 class="card-title">Face Tracking</h3>
-        <p class="card-desc">
+        <p class="card-desc" data-i18n="facetrackingDesc">
           Real-time face tracking that converts head movements into camera control for simulators. Integrates through the FreeTrack 2.0 / OpenTrack (UDP) protocol. Made for racing games. Click here to visit the page!
         </p>
         <div class="card-tags">
@@ -1139,7 +1191,7 @@
         </div>
         <div class="card-footer">
           <span class="card-lang">Python</span>
-          <button class="card-btn">Go →</button>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
         </div>
       </div>
 
@@ -1147,9 +1199,9 @@
       <!-- Video Annotator -->
       <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Video_Annotator/"
            data-name="Video_Annotator" data-readme="videoannotator" onclick="openModal(this)">
-        <div class="card-number">05 / ANNOTATION</div>
+        <div class="card-number" data-i18n="card05annotation">05 / ANNOTATION</div>
         <h3 class="card-title">Video Annotator</h3>
-        <p class="card-desc">
+        <p class="card-desc" data-i18n="videoannotatorDesc">
           Frame-by-frame video annotation tool. Useful for data labeling in computer vision tasks. Click here  to see the page!
         </p>
         <div class="card-tags">
@@ -1158,7 +1210,7 @@
         </div>
         <div class="card-footer">
           <span class="card-lang">● Python</span>
-          <button class="card-btn">Go →</button>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
         </div>
       </div>
 
@@ -1170,8 +1222,8 @@
 <section id="academic" class="content-section">
   <div class="container">
     <div class="section-header">
-      <div class="section-eyebrow">02 — Academic & Scientific</div>
-      <h2 class="section-title">Research tools<br>& Science.</h2>
+      <div class="section-eyebrow" data-i18n="academicEyebrow">02 — Academic & Scientific</div>
+      <h2 class="section-title" data-i18n="academicTitle">Research tools<br>& Science.</h2>
     </div>
 
     <div class="projects-grid">
@@ -1179,9 +1231,9 @@
       <!-- Virtual LC -->
       <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Virtual-LC/"
            data-name="VirtualLC" data-readme="virtuallc" onclick="openModal(this)">
-        <div class="card-number">01 / SIMULATOR</div>
+        <div class="card-number" data-i18n="card01simulator">01 / SIMULATOR</div>
         <h3 class="card-title">Virtual LC</h3>
-        <p class="card-desc">
+        <p class="card-desc" data-i18n="virtuallcDesc">
           Browser-based HPLC/UHPLC liquid chromatography emulator. Includes method optimization modules, chromatogram customization, and quantitative analysis. Based on LSS theory. Ideal for education and training. Click here to see the page!
         </p>
         <div class="card-tags">
@@ -1192,16 +1244,16 @@
         </div>
         <div class="card-footer">
           <span class="card-lang">HTML</span>
-          <button class="card-btn">Go→</button>
+          <button class="card-btn" data-i18n="cardBtn">Go→</button>
         </div>
       </div>
 
       <!-- OniChromLC -->
       <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/OniChromLC/"
            data-name="OniChromLC" data-readme="onichrom" onclick="openModal(this)">
-        <div class="card-number">02 / ANALYSIS</div>
+        <div class="card-number" data-i18n="card02analysis">02 / ANALYSIS</div>
         <h3 class="card-title">OniChromLC</h3>
-        <p class="card-desc">
+        <p class="card-desc" data-i18n="onichromDesc">
           Chromatographic data analysis tool. Helps analysts visualize data quickly and efficiently. Covers most stages of the analytical development pipeline. Click here to see the page!
         </p>
         <div class="card-tags">
@@ -1211,16 +1263,16 @@
         </div>
         <div class="card-footer">
           <span class="card-lang">Python</span>
-          <button class="card-btn">Go→</button>
+          <button class="card-btn" data-i18n="cardBtn">Go→</button>
         </div>
       </div>
 
       <!-- Literature Miner -->
       <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Scientific-Literature-Data-Miner/"
            data-name="Lit-Data-Miner" data-readme="litdminer" onclick="openModal(this)">
-        <div class="card-number">03 / NLP</div>
+        <div class="card-number" data-i18n="card03nlp">03 / NLP</div>
         <h3 class="card-title">Scientific Literature Miner</h3>
-        <p class="card-desc">
+        <p class="card-desc" data-i18n="litdminerDesc">
           Data mining pipeline for automated extraction of information from scientific articles. Search within the full manuscript or selected sections. Perform bibliometric evaluations automatically. Click here to see the page!
         </p>
         <div class="card-tags">
@@ -1231,7 +1283,7 @@
         </div>
         <div class="card-footer">
           <span class="card-lang">Python</span>
-          <button class="card-btn">Go→</button>
+          <button class="card-btn" data-i18n="cardBtn">Go→</button>
         </div>
       </div>
 
@@ -1248,9 +1300,8 @@
           João Victor<br>
           <span class="accent">B. Borsatto</span>
         </div>
-        <p style="color: #4f4f4f; font-size: 13px; line-height: 1.6; margin-top: 12px;">
+        <p style="color: #4f4f4f; font-size: 13px; line-height: 1.6; margin-top: 12px;" 
           Analythical Scientist • PhD in Analytical Chemistry<br>
-          Creative Developer • Computer Vision Enthusiast
         </p>
       </div>
 
@@ -1270,10 +1321,10 @@
       </div>
 
       <div>
-        <div class="footer-label">Navigate</div>
+        <div class="footer-label" data-i18n="footerLabelNav">Navigate</div>
         <div class="footer-links">
           <a href="#hero" class="footer-link">
-            <span>↑</span> Início
+            <span>↑</span> <span data-i18n="footerNavTop">Top</span>
           </a>
           <a href="#hobbies" class="footer-link">
             <span>→</span> Hobbies
@@ -1285,7 +1336,7 @@
       </div>
     </div>
 
-    <div class="footer-bottom">
+    <div class="footer-bottom" data-i18n="footerBottom">
       © 2025 João Victor Borsatto — Built with passion for code and science
     </div>
   </div>
@@ -1604,6 +1655,112 @@ function openExternal() {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
+
+// ── INTERNATIONALIZATION ──
+const i18n = {
+  en: {
+    heroLeftTag: '// Hobbies & Projects',
+    heroLeftTitle1: 'Creative',
+    heroLeftTitle2: 'Developer',
+    heroLeftSubtitle: 'Developing for Hobby.',
+    labelGameDev: 'Game Development',
+    labelComputerVision: 'Computer Vision',
+    labelRealtimeCV: 'Real-time CV',
+    heroRightTag: '// Academic & Scientific',
+    heroRightTitle1: 'Analythical',
+    heroRightTitle2: 'Scientist',
+    heroRightSubtitle: 'Developing for Analythical Chemistry Applications.',
+    labelHPLC: 'HPLC Simulator',
+    labelDataAnalysis: 'Data Analysis',
+    labelNLP: 'NLP Pipeline',
+    hobbiesEyebrow: '01 — Personal Projects',
+    hobbiesTitle: 'Built for fun.<br>Shipped for real.',
+    card01game: '01 / GAME',
+    jetsauroDesc: 'My first game project, developed in Godot. Play as a jetpack-powered diplodocus and survive for as long as possible in a hostile world filled with aggressive pterosaurs and deadly carnivorous plants. Click here to see the page!',
+    card02cv: '02 / CV TOOL',
+    offsideDesc: 'Detects offside situations in soccer from images. Uses projective geometry to correct perspective through vanishing point estimation and compare player positions on the field. No IA, just Math. Click here to see the page!',
+    card03tracking: '03 / TRACKING',
+    facetrackingDesc: 'Real-time face tracking that converts head movements into camera control for simulators. Integrates through the FreeTrack 2.0 / OpenTrack (UDP) protocol. Made for racing games. Click here to visit the page!',
+    card05annotation: '05 / ANNOTATION',
+    videoannotatorDesc: 'Frame-by-frame video annotation tool. Useful for data labeling in computer vision tasks. Click here to see the page!',
+    academicEyebrow: '02 — Academic & Scientific',
+    academicTitle: 'Research tools<br>& Science.',
+    card01simulator: '01 / SIMULATOR',
+    virtuallcDesc: 'Browser-based HPLC/UHPLC liquid chromatography emulator. Includes method optimization modules, chromatogram customization, and quantitative analysis. Based on LSS theory. Ideal for education and training. Click here to see the page!',
+    card02analysis: '02 / ANALYSIS',
+    onichromDesc: 'Chromatographic data analysis tool. Helps analysts visualize data quickly and efficiently. Covers most stages of the analytical development pipeline. Click here to see the page!',
+    card03nlp: '03 / NLP',
+    litdminerDesc: 'Data mining pipeline for automated extraction of information from scientific articles. Search within the full manuscript or selected sections. Perform bibliometric evaluations automatically. Click here to see the page!',
+    cardBtn: 'Go →',
+    footerLabelNav: 'Navigate',
+    footerNavTop: 'Top',
+    footerBottom: '© 2025 João Victor Borsatto — Built with passion for code and science',
+  },
+  pt: {
+    heroLeftTag: '// Hobbies & Projetos',
+    heroLeftTitle1: 'Desenvolvedor',
+    heroLeftTitle2: 'Criativo',
+    heroLeftSubtitle: 'Desenvolvendo por Hobby.',
+    labelGameDev: 'Desenvolvimento de Jogos',
+    labelComputerVision: 'Visão Computacional',
+    labelRealtimeCV: 'VC em Tempo Real',
+    heroRightTag: '// Acadêmico & Científico',
+    heroRightTitle1: 'Cientista',
+    heroRightTitle2: 'Analítico',
+    heroRightSubtitle: 'Desenvolvendo Aplicações para Química Analítica.',
+    labelHPLC: 'Simulador HPLC',
+    labelDataAnalysis: 'Análise de Dados',
+    labelNLP: 'Pipeline de PLN',
+    hobbiesEyebrow: '01 — Projetos Pessoais',
+    hobbiesTitle: 'Feito por diversão.<br>Entregue de verdade.',
+    card01game: '01 / JOGO',
+    jetsauroDesc: 'Meu primeiro projeto de jogo, desenvolvido em Godot. Jogue como um diplodoco equipado com jetpack e sobreviva o máximo possível em um mundo hostil repleto de pterossauros agressivos e plantas carnívoras mortais. Clique aqui para ver a página!',
+    card02cv: '02 / VISÃO COMP.',
+    offsideDesc: 'Detecta situações de impedimento no futebol a partir de imagens. Usa geometria projetiva para corrigir a perspectiva por meio de estimativa do ponto de fuga e comparar posições dos jogadores no campo. Sem IA, só Matemática. Clique aqui para ver a página!',
+    card03tracking: '03 / RASTREAMENTO',
+    facetrackingDesc: 'Rastreamento facial em tempo real que converte movimentos da cabeça em controle de câmera para simuladores. Integra-se via protocolo FreeTrack 2.0 / OpenTrack (UDP). Feito para jogos de corrida. Clique aqui para visitar a página!',
+    card05annotation: '05 / ANOTAÇÃO',
+    videoannotatorDesc: 'Ferramenta de anotação de vídeo frame a frame. Útil para rotulagem de dados em tarefas de visão computacional. Clique aqui para ver a página!',
+    academicEyebrow: '02 — Acadêmico & Científico',
+    academicTitle: 'Ferramentas de Pesquisa<br>& Ciência.',
+    card01simulator: '01 / SIMULADOR',
+    virtuallcDesc: 'Emulador de cromatografia líquida HPLC/UHPLC baseado no navegador. Inclui módulos de otimização de método, personalização de cromatograma e análise quantitativa. Baseado na teoria LSS. Ideal para educação e treinamento. Clique aqui para ver a página!',
+    card02analysis: '02 / ANÁLISE',
+    onichromDesc: 'Ferramenta de análise de dados cromatográficos. Ajuda analistas a visualizar dados de forma rápida e eficiente. Cobre a maioria das etapas do pipeline de desenvolvimento analítico. Clique aqui para ver a página!',
+    card03nlp: '03 / PLN',
+    litdminerDesc: 'Pipeline de mineração de dados para extração automatizada de informações de artigos científicos. Pesquise no manuscrito completo ou em seções selecionadas. Realize avaliações bibliométricas automaticamente. Clique aqui para ver a página!',
+    cardBtn: 'Ver →',
+    footerLabelNav: 'Navegar',
+    footerNavTop: 'Início',
+    footerBottom: '© 2025 João Victor Borsatto — Feito com paixão por código e ciência',
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const dict = i18n[lang];
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) {
+      el.innerHTML = dict[key];
+    }
+  });
+
+  // Update button states
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+
+  // Update page title
+  document.title = lang === 'pt'
+    ? 'João Victor Borsatto — Portfólio'
+    : 'João Victor Borsatto — Portfolio';
+
+  // Update html lang attribute
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+}
 </script>
 </body>
 </html>
