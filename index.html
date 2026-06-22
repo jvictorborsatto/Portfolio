@@ -16,8 +16,7 @@
     --mid-grey: #888;
   }
 
-  html {   scroll-behavior: smooth;
-  font-size: 80%; }
+  html { scroll-behavior: smooth; font-size: 80%; }
 
   body {
     font-family: 'IBM Plex Mono', monospace;
@@ -49,7 +48,6 @@
     position: relative;
   }
 
-  /* LEFT — HOBBIES (BLACK) */
   .hero-left {
     background: var(--black);
     display: flex;
@@ -78,7 +76,6 @@
     pointer-events: none;
   }
 
-  /* RIGHT — ACADEMIC (WHITE) */
   .hero-right {
     background: var(--white);
     color: var(--black);
@@ -97,7 +94,6 @@
     pointer-events: none;
   }
 
-  /* SHARED HERO STYLES */
   .hero-tag {
     font-family: 'Space Mono', monospace;
     font-size: 10px;
@@ -122,10 +118,7 @@
   .hero-left .hero-title { color: var(--white); }
   .hero-right .hero-title { color: var(--black); }
 
-  .hero-title .accent {
-    display: block;
-  }
-
+  .hero-title .accent { display: block; }
   .hero-left .hero-title .accent { color: var(--accent-hobbies); }
   .hero-right .hero-title .accent { color: var(--accent-academic); }
 
@@ -139,11 +132,7 @@
   .hero-left .hero-subtitle { color: #999; }
   .hero-right .hero-subtitle { color: #666; }
 
-  .hero-items {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .hero-items { display: flex; flex-direction: column; gap: 12px; }
 
   .hero-item {
     display: flex;
@@ -156,54 +145,22 @@
     text-decoration: none;
   }
 
-  .hero-left .hero-item {
-    border-color: #1a1a1a;
-    color: var(--white);
-  }
+  .hero-left .hero-item { border-color: #1a1a1a; color: var(--white); }
+  .hero-right .hero-item { border-color: #e0e0e0; color: var(--black); }
+  .hero-item:hover { padding-left: 8px; }
+  .hero-left .hero-item:hover { border-color: var(--accent-hobbies); color: var(--accent-hobbies); }
+  .hero-right .hero-item:hover { border-color: var(--accent-academic); color: var(--accent-academic); }
 
-  .hero-right .hero-item {
-    border-color: #e0e0e0;
-    color: var(--black);
-  }
+  .hero-item-icon { font-size: 18px; flex-shrink: 0; }
+  .hero-item-text { flex: 1; }
+  .hero-item-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; }
 
-  .hero-item:hover {
-    padding-left: 8px;
-  }
-
-  .hero-left .hero-item:hover {
-    border-color: var(--accent-hobbies);
-    color: var(--accent-hobbies);
-  }
-
-  .hero-right .hero-item:hover {
-    border-color: var(--accent-academic);
-    color: var(--accent-academic);
-  }
-
-  .hero-item-icon {
-    font-size: 18px;
-    flex-shrink: 0;
-  }
-
-  .hero-item-text {
-    flex: 1;
-  }
-
-  .hero-item-label {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    opacity: 0.5;
-  }
-
-  /* CENTER DIVIDER */
   .hero-divider {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
+    width: 60px; height: 60px;
     background: var(--black);
     border: 3px solid #333;
     border-radius: 50%;
@@ -222,8 +179,7 @@
   /* ═══════ AVATAR ═══════ */
   .avatar-block {
     position: absolute;
-    top: 40px;
-    left: 60px;
+    top: 40px; left: 60px;
     display: flex;
     align-items: center;
     gap: 14px;
@@ -231,8 +187,7 @@
   }
 
   .avatar-block img {
-    width: 52px;
-    height: 52px;
+    width: 52px; height: 52px;
     border-radius: 50%;
     border: 3px solid;
     object-fit: cover;
@@ -241,11 +196,7 @@
   .hero-left .avatar-block img { border-color: var(--accent-hobbies); }
   .hero-right .avatar-block img { border-color: var(--accent-academic); }
 
-  .avatar-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+  .avatar-info { display: flex; flex-direction: column; gap: 2px; }
 
   .avatar-info .name {
     font-family: 'Syne', sans-serif;
@@ -255,26 +206,14 @@
 
   .hero-left .avatar-info .name { color: var(--white); }
   .hero-right .avatar-info .name { color: var(--black); }
-
-  .avatar-info .handle {
-    font-size: 11px;
-    opacity: 0.5;
-  }
+  .avatar-info .handle { font-size: 11px; opacity: 0.5; }
 
   /* ═══════ SECTIONS ═══════ */
-  section.content-section {
-    padding: 140px 0;
-  }
+  section.content-section { padding: 140px 0; }
 
-  .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 60px;
-  }
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
 
-  .section-header {
-    margin-bottom: 80px;
-  }
+  .section-header { margin-bottom: 80px; }
 
   .section-eyebrow {
     font-family: 'Space Mono', monospace;
@@ -302,41 +241,15 @@
     letter-spacing: -0.02em;
   }
 
-  /* HOBBIES SECTION (BLACK) */
-  #hobbies {
-    background: var(--black);
-    color: var(--white);
-  }
+  #hobbies { background: var(--black); color: var(--white); }
+  #hobbies .section-eyebrow { color: var(--accent-hobbies); }
+  #hobbies .section-eyebrow::after { background: #1e1e1e; }
+  #hobbies .section-title { color: var(--white); }
 
-  #hobbies .section-eyebrow {
-    color: var(--accent-hobbies);
-  }
-
-  #hobbies .section-eyebrow::after {
-    background: #1e1e1e;
-  }
-
-  #hobbies .section-title {
-    color: var(--white);
-  }
-
-  /* ACADEMIC SECTION (WHITE) */
-  #academic {
-    background: var(--white);
-    color: var(--black);
-  }
-
-  #academic .section-eyebrow {
-    color: var(--accent-academic);
-  }
-
-  #academic .section-eyebrow::after {
-    background: #ddd;
-  }
-
-  #academic .section-title {
-    color: var(--black);
-  }
+  #academic { background: var(--white); color: var(--black); }
+  #academic .section-eyebrow { color: var(--accent-academic); }
+  #academic .section-eyebrow::after { background: #ddd; }
+  #academic .section-title { color: var(--black); }
 
   /* ═══════ PROJECT GRID ═══════ */
   .projects-grid {
@@ -354,25 +267,10 @@
     border: 1px solid;
   }
 
-  #hobbies .project-card {
-    background: #0f0f0f;
-    border-color: #1a1a1a;
-  }
-
-  #hobbies .project-card:hover {
-    background: #141414;
-    border-color: #333;
-  }
-
-  #academic .project-card {
-    background: #fafafa;
-    border-color: #e8e8e8;
-  }
-
-  #academic .project-card:hover {
-    background: #f0f0f0;
-    border-color: #ccc;
-  }
+  #hobbies .project-card { background: #0f0f0f; border-color: #1a1a1a; }
+  #hobbies .project-card:hover { background: #141414; border-color: #333; }
+  #academic .project-card { background: #fafafa; border-color: #e8e8e8; }
+  #academic .project-card:hover { background: #f0f0f0; border-color: #ccc; }
 
   .project-card::before {
     content: '';
@@ -384,17 +282,9 @@
     transition: transform 0.3s;
   }
 
-  #hobbies .project-card::before {
-    background: var(--accent-hobbies);
-  }
-
-  #academic .project-card::before {
-    background: var(--accent-academic);
-  }
-
-  .project-card:hover::before {
-    transform: scaleX(1);
-  }
+  #hobbies .project-card::before { background: var(--accent-hobbies); }
+  #academic .project-card::before { background: var(--accent-academic); }
+  .project-card:hover::before { transform: scaleX(1); }
 
   .card-number {
     font-family: 'Space Mono', monospace;
@@ -419,21 +309,11 @@
   #hobbies .card-title { color: var(--white); }
   #academic .card-title { color: var(--black); }
 
-  .card-desc {
-    font-size: 12px;
-    line-height: 1.7;
-    margin-bottom: 32px;
-  }
-
+  .card-desc { font-size: 12px; line-height: 1.7; margin-bottom: 32px; }
   #hobbies .card-desc { color: #888; }
   #academic .card-desc { color: #666; }
 
-  .card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 32px;
-  }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
 
   .tag {
     font-size: 9px;
@@ -444,27 +324,11 @@
     border-radius: 2px;
   }
 
-  #hobbies .tag {
-    border-color: #2a2a2a;
-    color: #666;
-  }
+  #hobbies .tag { border-color: #2a2a2a; color: #666; }
+  #academic .tag { border-color: #ddd; color: #999; }
 
-  #academic .tag {
-    border-color: #ddd;
-    color: #999;
-  }
-
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: auto;
-  }
-
-  .card-lang {
-    font-size: 11px;
-  }
-
+  .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+  .card-lang { font-size: 11px; }
   #hobbies .card-lang { color: #555; }
   #academic .card-lang { color: #aaa; }
 
@@ -482,102 +346,34 @@
     transition: all 0.2s;
   }
 
-  .project-card:hover .card-btn {
-    opacity: 1;
-    transform: translateY(0);
+  .project-card:hover .card-btn { opacity: 1; transform: translateY(0); }
+  #hobbies .card-btn { border-color: var(--accent-hobbies); color: var(--accent-hobbies); }
+  #hobbies .card-btn:hover { background: var(--accent-hobbies); color: var(--black); }
+  #academic .card-btn { border-color: var(--accent-academic); color: var(--accent-academic); }
+  #academic .card-btn:hover { background: var(--accent-academic); color: var(--white); }
+
+  /* ═══════ NEW badge ═══════ */
+  .card-new-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 2px;
+    font-weight: 700;
   }
 
-  #hobbies .card-btn {
-    border-color: var(--accent-hobbies);
-    color: var(--accent-hobbies);
-  }
-
-  #hobbies .card-btn:hover {
-    background: var(--accent-hobbies);
-    color: var(--black);
-  }
-
-  #academic .card-btn {
-    border-color: var(--accent-academic);
-    color: var(--accent-academic);
-  }
-
-  #academic .card-btn:hover {
+  #academic .card-new-badge {
     background: var(--accent-academic);
     color: var(--white);
   }
 
-  /* ═══════ EXPERIENCE & EDUCATION TIMELINE ═══════ */
-  .timeline {
-    position: relative;
-    padding-left: 40px;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-  }
-
-  #academic .timeline::before {
-    background: linear-gradient(to bottom, var(--accent-academic), transparent);
-  }
-
-  .timeline-item {
-    position: relative;
-    margin-bottom: 48px;
-    padding-left: 32px;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -42px;
-    top: 6px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid;
-  }
-
-  #academic .timeline-item::before {
-    background: var(--white);
-    border-color: var(--accent-academic);
-  }
-
-  .timeline-date {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  #academic .timeline-date {
-    color: var(--accent-academic);
-  }
-
-  .timeline-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    line-height: 1.3;
-  }
-
-  .timeline-org {
-    font-size: 13px;
-    margin-bottom: 12px;
-    opacity: 0.8;
-  }
-
-  .timeline-desc {
-    font-size: 12px;
-    line-height: 1.6;
-    opacity: 0.7;
+  #hobbies .card-new-badge {
+    background: var(--accent-hobbies);
+    color: var(--black);
   }
 
   /* ═══════ FOOTER ═══════ */
@@ -602,15 +398,9 @@
     letter-spacing: -0.02em;
   }
 
-  .footer-title .accent {
-    color: var(--accent-hobbies);
-  }
+  .footer-title .accent { color: var(--accent-hobbies); }
 
-  .footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+  .footer-links { display: flex; flex-direction: column; gap: 16px; }
 
   .footer-link {
     font-size: 12px;
@@ -622,9 +412,7 @@
     gap: 8px;
   }
 
-  .footer-link:hover {
-    color: var(--accent-hobbies);
-  }
+  .footer-link:hover { color: var(--accent-hobbies); }
 
   .footer-label {
     font-family: 'Space Mono', monospace;
@@ -659,10 +447,7 @@
     backdrop-filter: blur(8px);
   }
 
-  .modal-overlay.active {
-    opacity: 1;
-    pointer-events: all;
-  }
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
 
   .browser-window {
     width: 100%;
@@ -678,9 +463,7 @@
     transition: transform 0.3s;
   }
 
-  .modal-overlay.active .browser-window {
-    transform: translateY(0) scale(1);
-  }
+  .modal-overlay.active .browser-window { transform: translateY(0) scale(1); }
 
   .browser-chrome {
     background: #252525;
@@ -691,25 +474,13 @@
     border-bottom: 1px solid #333;
   }
 
-  .browser-dots {
-    display: flex;
-    gap: 7px;
-  }
+  .browser-dots { display: flex; gap: 7px; }
 
-  .browser-dot {
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
-  }
-
+  .browser-dot { width: 13px; height: 13px; border-radius: 50%; }
   .dot-red { background: #ff5f57; }
   .dot-yellow { background: #febc2e; }
   .dot-blue { background: #27c9ff; }
-
-  .dot-red:hover {
-    background: #ff3b30;
-    cursor: pointer;
-  }
+  .dot-red:hover { background: #ff3b30; cursor: pointer; }
 
   .browser-url {
     flex: 1;
@@ -725,22 +496,11 @@
     gap: 10px;
   }
 
-  .url-lock {
-    color: var(--accent-academic);
-  }
+  .url-lock { color: var(--accent-academic); }
+  .url-text { color: #aaa; }
+  .url-text span { color: #fff; }
 
-  .url-text {
-    color: #aaa;
-  }
-
-  .url-text span {
-    color: #fff;
-  }
-
-  .browser-nav {
-    display: flex;
-    gap: 8px;
-  }
+  .browser-nav { display: flex; gap: 8px; }
 
   .browser-nav button {
     background: none;
@@ -752,15 +512,9 @@
     transition: color 0.2s;
   }
 
-  .browser-nav button:hover {
-    color: var(--accent-hobbies);
-  }
+  .browser-nav button:hover { color: var(--accent-hobbies); }
 
-  .browser-content {
-    flex: 1;
-    background: #0d1117;
-    overflow: auto;
-  }
+  .browser-content { flex: 1; background: #0d1117; overflow: auto; }
 
   .loading-frame {
     display: flex;
@@ -773,8 +527,7 @@
   }
 
   .loading-spinner {
-    width: 40px;
-    height: 40px;
+    width: 40px; height: 40px;
     border: 3px solid #333;
     border-top-color: var(--accent-hobbies);
     border-radius: 50%;
@@ -798,10 +551,7 @@
     border-bottom: 1px solid #21262d;
   }
 
-  .readme-repo-icon {
-    font-size: 48px;
-    flex-shrink: 0;
-  }
+  .readme-repo-icon { font-size: 48px; flex-shrink: 0; }
 
   .readme-view h1 {
     font-family: 'Syne', sans-serif;
@@ -821,29 +571,10 @@
     border-bottom: 1px solid #21262d;
   }
 
-  .readme-view h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #c9d1d9;
-    margin: 24px 0 12px;
-  }
-
-  .readme-view p {
-    line-height: 1.7;
-    margin-bottom: 16px;
-    color: #8b949e;
-  }
-
-  .readme-view ul, .readme-view ol {
-    margin: 16px 0;
-    padding-left: 32px;
-    color: #8b949e;
-  }
-
-  .readme-view li {
-    margin: 8px 0;
-    line-height: 1.6;
-  }
+  .readme-view h3 { font-size: 18px; font-weight: 600; color: #c9d1d9; margin: 24px 0 12px; }
+  .readme-view p { line-height: 1.7; margin-bottom: 16px; color: #8b949e; }
+  .readme-view ul, .readme-view ol { margin: 16px 0; padding-left: 32px; color: #8b949e; }
+  .readme-view li { margin: 8px 0; line-height: 1.6; }
 
   .readme-view code {
     background: #161b22;
@@ -863,18 +594,9 @@
     border: 1px solid #30363d;
   }
 
-  .readme-view pre code {
-    background: none;
-    padding: 0;
-    color: #c9d1d9;
-  }
+  .readme-view pre code { background: none; padding: 0; color: #c9d1d9; }
 
-  .readme-meta {
-    display: flex;
-    gap: 12px;
-    margin-top: 16px;
-    align-items: center;
-  }
+  .readme-meta { display: flex; gap: 12px; margin-top: 16px; align-items: center; flex-wrap: wrap; }
 
   .readme-badge {
     background: #21262d;
@@ -886,9 +608,7 @@
   }
 
   /* ═══════ ANIMATIONS ═══════ */
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   .reveal {
     opacity: 0;
@@ -896,16 +616,12 @@
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
+  .reveal.visible { opacity: 1; transform: none; }
 
   /* ═══════ LANGUAGE TOGGLE ═══════ */
   .lang-toggle {
     position: fixed;
-    top: 20px;
-    right: 24px;
+    top: 20px; right: 24px;
     z-index: 9998;
     display: flex;
     align-items: center;
@@ -930,85 +646,29 @@
     transition: all 0.2s;
   }
 
-  .lang-btn.active {
-    background: var(--accent-hobbies);
-    color: var(--black);
-    font-weight: 700;
-  }
-
-  .lang-btn:not(.active):hover {
-    color: var(--white);
-    background: #1a1a1a;
-  }
-
-  .lang-sep {
-    width: 1px;
-    height: 16px;
-    background: #333;
-  }
+  .lang-btn.active { background: var(--accent-hobbies); color: var(--black); font-weight: 700; }
+  .lang-btn:not(.active):hover { color: var(--white); background: #1a1a1a; }
+  .lang-sep { width: 1px; height: 16px; background: #333; }
 
   /* ═══════ RESPONSIVE ═══════ */
   @media (max-width: 1024px) {
-    #hero {
-      grid-template-columns: 1fr;
-    }
-
-    .hero-left, .hero-right {
-      min-height: 100vh;
-      padding: 100px 40px 80px;
-    }
-
-    .hero-left {
-      border-right: none;
-      border-bottom: 1px solid #222;
-    }
-
-    .hero-divider {
-      display: none;
-    }
-
-    .container {
-      padding: 0 40px;
-    }
-
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
+    #hero { grid-template-columns: 1fr; }
+    .hero-left, .hero-right { min-height: 100vh; padding: 100px 40px 80px; }
+    .hero-left { border-right: none; border-bottom: 1px solid #222; }
+    .hero-divider { display: none; }
+    .container { padding: 0 40px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
   }
 
   @media (max-width: 640px) {
-    .hero-left, .hero-right {
-      padding: 80px 28px 60px;
-    }
-
-    .avatar-block {
-      left: 28px;
-    }
-
-    .container {
-      padding: 0 28px;
-    }
-
-    section.content-section {
-      padding: 80px 0;
-    }
-
-    .hero-title {
-      font-size: 48px;
-    }
-
-    .section-title {
-      font-size: 36px;
-    }
-
-    footer {
-      padding: 60px 28px 32px;
-    }
+    .hero-left, .hero-right { padding: 80px 28px 60px; }
+    .avatar-block { left: 28px; }
+    .container { padding: 0 28px; }
+    section.content-section { padding: 80px 0; }
+    .hero-title { font-size: 48px; }
+    .section-title { font-size: 36px; }
+    footer { padding: 60px 28px 32px; }
   }
 </style>
 </head>
@@ -1016,14 +676,14 @@
 
 <div class="cursor" id="cursor"></div>
 
-<!-- ═══════════════════════════════ LANGUAGE TOGGLE ═══════════════════════════════ -->
+<!-- LANGUAGE TOGGLE -->
 <div class="lang-toggle">
   <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
   <div class="lang-sep"></div>
   <button class="lang-btn" id="btn-pt" onclick="setLang('pt')">PT</button>
 </div>
 
-<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<!-- HERO -->
 <section id="hero">
   
   <!-- LEFT — HOBBIES -->
@@ -1044,9 +704,7 @@
         <span data-i18n="heroLeftTitle1">Creative</span><br>
         <span class="accent" data-i18n="heroLeftTitle2">Developer</span>
       </h1>
-      <p class="hero-subtitle" data-i18n="heroLeftSubtitle">
-        Developing for Hobby.         
-      </p>
+      <p class="hero-subtitle" data-i18n="heroLeftSubtitle">Developing for Hobby.</p>
 
       <div class="hero-items">
         <a href="#hobbies" class="hero-item">
@@ -1090,12 +748,10 @@
     <div>
       <div class="hero-tag" data-i18n="heroRightTag">// Academic & Scientific</div>
       <h1 class="hero-title">
-        <span data-i18n="heroRightTitle1">Analythical</span><br>
+        <span data-i18n="heroRightTitle1">Analytical</span><br>
         <span class="accent" data-i18n="heroRightTitle2">Scientist</span>
       </h1>
-      <p class="hero-subtitle" data-i18n="heroRightSubtitle">
-      Developing for Analythical Chemistry Applications.
-      </p>
+      <p class="hero-subtitle" data-i18n="heroRightSubtitle">Developing for Analytical Chemistry Applications.</p>
 
       <div class="hero-items">
         <a href="#academic" class="hero-item">
@@ -1106,17 +762,17 @@
           </div>
         </a>
         <a href="#academic" class="hero-item">
-          <span class="hero-item-icon">📊</span>
+          <span class="hero-item-icon">🌡️</span>
           <div class="hero-item-text">
-            <div>OniChromLC</div>
-            <div class="hero-item-label" data-i18n="labelDataAnalysis">Data Analysis</div>
+            <div>Virtual IR</div>
+            <div class="hero-item-label" data-i18n="labelIR">IR Spectrum Simulator</div>
           </div>
         </a>
         <a href="#academic" class="hero-item">
-          <span class="hero-item-icon">📚</span>
+          <span class="hero-item-icon">🤖</span>
           <div class="hero-item-text">
-            <div>Literature Miner</div>
-            <div class="hero-item-label" data-i18n="labelNLP">NLP Pipeline</div>
+            <div>ChromatoBuddy</div>
+            <div class="hero-item-label" data-i18n="labelRAG">Semantic Search · RAG</div>
           </div>
         </a>
       </div>
@@ -1125,7 +781,7 @@
 
 </section>
 
-<!-- ═══════════════════════════════ HOBBIES ═══════════════════════════════ -->
+<!-- HOBBIES -->
 <section id="hobbies" class="content-section">
   <div class="container">
     <div class="section-header">
@@ -1141,7 +797,7 @@
         <div class="card-number" data-i18n="card01game">01 / GAME</div>
         <h3 class="card-title">Jetsauro</h3>
         <p class="card-desc" data-i18n="jetsauroDesc">
-        My first game project, developed in Godot. Play as a jetpack-powered diplodocus and survive for as long as possible in a hostile world filled with aggressive pterosaurs and deadly carnivorous plants. Click here to see the page!
+          My first game project, developed in Godot. Play as a jetpack-powered diplodocus and survive for as long as possible in a hostile world filled with aggressive pterosaurs and deadly carnivorous plants. Click here to see the page!
         </p>
         <div class="card-tags">
           <span class="tag">GDScript</span>
@@ -1160,9 +816,7 @@
         <div class="card-number" data-i18n="card02cv">02 / CV TOOL</div>
         <h3 class="card-title">OFFside Detector</h3>
         <p class="card-desc" data-i18n="offsideDesc">
-          Detects offside situations in soccer from images. 
-          Uses projective geometry to correct perspective through vanishing point estimation and compare player positions on the field.
-          No IA, just Math. Click here to see the page!
+          Detects offside situations in soccer from images. Uses projective geometry to correct perspective through vanishing point estimation and compare player positions on the field. No IA, just Math. Click here to see the page!
         </p>
         <div class="card-tags">
           <span class="tag">JavaScript</span>
@@ -1171,7 +825,7 @@
           <span class="tag">Computer Vision</span>
         </div>
         <div class="card-footer">
-          <span class="card-lang">● HTML · JS </span>
+          <span class="card-lang">● HTML · JS</span>
           <button class="card-btn" data-i18n="cardBtn">Go →</button>
         </div>
       </div>
@@ -1191,19 +845,18 @@
           <span class="tag">UDP</span>
         </div>
         <div class="card-footer">
-          <span class="card-lang">Python</span>
+          <span class="card-lang">● Python</span>
           <button class="card-btn" data-i18n="cardBtn">Go →</button>
         </div>
       </div>
 
-      
       <!-- Video Annotator -->
       <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Video_Annotator/"
            data-name="Video_Annotator" data-readme="videoannotator" onclick="openModal(this)">
-        <div class="card-number" data-i18n="card05annotation">05 / ANNOTATION</div>
+        <div class="card-number" data-i18n="card05annotation">04 / ANNOTATION</div>
         <h3 class="card-title">Video Annotator</h3>
         <p class="card-desc" data-i18n="videoannotatorDesc">
-          Frame-by-frame video annotation tool. Useful for data labeling in computer vision tasks. Click here  to see the page!
+          Frame-by-frame video annotation tool. Useful for data labeling in computer vision tasks. Click here to see the page!
         </p>
         <div class="card-tags">
           <span class="tag">Python</span>
@@ -1219,7 +872,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════ ACADEMIC ═══════════════════════════════ -->
+<!-- ACADEMIC -->
 <section id="academic" class="content-section">
   <div class="container">
     <div class="section-header">
@@ -1244,15 +897,36 @@
           <span class="tag">Canvas</span>
         </div>
         <div class="card-footer">
-          <span class="card-lang">HTML</span>
-          <button class="card-btn" data-i18n="cardBtn">Go→</button>
+          <span class="card-lang">● HTML</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
+        </div>
+      </div>
+
+      <!-- Virtual IR — NEW -->
+      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Virtual-IR/"
+           data-name="Virtual-IR" data-readme="virtualir" onclick="openModal(this)">
+        <div class="card-new-badge" data-i18n="newBadge">NEW</div>
+        <div class="card-number" data-i18n="card02ir">02 / SIMULATOR</div>
+        <h3 class="card-title">Virtual IR</h3>
+        <p class="card-desc" data-i18n="virtualirDesc">
+          Didactic browser-based IR spectrum tool for education and training. Add functional groups and chemical bonds to visualize their contributions to a composite IR spectrum. Includes a reference absorption table, signal controls, and PNG/CSV export. Click here to see the page!
+        </p>
+        <div class="card-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Canvas</span>
+          <span class="tag">Spectroscopy</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-lang">● HTML · JS</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
         </div>
       </div>
 
       <!-- OniChromLC -->
       <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/OniChromLC/"
            data-name="OniChromLC" data-readme="onichrom" onclick="openModal(this)">
-        <div class="card-number" data-i18n="card02analysis">02 / ANALYSIS</div>
+        <div class="card-number" data-i18n="card03analysis">03 / ANALYSIS</div>
         <h3 class="card-title">OniChromLC</h3>
         <p class="card-desc" data-i18n="onichromDesc">
           Chromatographic data analysis tool. Helps analysts visualize data quickly and efficiently. Covers most stages of the analytical development pipeline. Click here to see the page!
@@ -1263,15 +937,37 @@
           <span class="tag">Chromatography</span>
         </div>
         <div class="card-footer">
-          <span class="card-lang">Python</span>
-          <button class="card-btn" data-i18n="cardBtn">Go→</button>
+          <span class="card-lang">● Python</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
+        </div>
+      </div>
+
+      <!-- ChromatoBuddy — NEW -->
+      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/ChromatoBuddy/"
+           data-name="ChromatoBuddy" data-readme="chromatobuddy" onclick="openModal(this)">
+        <div class="card-new-badge" data-i18n="newBadge">NEW</div>
+        <div class="card-number" data-i18n="card04rag">04 / AI · RAG</div>
+        <h3 class="card-title">ChromatoBuddy</h3>
+        <p class="card-desc" data-i18n="chromatobuddyDesc">
+          Online semantic search engine for chromatography knowledge. Combines BM25 keyword retrieval with BGE-small neural embeddings for hybrid RAG over a curated knowledge base. No installation needed — runs directly in the browser. Click here to see the page!
+        </p>
+        <div class="card-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">BM25</span>
+          <span class="tag">BGE Embeddings</span>
+          <span class="tag">RAG</span>
+          <span class="tag">NLP</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-lang">● HTML · JS</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
         </div>
       </div>
 
       <!-- Literature Miner -->
       <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Scientific-Literature-Data-Miner/"
            data-name="Lit-Data-Miner" data-readme="litdminer" onclick="openModal(this)">
-        <div class="card-number" data-i18n="card03nlp">03 / NLP</div>
+        <div class="card-number" data-i18n="card05nlp">05 / NLP</div>
         <h3 class="card-title">Scientific Literature Miner</h3>
         <p class="card-desc" data-i18n="litdminerDesc">
           Data mining pipeline for automated extraction of information from scientific articles. Search within the full manuscript or selected sections. Perform bibliometric evaluations automatically. Click here to see the page!
@@ -1283,8 +979,8 @@
           <span class="tag">Research</span>
         </div>
         <div class="card-footer">
-          <span class="card-lang">Python</span>
-          <button class="card-btn" data-i18n="cardBtn">Go→</button>
+          <span class="card-lang">● Python</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
         </div>
       </div>
 
@@ -1292,7 +988,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-grid">
@@ -1301,8 +997,8 @@
           João Victor<br>
           <span class="accent">B. Borsatto</span>
         </div>
-        <p style="color: #4f4f4f; font-size: 13px; line-height: 1.6; margin-top: 12px;" 
-          Analythical Scientist • PhD in Analytical Chemistry<br>
+        <p style="color: #4f4f4f; font-size: 13px; line-height: 1.6; margin-top: 12px;">
+          Analytical Scientist • PhD in Analytical Chemistry
         </p>
       </div>
 
@@ -1343,7 +1039,7 @@
   </div>
 </footer>
 
-<!-- ═══════════════════════════════ MODAL ═══════════════════════════════ -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
   <div class="browser-window">
     <div class="browser-chrome">
@@ -1412,7 +1108,6 @@ const readmes = {
 <ul>
   <li>Godot Engine (GDScript)</li>
   <li>Exportado como HTML5 WebAssembly</li>
-  <li>43 commits</li>
 </ul>`
   },
   offside: {
@@ -1422,7 +1117,7 @@ const readmes = {
     lang: 'HTML · JavaScript · CSS',
     content: `
 <h2>🔍 O que faz</h2>
-<p>Carregue qualquer imagem de futebol (screenshot de TV, frame de replay) e determine se um jogador está em impedimento usando correção de perspectiva geométrica.</p>
+<p>Carregue qualquer imagem de futebol e determine se um jogador está em impedimento usando correção de perspectiva geométrica.</p>
 <h2>🧠 Como funciona</h2>
 <ol>
   <li><strong>Direção do Campo</strong> — Marque duas linhas do campo; sua interseção define o Ponto de Fuga.</li>
@@ -1462,22 +1157,6 @@ const readmes = {
   <li>Monitoramento visual ao vivo</li>
 </ul>`
   },
-  videoplayer: {
-    icon: '▶️',
-    title: 'Video Player',
-    desc: 'Player de vídeo customizado para análise científica e esportiva.',
-    lang: 'HTML · JavaScript',
-    content: `
-<h2>Sobre</h2>
-<p>Um player de vídeo baseado no browser com controles avançados projetados para fluxos de trabalho de análise de vídeo científico e esportivo.</p>
-<h2>Features</h2>
-<ul>
-  <li>Controles de reprodução customizados</li>
-  <li>Navegação frame-a-frame</li>
-  <li>Controle de velocidade</li>
-  <li>Nativo do browser, sem instalação</li>
-</ul>`
-  },
   videoannotator: {
     icon: '📝',
     title: 'Video Annotator',
@@ -1514,9 +1193,33 @@ const readmes = {
   <li>Gaussiano modificado com assimetria EMG</li>
   <li>Contagem de pratos da geometria da coluna</li>
   <li>Estimativa de contrapressão</li>
+</ul>`
+  },
+  virtualir: {
+    icon: '🌡️',
+    title: 'Virtual IR',
+    desc: 'Ferramenta didática de espectroscopia de infravermelho para educação e treinamento.',
+    lang: 'HTML · JavaScript',
+    content: `
+<h2>Visão Geral</h2>
+<p>Virtual IR é uma ferramenta educacional de espectroscopia de infravermelho que roda 100% no browser. Assim como o Virtual LC, o foco é didático — permite visualizar como diferentes grupos funcionais e ligações químicas contribuem para o espectro IV de uma molécula, ideal para aulas e treinamentos.</p>
+<h2>⚗️ Funcionalidades</h2>
+<ul>
+  <li>Biblioteca de grupos funcionais e ligações (OH, NH, C=O, C-H, aromáticos e mais)</li>
+  <li>Geração de espectro IV composto em tempo real (4000–500 cm⁻¹)</li>
+  <li>Controles de qualidade de sinal: ruído, inclinação de baseline e largura de pico</li>
+  <li>Tabela de referência de absorção IV embutida</li>
+  <li>Rótulos de pico e grade configuráveis</li>
+  <li>Exportação PNG e CSV do espectro</li>
 </ul>
-<h2>Construído com</h2>
-<p>HTML + CSS + JavaScript puro · Canvas API · JSZip 3.10.1 · IBM Plex Mono</p>`
+<h2>🎓 Uso Educacional</h2>
+<p>Projetado para estudantes de química orgânica, química analítica e espectroscopia. Permite explorar e compreender a origem das bandas de absorção no espectro IV sem necessidade de instalação ou software especializado.</p>
+<h2>🛠 Tech</h2>
+<ul>
+  <li>HTML + CSS + JavaScript puro</li>
+  <li>Canvas API para renderização do espectro</li>
+  <li>Sem dependências externas, sem servidor</li>
+</ul>`
   },
   onichrom: {
     icon: '📊',
@@ -1535,6 +1238,32 @@ LC_Bi5_dB90_tG10_F04_T40_C18_21mm_FPP_3um_PPM24.png</pre>
   <li>Visualização de dados cromatográficos</li>
   <li>Baseado no browser, sem instalação</li>
 </ul>`
+  },
+  chromatobuddy: {
+    icon: '🤖',
+    title: 'ChromatoBuddy',
+    desc: 'Motor de busca semântica online para cromatografia — BM25 + embeddings neurais BGE sobre base de conhecimento curada.',
+    lang: 'HTML · JavaScript',
+    content: `
+<h2>Visão Geral</h2>
+<p>ChromatoBuddy é um sistema RAG (Retrieval-Augmented Generation) de busca semântica especializado em cromatografia. Combina recuperação por palavras-chave (BM25) com embeddings neurais (BGE-small) para encontrar trechos relevantes em uma base de conhecimento cromatográfico curada e disponibilizada diretamente no repositório.</p>
+<h2>🧠 Arquitetura Híbrida</h2>
+<ul>
+  <li><strong>BM25</strong> — busca clássica por termo/keyword para recuperação rápida e precisa</li>
+  <li><strong>BGE-small</strong> — modelo de embeddings neural para busca semântica por similaridade</li>
+  <li><strong>Híbrido</strong> — combina os dois scores para resultados superiores</li>
+</ul>
+<h2>🌐 Online & Pronto para Usar</h2>
+<p>Acesse direto pelo browser, sem instalação. A base de conhecimento é fornecida pelo repositório e carregada sob demanda. Suporte a GPU (WebGPU) quando disponível para acelerar os embeddings.</p>
+<h2>⚙️ Features</h2>
+<ul>
+  <li>Filtros por Tags, Títulos e Conteúdo com prioridade configurável</li>
+  <li>Cache de embeddings sob demanda para velocidade</li>
+  <li>Lock por domínio para contexto especializado</li>
+  <li>Visualização detalhada de chunks de resultado</li>
+</ul>
+<h2>💬 Dica de Uso</h2>
+<p>Buscar por <strong>keywords</strong> é mais eficiente do que perguntas complexas. Ex: <code>acetonitrila gradiente C18</code> em vez de uma pergunta longa.</p>`
   },
   litdminer: {
     icon: '📚',
@@ -1580,19 +1309,15 @@ function openModal(card) {
     iframe.style.display = 'none';
 
     let loaded = false;
-      iframe.onload = () => {
-        loaded = true;
-
-        const loading = content.querySelector('.loading-frame');
-        if (loading) loading.remove();
-
-        iframe.style.display = 'block';
-      };
+    iframe.onload = () => {
+      loaded = true;
+      const loading = content.querySelector('.loading-frame');
+      if (loading) loading.remove();
+      iframe.style.display = 'block';
+    };
 
     setTimeout(() => {
-      if (!loaded) {
-        showReadme(readmeKey, content, name);
-      }
+      if (!loaded) showReadme(readmeKey, content, name);
     }, 2500);
 
     content.appendChild(iframe);
@@ -1602,12 +1327,12 @@ function openModal(card) {
 }
 
 function showReadme(key, container, name) {
-  const data = readmes[key] || { 
-    icon: '📁', 
-    title: name, 
-    desc: '', 
-    lang: '', 
-    content: '<p>Acesse o repositório no GitHub para mais informações.</p>' 
+  const data = readmes[key] || {
+    icon: '📁',
+    title: name,
+    desc: '',
+    lang: '',
+    content: '<p>Acesse o repositório no GitHub para mais informações.</p>'
   };
   container.innerHTML = `
     <div class="readme-view">
@@ -1634,9 +1359,7 @@ function showReadme(key, container, name) {
 function closeModal() {
   document.getElementById('modal').classList.remove('active');
   document.body.style.overflow = '';
-  setTimeout(() => {
-    document.getElementById('browserContent').innerHTML = '';
-  }, 300);
+  setTimeout(() => { document.getElementById('browserContent').innerHTML = ''; }, 300);
 }
 
 function closeModalOutside(e) {
@@ -1653,9 +1376,7 @@ function openExternal() {
   if (currentUrl && currentUrl !== '#') window.open(currentUrl, '_blank');
 }
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 // ── INTERNATIONALIZATION ──
 const i18n = {
@@ -1668,10 +1389,12 @@ const i18n = {
     labelComputerVision: 'Computer Vision',
     labelRealtimeCV: 'Real-time CV',
     heroRightTag: '// Academic & Scientific',
-    heroRightTitle1: 'Analythical',
+    heroRightTitle1: 'Analytical',
     heroRightTitle2: 'Scientist',
-    heroRightSubtitle: 'Developing for Analythical Chemistry Applications.',
+    heroRightSubtitle: 'Developing for Analytical Chemistry Applications.',
     labelHPLC: 'HPLC Simulator',
+    labelIR: 'IR Spectrum Simulator',
+    labelRAG: 'Semantic Search · RAG',
     labelDataAnalysis: 'Data Analysis',
     labelNLP: 'NLP Pipeline',
     hobbiesEyebrow: '01 — Personal Projects',
@@ -1682,16 +1405,21 @@ const i18n = {
     offsideDesc: 'Detects offside situations in soccer from images. Uses projective geometry to correct perspective through vanishing point estimation and compare player positions on the field. No IA, just Math. Click here to see the page!',
     card03tracking: '03 / TRACKING',
     facetrackingDesc: 'Real-time face tracking that converts head movements into camera control for simulators. Integrates through the FreeTrack 2.0 / OpenTrack (UDP) protocol. Made for racing games. Click here to visit the page!',
-    card05annotation: '05 / ANNOTATION',
+    card05annotation: '04 / ANNOTATION',
     videoannotatorDesc: 'Frame-by-frame video annotation tool. Useful for data labeling in computer vision tasks. Click here to see the page!',
     academicEyebrow: '02 — Academic & Scientific',
     academicTitle: 'Research tools<br>& Science.',
     card01simulator: '01 / SIMULATOR',
     virtuallcDesc: 'Browser-based HPLC/UHPLC liquid chromatography emulator. Includes method optimization modules, chromatogram customization, and quantitative analysis. Based on LSS theory. Ideal for education and training. Click here to see the page!',
-    card02analysis: '02 / ANALYSIS',
+    card02ir: '02 / SIMULATOR',
+    virtualirDesc: 'Didactic browser-based IR spectrum tool for education and training. Add functional groups and chemical bonds to visualize their contributions to a composite IR spectrum. Includes a reference absorption table, signal controls, and PNG/CSV export. Click here to see the page!',
+    card03analysis: '03 / ANALYSIS',
     onichromDesc: 'Chromatographic data analysis tool. Helps analysts visualize data quickly and efficiently. Covers most stages of the analytical development pipeline. Click here to see the page!',
-    card03nlp: '03 / NLP',
+    card04rag: '04 / AI · RAG',
+    chromatobuddyDesc: 'Online semantic search engine for chromatography knowledge. Combines BM25 keyword retrieval with BGE-small neural embeddings for hybrid RAG over a curated knowledge base. No installation needed — runs directly in the browser. Click here to see the page!',
+    card05nlp: '05 / NLP',
     litdminerDesc: 'Data mining pipeline for automated extraction of information from scientific articles. Search within the full manuscript or selected sections. Perform bibliometric evaluations automatically. Click here to see the page!',
+    newBadge: 'NEW',
     cardBtn: 'Go →',
     footerLabelNav: 'Navigate',
     footerNavTop: 'Top',
@@ -1710,6 +1438,8 @@ const i18n = {
     heroRightTitle2: 'Analítico',
     heroRightSubtitle: 'Desenvolvendo Aplicações para Química Analítica.',
     labelHPLC: 'Simulador HPLC',
+    labelIR: 'Simulador de Espectro IV',
+    labelRAG: 'Busca Semântica · RAG',
     labelDataAnalysis: 'Análise de Dados',
     labelNLP: 'Pipeline de PLN',
     hobbiesEyebrow: '01 — Projetos Pessoais',
@@ -1720,16 +1450,21 @@ const i18n = {
     offsideDesc: 'Detecta situações de impedimento no futebol a partir de imagens. Usa geometria projetiva para corrigir a perspectiva por meio de estimativa do ponto de fuga e comparar posições dos jogadores no campo. Sem IA, só Matemática. Clique aqui para ver a página!',
     card03tracking: '03 / RASTREAMENTO',
     facetrackingDesc: 'Rastreamento facial em tempo real que converte movimentos da cabeça em controle de câmera para simuladores. Integra-se via protocolo FreeTrack 2.0 / OpenTrack (UDP). Feito para jogos de corrida. Clique aqui para visitar a página!',
-    card05annotation: '05 / ANOTAÇÃO',
+    card05annotation: '04 / ANOTAÇÃO',
     videoannotatorDesc: 'Ferramenta de anotação de vídeo frame a frame. Útil para rotulagem de dados em tarefas de visão computacional. Clique aqui para ver a página!',
     academicEyebrow: '02 — Acadêmico & Científico',
     academicTitle: 'Ferramentas de Pesquisa<br>& Ciência.',
     card01simulator: '01 / SIMULADOR',
     virtuallcDesc: 'Emulador de cromatografia líquida HPLC/UHPLC baseado no navegador. Inclui módulos de otimização de método, personalização de cromatograma e análise quantitativa. Baseado na teoria LSS. Ideal para educação e treinamento. Clique aqui para ver a página!',
-    card02analysis: '02 / ANÁLISE',
+    card02ir: '02 / SIMULADOR',
+    virtualirDesc: 'Ferramenta didática de espectro de infravermelho (IV) para educação e treinamento. Adicione grupos funcionais e ligações químicas para visualizar suas contribuições em um espectro IV composto. Inclui tabela de referência de absorção, controles de sinal e exportação PNG/CSV. Clique aqui para ver a página!',
+    card03analysis: '03 / ANÁLISE',
     onichromDesc: 'Ferramenta de análise de dados cromatográficos. Ajuda analistas a visualizar dados de forma rápida e eficiente. Cobre a maioria das etapas do pipeline de desenvolvimento analítico. Clique aqui para ver a página!',
-    card03nlp: '03 / PLN',
+    card04rag: '04 / IA · RAG',
+    chromatobuddyDesc: 'Motor de busca semântica online para conhecimento em cromatografia. Combina recuperação por keywords (BM25) com embeddings neurais BGE-small para RAG híbrido sobre uma base de conhecimento curada. Sem instalação — roda direto no browser. Clique aqui para ver a página!',
+    card05nlp: '05 / PLN',
     litdminerDesc: 'Pipeline de mineração de dados para extração automatizada de informações de artigos científicos. Pesquise no manuscrito completo ou em seções selecionadas. Realize avaliações bibliométricas automaticamente. Clique aqui para ver a página!',
+    newBadge: 'NOVO',
     cardBtn: 'Ver →',
     footerLabelNav: 'Navegar',
     footerNavTop: 'Início',
@@ -1742,24 +1477,13 @@ let currentLang = 'en';
 function setLang(lang) {
   currentLang = lang;
   const dict = i18n[lang];
-
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (dict[key] !== undefined) {
-      el.innerHTML = dict[key];
-    }
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
   });
-
-  // Update button states
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
-
-  // Update page title
-  document.title = lang === 'pt'
-    ? 'João Victor Borsatto — Portfólio'
-    : 'João Victor Borsatto — Portfolio';
-
-  // Update html lang attribute
+  document.title = lang === 'pt' ? 'João Victor Borsatto — Portfólio' : 'João Victor Borsatto — Portfolio';
   document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
 }
 </script>
