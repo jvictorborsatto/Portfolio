@@ -13,6 +13,8 @@
     --white: #f5f2ee;
     --accent-hobbies: #ff6b00;
     --accent-academic: #1a3fff;
+    --accent-ml1: #00d9a3;
+    --accent-ml2: #a855f7;
     --mid-grey: #888;
   }
 
@@ -62,7 +64,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 70% 70% at 30% 50%, rgba(255,107,0,0.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse 70% 70% at 30% 50%, rgba(0,217,163,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -90,7 +92,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 70% 70% at 70% 50%, rgba(26,63,255,0.05) 0%, transparent 70%);
+    background: radial-gradient(ellipse 70% 70% at 70% 50%, rgba(168,85,247,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -103,8 +105,8 @@
     opacity: 0.6;
   }
 
-  .hero-left .hero-tag { color: var(--accent-hobbies); }
-  .hero-right .hero-tag { color: var(--accent-academic); }
+  .hero-left .hero-tag { color: var(--accent-ml1); }
+  .hero-right .hero-tag { color: var(--accent-ml2); }
 
   .hero-title {
     font-family: 'Syne', sans-serif;
@@ -119,8 +121,8 @@
   .hero-right .hero-title { color: var(--black); }
 
   .hero-title .accent { display: block; }
-  .hero-left .hero-title .accent { color: var(--accent-hobbies); }
-  .hero-right .hero-title .accent { color: var(--accent-academic); }
+  .hero-left .hero-title .accent { color: var(--accent-ml1); }
+  .hero-right .hero-title .accent { color: var(--accent-ml2); }
 
   .hero-subtitle {
     font-size: 15px;
@@ -148,8 +150,8 @@
   .hero-left .hero-item { border-color: #1a1a1a; color: var(--white); }
   .hero-right .hero-item { border-color: #e0e0e0; color: var(--black); }
   .hero-item:hover { padding-left: 8px; }
-  .hero-left .hero-item:hover { border-color: var(--accent-hobbies); color: var(--accent-hobbies); }
-  .hero-right .hero-item:hover { border-color: var(--accent-academic); color: var(--accent-academic); }
+  .hero-left .hero-item:hover { border-color: var(--accent-ml1); color: var(--accent-ml1); }
+  .hero-right .hero-item:hover { border-color: var(--accent-ml2); color: var(--accent-ml2); }
 
   .hero-item-icon { font-size: 18px; flex-shrink: 0; }
   .hero-item-text { flex: 1; }
@@ -171,7 +173,7 @@
     font-family: 'Syne', sans-serif;
     font-size: 13px;
     font-weight: 800;
-    color: var(--accent-hobbies);
+    color: var(--accent-ml1);
     letter-spacing: -0.05em;
     box-shadow: 0 0 0 8px var(--black);
   }
@@ -193,8 +195,8 @@
     object-fit: cover;
   }
 
-  .hero-left .avatar-block img { border-color: var(--accent-hobbies); }
-  .hero-right .avatar-block img { border-color: var(--accent-academic); }
+  .hero-left .avatar-block img { border-color: var(--accent-ml1); }
+  .hero-right .avatar-block img { border-color: var(--accent-ml2); }
 
   .avatar-info { display: flex; flex-direction: column; gap: 2px; }
 
@@ -240,6 +242,24 @@
     line-height: 1.1;
     letter-spacing: -0.02em;
   }
+
+  #mlprojects { background: #0d0d0d; color: var(--white); }
+  #mlprojects .section-eyebrow { color: var(--accent-ml1); }
+  #mlprojects .section-eyebrow::after { background: #1e1e1e; }
+  #mlprojects .section-title { color: var(--white); }
+  #mlprojects .project-card { background: #111; border-color: #1c1c1c; }
+  #mlprojects .project-card:hover { background: #161616; border-color: #2a2a2a; }
+  #mlprojects .project-card::before { background: var(--accent-ml1); }
+  #mlprojects .project-card:nth-child(2)::before { background: var(--accent-ml2); }
+  #mlprojects .card-number { color: #444; }
+  #mlprojects .card-title { color: var(--white); }
+  #mlprojects .card-desc { color: #888; }
+  #mlprojects .tag { border-color: #2a2a2a; color: #666; }
+  #mlprojects .card-lang { color: #555; }
+  #mlprojects .card-btn { border-color: var(--accent-ml1); color: var(--accent-ml1); }
+  #mlprojects .card-btn:hover { background: var(--accent-ml1); color: var(--black); }
+  #mlprojects .project-card:nth-child(2) .card-btn { border-color: var(--accent-ml2); color: var(--accent-ml2); }
+  #mlprojects .project-card:nth-child(2) .card-btn:hover { background: var(--accent-ml2); color: var(--black); }
 
   #hobbies { background: var(--black); color: var(--white); }
   #hobbies .section-eyebrow { color: var(--accent-hobbies); }
@@ -373,6 +393,11 @@
 
   #hobbies .card-new-badge {
     background: var(--accent-hobbies);
+    color: var(--black);
+  }
+
+  #mlprojects .card-new-badge {
+    background: var(--accent-ml1);
     color: var(--black);
   }
 
@@ -596,6 +621,39 @@
 
   .readme-view pre code { background: none; padding: 0; color: #c9d1d9; }
 
+  .readme-view table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 12px;
+  }
+  .readme-view th, .readme-view td {
+    border: 1px solid #30363d;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  .readme-view th { background: #161b22; color: #fff; }
+
+  .readme-note {
+    font-size: 11px;
+    color: #6e7681;
+    border-left: 2px solid #30363d;
+    padding-left: 12px;
+    margin: 20px 0;
+    font-style: italic;
+  }
+
+  .readme-img-placeholder {
+    background: #161b22;
+    border: 1px dashed #30363d;
+    border-radius: 6px;
+    padding: 32px;
+    text-align: center;
+    color: #6e7681;
+    font-size: 11px;
+    margin: 16px 0;
+  }
+
   .readme-meta { display: flex; gap: 12px; margin-top: 16px; align-items: center; flex-wrap: wrap; }
 
   .readme-badge {
@@ -685,11 +743,11 @@
 
 <!-- HERO -->
 <section id="hero">
-  
-  <!-- LEFT — HOBBIES -->
+
+  <!-- LEFT — ML PROJECT 1: MOVIELENS -->
   <div class="hero-left">
     <div class="grid-bg"></div>
-    
+
     <div class="avatar-block">
       <img src="https://avatars.githubusercontent.com/u/230588750?v=4" alt="João Victor Borsatto">
       <div class="avatar-info">
@@ -699,33 +757,33 @@
     </div>
 
     <div>
-      <div class="hero-tag" data-i18n="heroLeftTag">// Hobbies & Projects</div>
+      <div class="hero-tag" data-i18n="heroLeftTag">// Unsupervised Learning</div>
       <h1 class="hero-title">
-        <span data-i18n="heroLeftTitle1">Creative</span><br>
-        <span class="accent" data-i18n="heroLeftTitle2">Developer</span>
+        <span data-i18n="heroLeftTitle1">Movie</span><br>
+        <span class="accent" data-i18n="heroLeftTitle2">Segmentation</span>
       </h1>
-      <p class="hero-subtitle" data-i18n="heroLeftSubtitle">Developing for Hobby.</p>
+      <p class="hero-subtitle" data-i18n="heroLeftSubtitle">PCA + K-Means clustering on 33M MovieLens ratings, turned into behavioral user profiles and a rule-based recommender.</p>
 
       <div class="hero-items">
-        <a href="#hobbies" class="hero-item">
-          <span class="hero-item-icon">🎮</span>
+        <a href="#mlprojects" class="hero-item">
+          <span class="hero-item-icon">🎬</span>
           <div class="hero-item-text">
-            <div>Jetsauro</div>
-            <div class="hero-item-label" data-i18n="labelGameDev">Game Development</div>
+            <div>30 Movie Clusters</div>
+            <div class="hero-item-label" data-i18n="labelPCA">PCA · K-Means</div>
           </div>
         </a>
-        <a href="#hobbies" class="hero-item">
-          <span class="hero-item-icon">⚽</span>
+        <a href="#mlprojects" class="hero-item">
+          <span class="hero-item-icon">🧭</span>
           <div class="hero-item-text">
-            <div>OFFside Detector</div>
-            <div class="hero-item-label" data-i18n="labelComputerVision">Computer Vision</div>
+            <div>8 User Octants</div>
+            <div class="hero-item-label" data-i18n="labelBehavior">Behavioral Profiling</div>
           </div>
         </a>
-        <a href="#hobbies" class="hero-item">
-          <span class="hero-item-icon">🎯</span>
+        <a href="#mlprojects" class="hero-item">
+          <span class="hero-item-icon">🤖</span>
           <div class="hero-item-text">
-            <div>Face Tracking</div>
-            <div class="hero-item-label" data-i18n="labelRealtimeCV">Real-time CV</div>
+            <div>Recommendation Engine</div>
+            <div class="hero-item-label" data-i18n="labelRules">Rule-Based Strategy</div>
           </div>
         </a>
       </div>
@@ -735,50 +793,106 @@
   <!-- CENTER DIVIDER -->
   <div class="hero-divider">JVB</div>
 
-  <!-- RIGHT — ACADEMIC -->
+  <!-- RIGHT — ML PROJECT 2: AIRBNB PRICE PREDICTION -->
   <div class="hero-right">
     <div class="avatar-block">
       <img src="https://avatars.githubusercontent.com/u/230588750?v=4" alt="João Victor Borsatto">
       <div class="avatar-info">
-        <span class="name">Dr. Borsatto</span>
-        <span class="handle">PhD in Analytical Chemistry</span>
+        <span class="name">João Victor</span>
+        <span class="handle">@jvictorborsatto</span>
       </div>
     </div>
 
     <div>
-      <div class="hero-tag" data-i18n="heroRightTag">// Academic & Scientific</div>
+      <div class="hero-tag" data-i18n="heroRightTag">// Regression · Regional Modeling</div>
       <h1 class="hero-title">
-        <span data-i18n="heroRightTitle1">Analytical</span><br>
-        <span class="accent" data-i18n="heroRightTitle2">Scientist</span>
+        <span data-i18n="heroRightTitle1">Short-Stay</span><br>
+        <span class="accent" data-i18n="heroRightTitle2">Price Prediction</span>
       </h1>
-      <p class="hero-subtitle" data-i18n="heroRightSubtitle">Developing for Analytical Chemistry Applications.</p>
+      <p class="hero-subtitle" data-i18n="heroRightSubtitle">208k global Airbnb listings, LightGBM tuned step by step, global model vs. region-specific models compared head to head.</p>
 
       <div class="hero-items">
-        <a href="#academic" class="hero-item">
-          <span class="hero-item-icon">🔬</span>
+        <a href="#mlprojects" class="hero-item">
+          <span class="hero-item-icon">🧹</span>
           <div class="hero-item-text">
-            <div>Virtual LC</div>
-            <div class="hero-item-label" data-i18n="labelHPLC">HPLC Simulator</div>
+            <div>208k → 180k Rows</div>
+            <div class="hero-item-label" data-i18n="labelCleaning">Data Cleaning</div>
           </div>
         </a>
-        <a href="#academic" class="hero-item">
-          <span class="hero-item-icon">🌡️</span>
+        <a href="#mlprojects" class="hero-item">
+          <span class="hero-item-icon">🌍</span>
           <div class="hero-item-text">
-            <div>Virtual IR</div>
-            <div class="hero-item-label" data-i18n="labelIR">IR Spectrum Simulator</div>
+            <div>Europe · America · Australia</div>
+            <div class="hero-item-label" data-i18n="labelRegional">Region-Sensitive Models</div>
           </div>
         </a>
-        <a href="#academic" class="hero-item">
-          <span class="hero-item-icon">🤖</span>
+        <a href="#mlprojects" class="hero-item">
+          <span class="hero-item-icon">📈</span>
           <div class="hero-item-text">
-            <div>ChromatoBuddy</div>
-            <div class="hero-item-label" data-i18n="labelRAG">Semantic Search · RAG</div>
+            <div>LightGBM R² 0.694</div>
+            <div class="hero-item-label" data-i18n="labelTuning">Hyperparameter Tuning</div>
           </div>
         </a>
       </div>
     </div>
   </div>
 
+</section>
+
+<!-- MACHINE LEARNING PROJECTS -->
+<section id="mlprojects" class="content-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow" data-i18n="mlEyebrow">00 — Machine Learning</div>
+      <h2 class="section-title" data-i18n="mlTitle">Where the data<br>does the talking.</h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- MovieLens -->
+      <div class="project-card reveal" data-url="#"
+           data-name="Unsupervisinated_ML_Project_Movies_Catalogue" data-readme="movielens" onclick="openModal(this)">
+        <div class="card-new-badge" data-i18n="newBadge">NEW</div>
+        <div class="card-number" data-i18n="cardMlMovies">01 / CLUSTERING</div>
+        <h3 class="card-title">MovieLens Clustering</h3>
+        <p class="card-desc" data-i18n="movielensDesc">
+          Unsupervised segmentation of 33M MovieLens ratings. PCA + K-Means group movies by genre similarity (30 clusters, silhouette 0.65), then user rating histories are turned into behavioral profiles across diversity, generosity and frequency — feeding a rule-based recommendation strategy. Click here to see the README!
+        </p>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">scikit-learn</span>
+          <span class="tag">PCA</span>
+          <span class="tag">K-Means</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-lang">● Python</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
+        </div>
+      </div>
+
+      <!-- Airbnb Price Prediction -->
+      <div class="project-card reveal" data-url="#"
+           data-name="Short-Stay-Price-Prediction" data-readme="airbnb" onclick="openModal(this)">
+        <div class="card-new-badge" data-i18n="newBadge">NEW</div>
+        <div class="card-number" data-i18n="cardMlAirbnb">02 / REGRESSION</div>
+        <h3 class="card-title">Short-Stay Price Prediction</h3>
+        <p class="card-desc" data-i18n="airbnbDesc">
+          Predicting nightly Airbnb prices for 200k+ global listings. Compares a single global LightGBM model against separate region-specific models (Europe, America, Australia), tuned step by step and validated with 5-fold cross-validation. Click here to see the README!
+        </p>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">LightGBM</span>
+          <span class="tag">Regression</span>
+          <span class="tag">Geo-Data</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-lang">● Python</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <!-- HOBBIES -->
@@ -1023,6 +1137,9 @@
           <a href="#hero" class="footer-link">
             <span>↑</span> <span data-i18n="footerNavTop">Top</span>
           </a>
+          <a href="#mlprojects" class="footer-link">
+            <span>→</span> Machine Learning
+          </a>
           <a href="#hobbies" class="footer-link">
             <span>→</span> Hobbies
           </a>
@@ -1050,7 +1167,7 @@
       </div>
       <div class="browser-url">
         <span class="url-lock">🔒</span>
-        <span class="url-text">jvictorborsatto.github.io/<span id="urlPath">project</span></span>
+        <span class="url-text">github.com/jvictorborsatto/<span id="urlPath">project</span></span>
       </div>
       <div class="browser-nav">
         <button onclick="reloadFrame()" title="Reload">↻</button>
@@ -1091,6 +1208,155 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // ── README CONTENT ──
 const readmes = {
+  movielens: {
+    icon: '🎬',
+    title: 'MovieLens Clustering',
+    desc: 'Unsupervised segmentation of movies (PCA + K-Means) and behavioral user profiling on MovieLens 33M.',
+    lang: 'Python · scikit-learn',
+    content: `
+<h2>🗂️ Sobre os dados</h2>
+<p>Dataset MovieLens 33M, variante <em>No Genomics</em> (título, gênero e avaliações, sem tag genome). Filmes lançados antes de 2015 entram no treino; a partir de 2015, em um conjunto de validação — simulando "filmes novos chegando depois do modelo treinado".</p>
+
+<h2>🧭 Pipeline</h2>
+<pre><code>movies.csv + ratings.csv
+   → parsing de gêneros (MultiLabelBinarizer) + ano
+   → PCA (10 componentes)
+   → K-Means (30 clusters) → "gênero latente" por filme
+   → perfil comportamental do usuário (diversidade, generosidade, frequência)
+   → segmentação em 8 octantes de usuário
+   → ranking por cluster + recomendação por regras</code></pre>
+
+<h2>1️⃣ Clusterização de filmes</h2>
+<p>Gêneros codificados com <code>MultiLabelBinarizer</code>, reduzidos com PCA (10 componentes, 83.6% da variância) e agrupados com K-Means.</p>
+<table>
+<tr><th>Métrica</th><th>Valor</th></tr>
+<tr><td>Clusters</td><td>30</td></tr>
+<tr><td>Inertia (WCSS)</td><td>10.869,83</td></tr>
+<tr><td>Silhouette Score</td><td>0,6505</td></tr>
+<tr><td>Davies-Bouldin</td><td>0,9460</td></tr>
+<tr><td>Calinski-Harabasz</td><td>11.161,46</td></tr>
+</table>
+<p>Filmes de validação (pós-2015) foram atribuídos aos clusters já treinados via <code>transform</code>/<code>predict</code>, sem re-treino — como funcionaria em produção.</p>
+<div class="readme-img-placeholder">📊 gráfico: projeção PCA 2D dos 30 clusters de filmes<br><span style="font-size:10px">(imagem a ser adicionada a partir do notebook)</span></div>
+
+<h2>2️⃣ Perfil comportamental do usuário</h2>
+<p>Cada histórico de avaliações vira um perfil em 3 eixos: <strong>Diversidade</strong> (quantos clusters diferentes o usuário explora), <strong>Generosidade</strong> (nota média, normalizada por z-score por usuário) e <strong>Frequência</strong> (total de filmes avaliados, normalizado). Pela mediana de cada eixo, cada usuário cai em um octante: <code>{Eclético|Focado} × {Generoso|Crítico} × {Frequente|Casual}</code>.</p>
+<div class="readme-img-placeholder">📊 gráfico: distribuição 3D dos usuários nos 3 eixos comportamentais<br><span style="font-size:10px">(imagem a ser adicionada a partir do notebook)</span></div>
+
+<table>
+<tr><th>Perfil</th><th>Usuários</th></tr>
+<tr><td>Eclectic_Critical_Frequent</td><td>32.937</td></tr>
+<tr><td>Eclectic_Generous_Casual</td><td>31.519</td></tr>
+<tr><td>Eclectic_Critical_Casual</td><td>28.166</td></tr>
+<tr><td>Eclectic_Generous_Frequent</td><td>26.581</td></tr>
+<tr><td>Focused_Generous_Casual</td><td>23.375</td></tr>
+<tr><td>Focused_Critical_Frequent</td><td>22.846</td></tr>
+<tr><td>Focused_Generous_Frequent</td><td>19.080</td></tr>
+<tr><td>Focused_Critical_Casual</td><td>16.443</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>~200.947</strong></td></tr>
+</table>
+
+<h2>3️⃣ Ranking e recomendação por regras</h2>
+<p>Ranking de popularidade por cluster (nota média, filmes com 100+ avaliações). O octante do usuário define a estratégia: <strong>Focado</strong> recomenda só dentro dos clusters preferidos; <strong>Eclético</strong> mistura clusters preferidos com exploração fora deles; <strong>Frequente</strong> recebe lista maior (20 filmes); <strong>Casual</strong> recebe lista menor (10 filmes).</p>
+
+<h2>🛠 Stack</h2>
+<ul>
+  <li>Python (pandas, numpy)</li>
+  <li>scikit-learn — MultiLabelBinarizer, PCA, KMeans, StandardScaler, MinMaxScaler</li>
+  <li>Matplotlib / Plotly</li>
+  <li>Joblib (persistência do modelo K-Means)</li>
+</ul>
+
+<h2>🚀 Como rodar</h2>
+<pre><code>pip install pandas numpy scikit-learn matplotlib plotly joblib</code></pre>
+<p>Baixe o MovieLens 33M (No Genomics) e aponte <code>DATA_PATH</code> no notebook para a pasta com <code>movies.csv</code> e <code>ratings.csv</code>.</p>
+
+<h2>💭 Próximos passos</h2>
+<ul>
+  <li>Testar diferentes valores de k e comparar métricas de clusterização</li>
+  <li>Clusterizar diretamente os perfis de usuário, não só os filmes</li>
+  <li>Trocar a recomendação por regras por um modelo supervisionado real</li>
+</ul>
+`
+  },
+  airbnb: {
+    icon: '🏠',
+    title: 'Short-Stay Price Prediction',
+    desc: 'Previsão de preço de diárias de Airbnb — modelo global vs. modelos regionais com LightGBM.',
+    lang: 'Python · LightGBM',
+    content: `
+<h2>Descrição</h2>
+<p>Previsão de preços de diárias de anúncios Airbnb ao redor do mundo. A partir de mais de 200.000 anúncios, o fluxo passa por limpeza de dados, análise geográfica exploratória e construção iterativa de modelos de ensemble baseados em árvores (Random Forest, Gradient Boosting, LightGBM). O projeto compara duas estratégias: <strong>um modelo global único</strong> usando latitude/longitude como features (<strong>Full Set</strong>) vs. <strong>modelos separados por região</strong> — Europa, América e Austrália (<strong>Region Sensitive</strong>).</p>
+
+<h2>Fonte dos dados</h2>
+<p>Dataset da competição Kaggle <strong>Airbnb Rental Price Prediction (2025)</strong>.</p>
+
+<h2>Pipeline do projeto</h2>
+<table>
+<tr><th>Ordem</th><th>Notebook</th><th>Propósito</th></tr>
+<tr><td>1</td><td>Data_exploration_clean_up.ipynb</td><td>Carregar, limpar e segmentar os dados brutos por região</td></tr>
+<tr><td>2</td><td>Predictions (lat/long)</td><td>Modelo global (Full Set) usando lat/long como features</td></tr>
+<tr><td>3</td><td>Mult_Region_Model.ipynb</td><td>Modelos separados por região (Region Sensitive)</td></tr>
+</table>
+
+<h2>1. Exploração e limpeza dos dados</h2>
+<ul>
+  <li>208.856 linhas carregadas; colunas com mais de 15% de valores faltantes descartadas</li>
+  <li>Linhas com qualquer valor faltante removidas: 208.757 → 180.695 linhas</li>
+  <li>Scatter plots de longitude vs. latitude (plotly) revelaram que remover NaNs cortava partes da Austrália Ocidental, do Mediterrâneo e dos EUA</li>
+  <li>Filtragem por bounding box em 3 regiões: Europa (lat 20–80, long -50–50), América (lat -40–80, long -150–-50), Austrália (lat -50–-10, long 100–150)</li>
+</ul>
+<div class="readme-img-placeholder">📊 gráfico: scatter plots plotly de cobertura geográfica<br><span style="font-size:10px">(imagem a ser adicionada a partir do notebook)</span></div>
+
+<h2>2. Otimização do modelo (Full Set)</h2>
+<table>
+<tr><th>Modelo</th><th>MAE</th><th>RMSE</th><th>R²</th></tr>
+<tr><td>Linear Regression</td><td>111,15</td><td>171,96</td><td>0,224</td></tr>
+<tr><td>Decision Tree</td><td>101,89</td><td>166,62</td><td>0,272</td></tr>
+<tr><td><strong>Random Forest</strong></td><td><strong>72,12</strong></td><td><strong>112,69</strong></td><td><strong>0,667</strong></td></tr>
+<tr><td>Gradient Boosting</td><td>81,17</td><td>124,71</td><td>0,592</td></tr>
+<tr><td>LightGBM</td><td>72,16</td><td>112,73</td><td>0,667</td></tr>
+</table>
+<p>LightGBM escolhido para seguir a investigação — empatou com Random Forest, mas treinou muito mais rápido. Colunas <code>id</code> e <code>host_id</code> mostraram vazamento de dados (data leakage) e foram removidas; latitude/longitude mantidas como features relevantes.</p>
+<div class="readme-img-placeholder">📊 gráficos: comparação de modelos, tuning de hiperparâmetros, validação cruzada, feature importance<br><span style="font-size:10px">(imagens a serem adicionadas a partir do notebook)</span></div>
+<p>Hiperparâmetros ajustados: n_estimators (500–600), max_depth (8), num_leaves (64), learning_rate (0,1).</p>
+<table>
+<tr><th>Métrica final</th><th>Valor</th></tr>
+<tr><td>MAE</td><td>67,02</td></tr>
+<tr><td>RMSE</td><td>108,50</td></tr>
+<tr><td>R²</td><td>0,694</td></tr>
+</table>
+<p>Validação cruzada 5-fold → RMSE médio ≈ 108,30 (desvio ≈ 0,93). Feature importance confirmou longitude e latitude como os dois preditores mais importantes.</p>
+
+<h2>3. Modelo Region Sensitive</h2>
+<p>Adiciona <code>room_type</code> e <code>property_type</code> (codificados com LabelEncoder). Um modelo LightGBM por região (objetivo <code>poisson</code>, 500 estimators, learning_rate 0,2, num_leaves 64, max_depth 8).</p>
+<table>
+<tr><th>Região</th><th>Treino</th><th>MAE</th><th>RMSE</th><th>R²</th></tr>
+<tr><td>Europa</td><td>83.854</td><td>53,09</td><td>94,19</td><td>0,656</td></tr>
+<tr><td>América</td><td>37.398</td><td>61,55</td><td>99,09</td><td>0,701</td></tr>
+<tr><td>Austrália</td><td>7.006</td><td>76,58</td><td>112,70</td><td>0,657</td></tr>
+</table>
+<div class="readme-img-placeholder">📊 gráfico: feature importance do modelo Europa<br><span style="font-size:10px">(imagem a ser adicionada a partir do notebook)</span></div>
+<p>Os modelos regionais superam o modelo global na Europa e América (menor erro, maior R²); na Austrália ficam praticamente empatados — provavelmente por causa da amostra bem menor.</p>
+
+<h2>Principais achados</h2>
+<ul>
+  <li>Modelos em árvore (Random Forest, LightGBM) superam muito Regressão Linear e Decision Tree isolada</li>
+  <li>LightGBM foi o melhor custo-benefício entre acurácia e velocidade de treino</li>
+  <li>Localização geográfica (lat/long) é consistentemente o preditor mais forte de preço</li>
+  <li>Colunas identificadoras (id, host_id) podem vazar informação e inflar a importância de features</li>
+  <li>Modelos por região superam o modelo global na Europa e América; Austrália precisa de mais dados</li>
+</ul>
+
+<h2>🛠 Stack</h2>
+<ul>
+  <li>pandas, numpy</li>
+  <li>plotly.express</li>
+  <li>scikit-learn (Linear Regression, Decision Tree, Random Forest, Gradient Boosting), lightgbm</li>
+  <li>train_test_split, KFold cross-validation</li>
+</ul>
+`
+  },
   jetsauro: {
     icon: '🦕',
     title: 'Jetsauro',
@@ -1291,7 +1557,7 @@ function openModal(card) {
   const url = card.dataset.url;
   const readmeKey = card.dataset.readme;
   const name = card.dataset.name;
-  currentUrl = url;
+  currentUrl = 'https://github.com/jvictorborsatto/' + name;
 
   document.getElementById('urlPath').textContent = name + '/';
   document.getElementById('modal').classList.add('active');
@@ -1301,6 +1567,7 @@ function openModal(card) {
   content.innerHTML = '<div class="loading-frame"><div class="loading-spinner"></div><span>Carregando...</span></div>';
 
   if (url && url !== '#') {
+    currentUrl = url;
     const iframe = document.createElement('iframe');
     iframe.src = url;
     iframe.style.width = '100%';
@@ -1381,22 +1648,26 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 // ── INTERNATIONALIZATION ──
 const i18n = {
   en: {
-    heroLeftTag: '// Hobbies & Projects',
-    heroLeftTitle1: 'Creative',
-    heroLeftTitle2: 'Developer',
-    heroLeftSubtitle: 'Developing for Hobby.',
-    labelGameDev: 'Game Development',
-    labelComputerVision: 'Computer Vision',
-    labelRealtimeCV: 'Real-time CV',
-    heroRightTag: '// Academic & Scientific',
-    heroRightTitle1: 'Analytical',
-    heroRightTitle2: 'Scientist',
-    heroRightSubtitle: 'Developing for Analytical Chemistry Applications.',
-    labelHPLC: 'HPLC Simulator',
-    labelIR: 'IR Spectrum Simulator',
-    labelRAG: 'Semantic Search · RAG',
-    labelDataAnalysis: 'Data Analysis',
-    labelNLP: 'NLP Pipeline',
+    heroLeftTag: '// Unsupervised Learning',
+    heroLeftTitle1: 'Movie',
+    heroLeftTitle2: 'Segmentation',
+    heroLeftSubtitle: 'PCA + K-Means clustering on 33M MovieLens ratings, turned into behavioral user profiles and a rule-based recommender.',
+    labelPCA: 'PCA · K-Means',
+    labelBehavior: 'Behavioral Profiling',
+    labelRules: 'Rule-Based Strategy',
+    heroRightTag: '// Regression · Regional Modeling',
+    heroRightTitle1: 'Short-Stay',
+    heroRightTitle2: 'Price Prediction',
+    heroRightSubtitle: '208k global Airbnb listings, LightGBM tuned step by step, global model vs. region-specific models compared head to head.',
+    labelCleaning: 'Data Cleaning',
+    labelRegional: 'Region-Sensitive Models',
+    labelTuning: 'Hyperparameter Tuning',
+    mlEyebrow: '00 — Machine Learning',
+    mlTitle: 'Where the data<br>does the talking.',
+    cardMlMovies: '01 / CLUSTERING',
+    movielensDesc: 'Unsupervised segmentation of 33M MovieLens ratings. PCA + K-Means group movies by genre similarity (30 clusters, silhouette 0.65), then user rating histories are turned into behavioral profiles across diversity, generosity and frequency — feeding a rule-based recommendation strategy. Click here to see the README!',
+    cardMlAirbnb: '02 / REGRESSION',
+    airbnbDesc: 'Predicting nightly Airbnb prices for 200k+ global listings. Compares a single global LightGBM model against separate region-specific models (Europe, America, Australia), tuned step by step and validated with 5-fold cross-validation. Click here to see the README!',
     hobbiesEyebrow: '01 — Personal Projects',
     hobbiesTitle: 'Built for fun.<br>Shipped for real.',
     card01game: '01 / GAME',
@@ -1426,22 +1697,26 @@ const i18n = {
     footerBottom: '© 2026 João Victor Basolli Borsatto — Built with passion for code and science',
   },
   pt: {
-    heroLeftTag: '// Hobbies & Projetos',
-    heroLeftTitle1: 'Desenvolvedor',
-    heroLeftTitle2: 'Criativo',
-    heroLeftSubtitle: 'Desenvolvendo por Hobby.',
-    labelGameDev: 'Desenvolvimento de Jogos',
-    labelComputerVision: 'Visão Computacional',
-    labelRealtimeCV: 'VC em Tempo Real',
-    heroRightTag: '// Acadêmico & Científico',
-    heroRightTitle1: 'Cientista',
-    heroRightTitle2: 'Analítico',
-    heroRightSubtitle: 'Desenvolvendo Aplicações para Química Analítica.',
-    labelHPLC: 'Simulador HPLC',
-    labelIR: 'Simulador de Espectro IV',
-    labelRAG: 'Busca Semântica · RAG',
-    labelDataAnalysis: 'Análise de Dados',
-    labelNLP: 'Pipeline de PLN',
+    heroLeftTag: '// Aprendizado Não-Supervisionado',
+    heroLeftTitle1: 'Segmentação',
+    heroLeftTitle2: 'de Filmes',
+    heroLeftSubtitle: 'Clusterização PCA + K-Means em 33M de avaliações do MovieLens, transformada em perfis comportamentais de usuário e um recomendador baseado em regras.',
+    labelPCA: 'PCA · K-Means',
+    labelBehavior: 'Perfil Comportamental',
+    labelRules: 'Estratégia por Regras',
+    heroRightTag: '// Regressão · Modelagem Regional',
+    heroRightTitle1: 'Previsão de',
+    heroRightTitle2: 'Preço de Diárias',
+    heroRightSubtitle: '208 mil anúncios de Airbnb no mundo todo, LightGBM ajustado passo a passo, modelo global vs. modelos regionais comparados lado a lado.',
+    labelCleaning: 'Limpeza de Dados',
+    labelRegional: 'Modelos Regionais',
+    labelTuning: 'Ajuste de Hiperparâmetros',
+    mlEyebrow: '00 — Machine Learning',
+    mlTitle: 'Onde os dados<br>falam por si.',
+    cardMlMovies: '01 / CLUSTERIZAÇÃO',
+    movielensDesc: 'Segmentação não-supervisionada de 33M de avaliações do MovieLens. PCA + K-Means agrupam filmes por similaridade de gênero (30 clusters, silhouette 0,65), e os históricos de avaliação viram perfis comportamentais de diversidade, generosidade e frequência — alimentando uma estratégia de recomendação por regras. Clique aqui para ver o README!',
+    cardMlAirbnb: '02 / REGRESSÃO',
+    airbnbDesc: 'Previsão de preços de diárias de mais de 200 mil anúncios de Airbnb no mundo todo. Compara um único modelo global LightGBM com modelos separados por região (Europa, América, Austrália), ajustados passo a passo e validados com validação cruzada 5-fold. Clique aqui para ver o README!',
     hobbiesEyebrow: '01 — Projetos Pessoais',
     hobbiesTitle: 'Feito por diversão.<br>Entregue de verdade.',
     card01game: '01 / JOGO',
