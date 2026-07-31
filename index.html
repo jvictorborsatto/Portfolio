@@ -839,24 +839,22 @@
 
 </section>
 
-<!-- MACHINE LEARNING PROJECTS -->
+<!-- DATA SCIENCE PROJECTS -->
 <section id="mlprojects" class="content-section">
   <div class="container">
     <div class="section-header">
-      <div class="section-eyebrow" data-i18n="mlEyebrow">00 — Machine Learning</div>
-      <h2 class="section-title" data-i18n="mlTitle">Where the data<br>does the talking.</h2>
+      <div class="section-eyebrow" data-i18n="mlEyebrow">00 — Data Science Projects</div>
+      <h2 class="section-title" data-i18n="mlTitle">Data Science Projects</h2>
     </div>
 
     <div class="projects-grid">
 
       <!-- MovieLens -->
-      <div class="project-card reveal" data-url="#"
-           data-name="Unsupervisinated_ML_Project_Movies_Catalogue" data-readme="movielens" onclick="openModal(this)">
-        <div class="card-new-badge" data-i18n="newBadge">NEW</div>
-        <div class="card-number" data-i18n="cardMlMovies">01 / CLUSTERING</div>
-        <h3 class="card-title">MovieLens Clustering</h3>
+      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Hybrid-Movie-Recommendation-System-Based-on-Unsupervised-Clustering-and-User-Profiles/" data-readme="movielens" onclick="openModal(this)">
+        <div class="card-number" data-i18n="cardMlMovies">01</div>
+        <h3 class="card-title">Hybrid Movie Recommendation System</h3>
         <p class="card-desc" data-i18n="movielensDesc">
-          Unsupervised segmentation of 33M MovieLens ratings. PCA + K-Means group movies by genre similarity (30 clusters, silhouette 0.65), then user rating histories are turned into behavioral profiles across diversity, generosity and frequency — feeding a rule-based recommendation strategy. Click here to see the README!
+          Unsupervised ML portfolio project on MovieLens 33M: PCA + K-Means clustering of movies by genre, then behavioral user profiling (diversity, generosity, frequency) to power a simple rule-based recommendation strategy.
         </p>
         <div class="card-tags">
           <span class="tag">Python</span>
@@ -871,13 +869,12 @@
       </div>
 
       <!-- Airbnb Price Prediction -->
-      <div class="project-card reveal" data-url="#"
-           data-name="Short-Stay-Price-Prediction" data-readme="airbnb" onclick="openModal(this)">
-        <div class="card-new-badge" data-i18n="newBadge">NEW</div>
-        <div class="card-number" data-i18n="cardMlAirbnb">02 / REGRESSION</div>
+      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Short-Stay-Price-Prediction/"
+           data-name="Short-Stay-Price-Prediction" data-readme="short-stay" onclick="openModal(this)">
+        <div class="card-number" data-i18n="cardMlAirbnb">02</div>
         <h3 class="card-title">Short-Stay Price Prediction</h3>
         <p class="card-desc" data-i18n="airbnbDesc">
-          Predicting nightly Airbnb prices for 200k+ global listings. Compares a single global LightGBM model against separate region-specific models (Europe, America, Australia), tuned step by step and validated with 5-fold cross-validation. Click here to see the README!
+          Predicts Airbnb rental prices using data from Kaggle's "Airbnb Rental Price Prediction (2025)" competition. Compares a single global LightGBM model (using lat/long) against region-specific models (Europe, America, Australia) to capture local pricing patterns, with iterative hyperparameter tuning.
         </p>
         <div class="card-tags">
           <span class="tag">Python</span>
@@ -895,103 +892,12 @@
   </div>
 </section>
 
-<!-- HOBBIES -->
-<section id="hobbies" class="content-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-eyebrow" data-i18n="hobbiesEyebrow">01 — Personal Projects</div>
-      <h2 class="section-title" data-i18n="hobbiesTitle">Built for fun.<br>Shipped for real.</h2>
-    </div>
-
-    <div class="projects-grid">
-
-      <!-- Jetsauro -->
-      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Jetsauro_Web/"
-           data-name="Jetsauro_Web" data-readme="jetsauro" onclick="openModal(this)">
-        <div class="card-number" data-i18n="card01game">01 / GAME</div>
-        <h3 class="card-title">Jetsauro</h3>
-        <p class="card-desc" data-i18n="jetsauroDesc">
-          My first game project, developed in Godot. Play as a jetpack-powered diplodocus and survive for as long as possible in a hostile world filled with aggressive pterosaurs and deadly carnivorous plants. Click here to see the page!
-        </p>
-        <div class="card-tags">
-          <span class="tag">GDScript</span>
-          <span class="tag">Godot</span>
-          <span class="tag">WebAssembly</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-lang">● GDScript</span>
-          <button class="card-btn" data-i18n="cardBtn">Go →</button>
-        </div>
-      </div>
-
-      <!-- OFFside Detector -->
-      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/OFFside-Detector/"
-           data-name="OFFside-Detector" data-readme="offside" onclick="openModal(this)">
-        <div class="card-number" data-i18n="card02cv">02 / CV TOOL</div>
-        <h3 class="card-title">OFFside Detector</h3>
-        <p class="card-desc" data-i18n="offsideDesc">
-          Detects offside situations in soccer from images. Uses projective geometry to correct perspective through vanishing point estimation and compare player positions on the field. No IA, just Math. Click here to see the page!
-        </p>
-        <div class="card-tags">
-          <span class="tag">JavaScript</span>
-          <span class="tag">Canvas API</span>
-          <span class="tag">Geometry</span>
-          <span class="tag">Computer Vision</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-lang">● HTML · JS</span>
-          <button class="card-btn" data-i18n="cardBtn">Go →</button>
-        </div>
-      </div>
-
-      <!-- Face Tracking -->
-      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Face-Tracking/"
-           data-name="Face-Tracking" data-readme="facetracking" onclick="openModal(this)">
-        <div class="card-number" data-i18n="card03tracking">03 / TRACKING</div>
-        <h3 class="card-title">Face Tracking</h3>
-        <p class="card-desc" data-i18n="facetrackingDesc">
-          Real-time face tracking that converts head movements into camera control for simulators. Integrates through the FreeTrack 2.0 / OpenTrack (UDP) protocol. Made for racing games. Click here to visit the page!
-        </p>
-        <div class="card-tags">
-          <span class="tag">MediaPipe</span>
-          <span class="tag">OpenCV</span>
-          <span class="tag">Python</span>
-          <span class="tag">UDP</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-lang">● Python</span>
-          <button class="card-btn" data-i18n="cardBtn">Go →</button>
-        </div>
-      </div>
-
-      <!-- Video Annotator -->
-      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Video_Annotator/"
-           data-name="Video_Annotator" data-readme="videoannotator" onclick="openModal(this)">
-        <div class="card-number" data-i18n="card05annotation">04 / ANNOTATION</div>
-        <h3 class="card-title">Video Annotator</h3>
-        <p class="card-desc" data-i18n="videoannotatorDesc">
-          Frame-by-frame video annotation tool. Useful for data labeling in computer vision tasks. Click here to see the page!
-        </p>
-        <div class="card-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Data Labeling</span>
-        </div>
-        <div class="card-footer">
-          <span class="card-lang">● Python</span>
-          <button class="card-btn" data-i18n="cardBtn">Go →</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- ACADEMIC -->
 <section id="academic" class="content-section">
   <div class="container">
     <div class="section-header">
-      <div class="section-eyebrow" data-i18n="academicEyebrow">02 — Academic & Scientific</div>
-      <h2 class="section-title" data-i18n="academicTitle">Research tools<br>& Science.</h2>
+      <div class="section-eyebrow" data-i18n="academicEyebrow">01 — Academic Projects</div>
+      <h2 class="section-title" data-i18n="academicTitle">Academic Projects</h2>
     </div>
 
     <div class="projects-grid">
@@ -1098,7 +1004,136 @@
         </div>
       </div>
 
+      <!-- Virtual MS -->
+      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Virtual-MS/"
+           data-name="Virtual-MS" data-readme="virtualms" onclick="openModal(this)">
+        <div class="card-number" data-i18n="card06ms">06 / SIMULATOR</div>
+        <h3 class="card-title">Virtual MS</h3>
+        <p class="card-desc" data-i18n="virtualmsDesc">
+          Browser-based mass spectrometry simulator for education and training. Click here to see the page!
+        </p>
+        <div class="card-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Mass Spectrometry</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-lang">● HTML · JS</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
+        </div>
+      </div>
+
+      <!-- Virtual GC -->
+      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Virtual-GC/"
+           data-name="Virtual-GC" data-readme="virtualgc" onclick="openModal(this)">
+        <div class="card-number" data-i18n="card07gc">07 / SIMULATOR</div>
+        <h3 class="card-title">Virtual GC</h3>
+        <p class="card-desc" data-i18n="virtualgcDesc">
+          Browser-based gas chromatography simulator for education and training. Click here to see the page!
+        </p>
+        <div class="card-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Gas Chromatography</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-lang">● HTML · JS</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
+        </div>
+      </div>
+
     </div>  
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies" class="content-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow" data-i18n="hobbiesEyebrow">02 — Hobby Projects</div>
+      <h2 class="section-title" data-i18n="hobbiesTitle">Hobby Projects</h2>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Jetsauro -->
+      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Jetsauro_Web/"
+           data-name="Jetsauro_Web" data-readme="jetsauro" onclick="openModal(this)">
+        <div class="card-number" data-i18n="card01game">01 / GAME</div>
+        <h3 class="card-title">Jetsauro</h3>
+        <p class="card-desc" data-i18n="jetsauroDesc">
+          My first game project, developed in Godot. Play as a jetpack-powered diplodocus and survive for as long as possible in a hostile world filled with aggressive pterosaurs and deadly carnivorous plants. Click here to see the page!
+        </p>
+        <div class="card-tags">
+          <span class="tag">GDScript</span>
+          <span class="tag">Godot</span>
+          <span class="tag">WebAssembly</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-lang">● GDScript</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
+        </div>
+      </div>
+
+      <!-- OFFside Detector -->
+      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/OFFside-Detector/"
+           data-name="OFFside-Detector" data-readme="offside" onclick="openModal(this)">
+        <div class="card-number" data-i18n="card02cv">02 / CV TOOL</div>
+        <h3 class="card-title">OFFside Detector</h3>
+        <p class="card-desc" data-i18n="offsideDesc">
+          Detects offside situations in soccer from images. Uses projective geometry to correct perspective through vanishing point estimation and compare player positions on the field. No IA, just Math. Click here to see the page!
+        </p>
+        <div class="card-tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">Canvas API</span>
+          <span class="tag">Geometry</span>
+          <span class="tag">Computer Vision</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-lang">● HTML · JS</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
+        </div>
+      </div>
+
+      <!-- Face Tracking -->
+      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Face-Tracking/"
+           data-name="Face-Tracking" data-readme="facetracking" onclick="openModal(this)">
+        <div class="card-number" data-i18n="card03tracking">03 / TRACKING</div>
+        <h3 class="card-title">Face Tracking</h3>
+        <p class="card-desc" data-i18n="facetrackingDesc">
+          Real-time face tracking that converts head movements into camera control for simulators. Integrates through the FreeTrack 2.0 / OpenTrack (UDP) protocol. Made for racing games. Click here to visit the page!
+        </p>
+        <div class="card-tags">
+          <span class="tag">MediaPipe</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">Python</span>
+          <span class="tag">UDP</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-lang">● Python</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
+        </div>
+      </div>
+
+      <!-- Video Annotator -->
+      <div class="project-card reveal" data-url="https://jvictorborsatto.github.io/Video_Annotator/"
+           data-name="Video_Annotator" data-readme="videoannotator" onclick="openModal(this)">
+        <div class="card-number" data-i18n="card05annotation">04 / ANNOTATION</div>
+        <h3 class="card-title">Video Annotator</h3>
+        <p class="card-desc" data-i18n="videoannotatorDesc">
+          Frame-by-frame video annotation tool. Useful for data labeling in computer vision tasks. Click here to see the page!
+        </p>
+        <div class="card-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Data Labeling</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-lang">● Python</span>
+          <button class="card-btn" data-i18n="cardBtn">Go →</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -1138,13 +1173,13 @@
             <span>↑</span> <span data-i18n="footerNavTop">Top</span>
           </a>
           <a href="#mlprojects" class="footer-link">
-            <span>→</span> Machine Learning
-          </a>
-          <a href="#hobbies" class="footer-link">
-            <span>→</span> Hobbies
+            <span>→</span> Data Science
           </a>
           <a href="#academic" class="footer-link">
             <span>→</span> Academic
+          </a>
+          <a href="#hobbies" class="footer-link">
+            <span>→</span> Hobbies
           </a>
         </div>
       </div>
@@ -1210,151 +1245,38 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 const readmes = {
   movielens: {
     icon: '🎬',
-    title: 'MovieLens Clustering',
-    desc: 'Unsupervised segmentation of movies (PCA + K-Means) and behavioral user profiling on MovieLens 33M.',
+    title: 'Hybrid Movie Recommendation System',
+    desc: 'Unsupervised ML portfolio project on MovieLens 33M: PCA + K-Means clustering of movies by genre, then behavioral user profiling to power a rule-based recommendation strategy.',
     lang: 'Python · scikit-learn',
     content: `
-<h2>🗂️ Sobre os dados</h2>
-<p>Dataset MovieLens 33M, variante <em>No Genomics</em> (título, gênero e avaliações, sem tag genome). Filmes lançados antes de 2015 entram no treino; a partir de 2015, em um conjunto de validação — simulando "filmes novos chegando depois do modelo treinado".</p>
-
-<h2>🧭 Pipeline</h2>
-<pre><code>movies.csv + ratings.csv
-   → parsing de gêneros (MultiLabelBinarizer) + ano
-   → PCA (10 componentes)
-   → K-Means (30 clusters) → "gênero latente" por filme
-   → perfil comportamental do usuário (diversidade, generosidade, frequência)
-   → segmentação em 8 octantes de usuário
-   → ranking por cluster + recomendação por regras</code></pre>
-
-<h2>1️⃣ Clusterização de filmes</h2>
-<p>Gêneros codificados com <code>MultiLabelBinarizer</code>, reduzidos com PCA (10 componentes, 83.6% da variância) e agrupados com K-Means.</p>
-<table>
-<tr><th>Métrica</th><th>Valor</th></tr>
-<tr><td>Clusters</td><td>30</td></tr>
-<tr><td>Inertia (WCSS)</td><td>10.869,83</td></tr>
-<tr><td>Silhouette Score</td><td>0,6505</td></tr>
-<tr><td>Davies-Bouldin</td><td>0,9460</td></tr>
-<tr><td>Calinski-Harabasz</td><td>11.161,46</td></tr>
-</table>
-<p>Filmes de validação (pós-2015) foram atribuídos aos clusters já treinados via <code>transform</code>/<code>predict</code>, sem re-treino — como funcionaria em produção.</p>
-<div class="readme-img-placeholder">📊 gráfico: projeção PCA 2D dos 30 clusters de filmes<br><span style="font-size:10px">(imagem a ser adicionada a partir do notebook)</span></div>
-
-<h2>2️⃣ Perfil comportamental do usuário</h2>
-<p>Cada histórico de avaliações vira um perfil em 3 eixos: <strong>Diversidade</strong> (quantos clusters diferentes o usuário explora), <strong>Generosidade</strong> (nota média, normalizada por z-score por usuário) e <strong>Frequência</strong> (total de filmes avaliados, normalizado). Pela mediana de cada eixo, cada usuário cai em um octante: <code>{Eclético|Focado} × {Generoso|Crítico} × {Frequente|Casual}</code>.</p>
-<div class="readme-img-placeholder">📊 gráfico: distribuição 3D dos usuários nos 3 eixos comportamentais<br><span style="font-size:10px">(imagem a ser adicionada a partir do notebook)</span></div>
-
-<table>
-<tr><th>Perfil</th><th>Usuários</th></tr>
-<tr><td>Eclectic_Critical_Frequent</td><td>32.937</td></tr>
-<tr><td>Eclectic_Generous_Casual</td><td>31.519</td></tr>
-<tr><td>Eclectic_Critical_Casual</td><td>28.166</td></tr>
-<tr><td>Eclectic_Generous_Frequent</td><td>26.581</td></tr>
-<tr><td>Focused_Generous_Casual</td><td>23.375</td></tr>
-<tr><td>Focused_Critical_Frequent</td><td>22.846</td></tr>
-<tr><td>Focused_Generous_Frequent</td><td>19.080</td></tr>
-<tr><td>Focused_Critical_Casual</td><td>16.443</td></tr>
-<tr><td><strong>Total</strong></td><td><strong>~200.947</strong></td></tr>
-</table>
-
-<h2>3️⃣ Ranking e recomendação por regras</h2>
-<p>Ranking de popularidade por cluster (nota média, filmes com 100+ avaliações). O octante do usuário define a estratégia: <strong>Focado</strong> recomenda só dentro dos clusters preferidos; <strong>Eclético</strong> mistura clusters preferidos com exploração fora deles; <strong>Frequente</strong> recebe lista maior (20 filmes); <strong>Casual</strong> recebe lista menor (10 filmes).</p>
-
-<h2>🛠 Stack</h2>
-<ul>
-  <li>Python (pandas, numpy)</li>
-  <li>scikit-learn — MultiLabelBinarizer, PCA, KMeans, StandardScaler, MinMaxScaler</li>
-  <li>Matplotlib / Plotly</li>
-  <li>Joblib (persistência do modelo K-Means)</li>
-</ul>
-
-<h2>🚀 Como rodar</h2>
-<pre><code>pip install pandas numpy scikit-learn matplotlib plotly joblib</code></pre>
-<p>Baixe o MovieLens 33M (No Genomics) e aponte <code>DATA_PATH</code> no notebook para a pasta com <code>movies.csv</code> e <code>ratings.csv</code>.</p>
-
-<h2>💭 Próximos passos</h2>
-<ul>
-  <li>Testar diferentes valores de k e comparar métricas de clusterização</li>
-  <li>Clusterizar diretamente os perfis de usuário, não só os filmes</li>
-  <li>Trocar a recomendação por regras por um modelo supervisionado real</li>
-</ul>
+<p>Não foi possível carregar a página do GitHub dentro do site (o GitHub bloqueia incorporação via iframe). Use o botão "Ver no GitHub" acima para acessar o repositório completo, com o README, notebook e código-fonte.</p>
 `
   },
   airbnb: {
     icon: '🏠',
     title: 'Short-Stay Price Prediction',
-    desc: 'Previsão de preço de diárias de Airbnb — modelo global vs. modelos regionais com LightGBM.',
+    desc: "Predicts Airbnb rental prices using data from Kaggle's \"Airbnb Rental Price Prediction (2025)\" competition. Compares a global LightGBM model against region-specific models, with iterative hyperparameter tuning.",
     lang: 'Python · LightGBM',
     content: `
-<h2>Descrição</h2>
-<p>Previsão de preços de diárias de anúncios Airbnb ao redor do mundo. A partir de mais de 200.000 anúncios, o fluxo passa por limpeza de dados, análise geográfica exploratória e construção iterativa de modelos de ensemble baseados em árvores (Random Forest, Gradient Boosting, LightGBM). O projeto compara duas estratégias: <strong>um modelo global único</strong> usando latitude/longitude como features (<strong>Full Set</strong>) vs. <strong>modelos separados por região</strong> — Europa, América e Austrália (<strong>Region Sensitive</strong>).</p>
-
-<h2>Fonte dos dados</h2>
-<p>Dataset da competição Kaggle <strong>Airbnb Rental Price Prediction (2025)</strong>.</p>
-
-<h2>Pipeline do projeto</h2>
-<table>
-<tr><th>Ordem</th><th>Notebook</th><th>Propósito</th></tr>
-<tr><td>1</td><td>Data_exploration_clean_up.ipynb</td><td>Carregar, limpar e segmentar os dados brutos por região</td></tr>
-<tr><td>2</td><td>Predictions (lat/long)</td><td>Modelo global (Full Set) usando lat/long como features</td></tr>
-<tr><td>3</td><td>Mult_Region_Model.ipynb</td><td>Modelos separados por região (Region Sensitive)</td></tr>
-</table>
-
-<h2>1. Exploração e limpeza dos dados</h2>
-<ul>
-  <li>208.856 linhas carregadas; colunas com mais de 15% de valores faltantes descartadas</li>
-  <li>Linhas com qualquer valor faltante removidas: 208.757 → 180.695 linhas</li>
-  <li>Scatter plots de longitude vs. latitude (plotly) revelaram que remover NaNs cortava partes da Austrália Ocidental, do Mediterrâneo e dos EUA</li>
-  <li>Filtragem por bounding box em 3 regiões: Europa (lat 20–80, long -50–50), América (lat -40–80, long -150–-50), Austrália (lat -50–-10, long 100–150)</li>
-</ul>
-<div class="readme-img-placeholder">📊 gráfico: scatter plots plotly de cobertura geográfica<br><span style="font-size:10px">(imagem a ser adicionada a partir do notebook)</span></div>
-
-<h2>2. Otimização do modelo (Full Set)</h2>
-<table>
-<tr><th>Modelo</th><th>MAE</th><th>RMSE</th><th>R²</th></tr>
-<tr><td>Linear Regression</td><td>111,15</td><td>171,96</td><td>0,224</td></tr>
-<tr><td>Decision Tree</td><td>101,89</td><td>166,62</td><td>0,272</td></tr>
-<tr><td><strong>Random Forest</strong></td><td><strong>72,12</strong></td><td><strong>112,69</strong></td><td><strong>0,667</strong></td></tr>
-<tr><td>Gradient Boosting</td><td>81,17</td><td>124,71</td><td>0,592</td></tr>
-<tr><td>LightGBM</td><td>72,16</td><td>112,73</td><td>0,667</td></tr>
-</table>
-<p>LightGBM escolhido para seguir a investigação — empatou com Random Forest, mas treinou muito mais rápido. Colunas <code>id</code> e <code>host_id</code> mostraram vazamento de dados (data leakage) e foram removidas; latitude/longitude mantidas como features relevantes.</p>
-<div class="readme-img-placeholder">📊 gráficos: comparação de modelos, tuning de hiperparâmetros, validação cruzada, feature importance<br><span style="font-size:10px">(imagens a serem adicionadas a partir do notebook)</span></div>
-<p>Hiperparâmetros ajustados: n_estimators (500–600), max_depth (8), num_leaves (64), learning_rate (0,1).</p>
-<table>
-<tr><th>Métrica final</th><th>Valor</th></tr>
-<tr><td>MAE</td><td>67,02</td></tr>
-<tr><td>RMSE</td><td>108,50</td></tr>
-<tr><td>R²</td><td>0,694</td></tr>
-</table>
-<p>Validação cruzada 5-fold → RMSE médio ≈ 108,30 (desvio ≈ 0,93). Feature importance confirmou longitude e latitude como os dois preditores mais importantes.</p>
-
-<h2>3. Modelo Region Sensitive</h2>
-<p>Adiciona <code>room_type</code> e <code>property_type</code> (codificados com LabelEncoder). Um modelo LightGBM por região (objetivo <code>poisson</code>, 500 estimators, learning_rate 0,2, num_leaves 64, max_depth 8).</p>
-<table>
-<tr><th>Região</th><th>Treino</th><th>MAE</th><th>RMSE</th><th>R²</th></tr>
-<tr><td>Europa</td><td>83.854</td><td>53,09</td><td>94,19</td><td>0,656</td></tr>
-<tr><td>América</td><td>37.398</td><td>61,55</td><td>99,09</td><td>0,701</td></tr>
-<tr><td>Austrália</td><td>7.006</td><td>76,58</td><td>112,70</td><td>0,657</td></tr>
-</table>
-<div class="readme-img-placeholder">📊 gráfico: feature importance do modelo Europa<br><span style="font-size:10px">(imagem a ser adicionada a partir do notebook)</span></div>
-<p>Os modelos regionais superam o modelo global na Europa e América (menor erro, maior R²); na Austrália ficam praticamente empatados — provavelmente por causa da amostra bem menor.</p>
-
-<h2>Principais achados</h2>
-<ul>
-  <li>Modelos em árvore (Random Forest, LightGBM) superam muito Regressão Linear e Decision Tree isolada</li>
-  <li>LightGBM foi o melhor custo-benefício entre acurácia e velocidade de treino</li>
-  <li>Localização geográfica (lat/long) é consistentemente o preditor mais forte de preço</li>
-  <li>Colunas identificadoras (id, host_id) podem vazar informação e inflar a importância de features</li>
-  <li>Modelos por região superam o modelo global na Europa e América; Austrália precisa de mais dados</li>
-</ul>
-
-<h2>🛠 Stack</h2>
-<ul>
-  <li>pandas, numpy</li>
-  <li>plotly.express</li>
-  <li>scikit-learn (Linear Regression, Decision Tree, Random Forest, Gradient Boosting), lightgbm</li>
-  <li>train_test_split, KFold cross-validation</li>
-</ul>
+<p>Não foi possível carregar a página do GitHub dentro do site (o GitHub bloqueia incorporação via iframe). Use o botão "Ver no GitHub" acima para acessar o repositório completo, com o README, notebooks e código-fonte.</p>
+`
+  },
+  virtualms: {
+    icon: '🧪',
+    title: 'Virtual MS',
+    desc: 'Browser-based mass spectrometry simulator for education and training.',
+    lang: 'HTML · JavaScript',
+    content: `
+<p>Acesse o repositório no GitHub para mais informações sobre o Virtual MS.</p>
+`
+  },
+  virtualgc: {
+    icon: '🧫',
+    title: 'Virtual GC',
+    desc: 'Browser-based gas chromatography simulator for education and training.',
+    lang: 'HTML · JavaScript',
+    content: `
+<p>Acesse o repositório no GitHub para mais informações sobre o Virtual GC.</p>
 `
   },
   jetsauro: {
@@ -1662,24 +1584,14 @@ const i18n = {
     labelCleaning: 'Data Cleaning',
     labelRegional: 'Region-Sensitive Models',
     labelTuning: 'Hyperparameter Tuning',
-    mlEyebrow: '00 — Machine Learning',
-    mlTitle: 'Where the data<br>does the talking.',
-    cardMlMovies: '01 / CLUSTERING',
-    movielensDesc: 'Unsupervised segmentation of 33M MovieLens ratings. PCA + K-Means group movies by genre similarity (30 clusters, silhouette 0.65), then user rating histories are turned into behavioral profiles across diversity, generosity and frequency — feeding a rule-based recommendation strategy. Click here to see the README!',
-    cardMlAirbnb: '02 / REGRESSION',
-    airbnbDesc: 'Predicting nightly Airbnb prices for 200k+ global listings. Compares a single global LightGBM model against separate region-specific models (Europe, America, Australia), tuned step by step and validated with 5-fold cross-validation. Click here to see the README!',
-    hobbiesEyebrow: '01 — Personal Projects',
-    hobbiesTitle: 'Built for fun.<br>Shipped for real.',
-    card01game: '01 / GAME',
-    jetsauroDesc: 'My first game project, developed in Godot. Play as a jetpack-powered diplodocus and survive for as long as possible in a hostile world filled with aggressive pterosaurs and deadly carnivorous plants. Click here to see the page!',
-    card02cv: '02 / CV TOOL',
-    offsideDesc: 'Detects offside situations in soccer from images. Uses projective geometry to correct perspective through vanishing point estimation and compare player positions on the field. No IA, just Math. Click here to see the page!',
-    card03tracking: '03 / TRACKING',
-    facetrackingDesc: 'Real-time face tracking that converts head movements into camera control for simulators. Integrates through the FreeTrack 2.0 / OpenTrack (UDP) protocol. Made for racing games. Click here to visit the page!',
-    card05annotation: '04 / ANNOTATION',
-    videoannotatorDesc: 'Frame-by-frame video annotation tool. Useful for data labeling in computer vision tasks. Click here to see the page!',
-    academicEyebrow: '02 — Academic & Scientific',
-    academicTitle: 'Research tools<br>& Science.',
+    mlEyebrow: '00 — Data Science Projects',
+    mlTitle: 'Data Science Projects',
+    cardMlMovies: '01',
+    movielensDesc: 'Unsupervised ML portfolio project on MovieLens 33M: PCA + K-Means clustering of movies by genre, then behavioral user profiling (diversity, generosity, frequency) to power a simple rule-based recommendation strategy.',
+    cardMlAirbnb: '02',
+    airbnbDesc: 'Predicts Airbnb rental prices using data from Kaggle\u2019s "Airbnb Rental Price Prediction (2025)" competition. Compares a single global LightGBM model (using lat/long) against region-specific models (Europe, America, Australia) to capture local pricing patterns, with iterative hyperparameter tuning.',
+    academicEyebrow: '01 — Academic Projects',
+    academicTitle: 'Academic Projects',
     card01simulator: '01 / SIMULATOR',
     virtuallcDesc: 'Browser-based HPLC/UHPLC liquid chromatography emulator. Includes method optimization modules, chromatogram customization, and quantitative analysis. Based on LSS theory. Ideal for education and training. Click here to see the page!',
     card02ir: '02 / SIMULATOR',
@@ -1690,6 +1602,20 @@ const i18n = {
     chromatobuddyDesc: 'Online semantic search engine for chromatography knowledge. Combines BM25 keyword retrieval with BGE-small neural embeddings for hybrid RAG over a curated knowledge base. No installation needed — runs directly in the browser. Click here to see the page!',
     card05nlp: '05 / NLP',
     litdminerDesc: 'Data mining pipeline for automated extraction of information from scientific articles. Search within the full manuscript or selected sections. Perform bibliometric evaluations automatically. Click here to see the page!',
+    card06ms: '06 / SIMULATOR',
+    virtualmsDesc: 'Browser-based mass spectrometry simulator for education and training. Click here to see the page!',
+    card07gc: '07 / SIMULATOR',
+    virtualgcDesc: 'Browser-based gas chromatography simulator for education and training. Click here to see the page!',
+    hobbiesEyebrow: '02 — Hobby Projects',
+    hobbiesTitle: 'Hobby Projects',
+    card01game: '01 / GAME',
+    jetsauroDesc: 'My first game project, developed in Godot. Play as a jetpack-powered diplodocus and survive for as long as possible in a hostile world filled with aggressive pterosaurs and deadly carnivorous plants. Click here to see the page!',
+    card02cv: '02 / CV TOOL',
+    offsideDesc: 'Detects offside situations in soccer from images. Uses projective geometry to correct perspective through vanishing point estimation and compare player positions on the field. No IA, just Math. Click here to see the page!',
+    card03tracking: '03 / TRACKING',
+    facetrackingDesc: 'Real-time face tracking that converts head movements into camera control for simulators. Integrates through the FreeTrack 2.0 / OpenTrack (UDP) protocol. Made for racing games. Click here to visit the page!',
+    card05annotation: '04 / ANNOTATION',
+    videoannotatorDesc: 'Frame-by-frame video annotation tool. Useful for data labeling in computer vision tasks. Click here to see the page!',
     newBadge: 'NEW',
     cardBtn: 'Go →',
     footerLabelNav: 'Navigate',
@@ -1711,24 +1637,14 @@ const i18n = {
     labelCleaning: 'Limpeza de Dados',
     labelRegional: 'Modelos Regionais',
     labelTuning: 'Ajuste de Hiperparâmetros',
-    mlEyebrow: '00 — Machine Learning',
-    mlTitle: 'Onde os dados<br>falam por si.',
-    cardMlMovies: '01 / CLUSTERIZAÇÃO',
-    movielensDesc: 'Segmentação não-supervisionada de 33M de avaliações do MovieLens. PCA + K-Means agrupam filmes por similaridade de gênero (30 clusters, silhouette 0,65), e os históricos de avaliação viram perfis comportamentais de diversidade, generosidade e frequência — alimentando uma estratégia de recomendação por regras. Clique aqui para ver o README!',
-    cardMlAirbnb: '02 / REGRESSÃO',
-    airbnbDesc: 'Previsão de preços de diárias de mais de 200 mil anúncios de Airbnb no mundo todo. Compara um único modelo global LightGBM com modelos separados por região (Europa, América, Austrália), ajustados passo a passo e validados com validação cruzada 5-fold. Clique aqui para ver o README!',
-    hobbiesEyebrow: '01 — Projetos Pessoais',
-    hobbiesTitle: 'Feito por diversão.<br>Entregue de verdade.',
-    card01game: '01 / JOGO',
-    jetsauroDesc: 'Meu primeiro projeto de jogo, desenvolvido em Godot. Jogue como um diplodoco equipado com jetpack e sobreviva o máximo possível em um mundo hostil repleto de pterossauros agressivos e plantas carnívoras mortais. Clique aqui para ver a página!',
-    card02cv: '02 / VISÃO COMP.',
-    offsideDesc: 'Detecta situações de impedimento no futebol a partir de imagens. Usa geometria projetiva para corrigir a perspectiva por meio de estimativa do ponto de fuga e comparar posições dos jogadores no campo. Sem IA, só Matemática. Clique aqui para ver a página!',
-    card03tracking: '03 / RASTREAMENTO',
-    facetrackingDesc: 'Rastreamento facial em tempo real que converte movimentos da cabeça em controle de câmera para simuladores. Integra-se via protocolo FreeTrack 2.0 / OpenTrack (UDP). Feito para jogos de corrida. Clique aqui para visitar a página!',
-    card05annotation: '04 / ANOTAÇÃO',
-    videoannotatorDesc: 'Ferramenta de anotação de vídeo frame a frame. Útil para rotulagem de dados em tarefas de visão computacional. Clique aqui para ver a página!',
-    academicEyebrow: '02 — Acadêmico & Científico',
-    academicTitle: 'Ferramentas de Pesquisa<br>& Ciência.',
+    mlEyebrow: '00 — Projetos de Data Science',
+    mlTitle: 'Projetos de Data Science',
+    cardMlMovies: '01',
+    movielensDesc: 'Projeto de portfólio de ML não-supervisionado no MovieLens 33M: clusterização de filmes por gênero com PCA + K-Means, seguida de perfil comportamental de usuário (diversidade, generosidade, frequência) para uma estratégia de recomendação por regras.',
+    cardMlAirbnb: '02',
+    airbnbDesc: 'Prevê preços de diárias de Airbnb usando dados da competição Kaggle "Airbnb Rental Price Prediction (2025)". Compara um modelo global LightGBM (usando lat/long) com modelos por região (Europa, América, Austrália), com ajuste iterativo de hiperparâmetros.',
+    academicEyebrow: '01 — Projetos Acadêmicos',
+    academicTitle: 'Projetos Acadêmicos',
     card01simulator: '01 / SIMULADOR',
     virtuallcDesc: 'Emulador de cromatografia líquida HPLC/UHPLC baseado no navegador. Inclui módulos de otimização de método, personalização de cromatograma e análise quantitativa. Baseado na teoria LSS. Ideal para educação e treinamento. Clique aqui para ver a página!',
     card02ir: '02 / SIMULADOR',
@@ -1739,6 +1655,20 @@ const i18n = {
     chromatobuddyDesc: 'Motor de busca semântica online para conhecimento em cromatografia. Combina recuperação por keywords (BM25) com embeddings neurais BGE-small para RAG híbrido sobre uma base de conhecimento curada. Sem instalação — roda direto no browser. Clique aqui para ver a página!',
     card05nlp: '05 / PLN',
     litdminerDesc: 'Pipeline de mineração de dados para extração automatizada de informações de artigos científicos. Pesquise no manuscrito completo ou em seções selecionadas. Realize avaliações bibliométricas automaticamente. Clique aqui para ver a página!',
+    card06ms: '06 / SIMULADOR',
+    virtualmsDesc: 'Simulador de espectrometria de massas baseado no navegador, para educação e treinamento. Clique aqui para ver a página!',
+    card07gc: '07 / SIMULADOR',
+    virtualgcDesc: 'Simulador de cromatografia gasosa baseado no navegador, para educação e treinamento. Clique aqui para ver a página!',
+    hobbiesEyebrow: '02 — Projetos Hobby',
+    hobbiesTitle: 'Projetos Hobby',
+    card01game: '01 / JOGO',
+    jetsauroDesc: 'Meu primeiro projeto de jogo, desenvolvido em Godot. Jogue como um diplodoco equipado com jetpack e sobreviva o máximo possível em um mundo hostil repleto de pterossauros agressivos e plantas carnívoras mortais. Clique aqui para ver a página!',
+    card02cv: '02 / VISÃO COMP.',
+    offsideDesc: 'Detecta situações de impedimento no futebol a partir de imagens. Usa geometria projetiva para corrigir a perspectiva por meio de estimativa do ponto de fuga e comparar posições dos jogadores no campo. Sem IA, só Matemática. Clique aqui para ver a página!',
+    card03tracking: '03 / RASTREAMENTO',
+    facetrackingDesc: 'Rastreamento facial em tempo real que converte movimentos da cabeça em controle de câmera para simuladores. Integra-se via protocolo FreeTrack 2.0 / OpenTrack (UDP). Feito para jogos de corrida. Clique aqui para visitar a página!',
+    card05annotation: '04 / ANOTAÇÃO',
+    videoannotatorDesc: 'Ferramenta de anotação de vídeo frame a frame. Útil para rotulagem de dados em tarefas de visão computacional. Clique aqui para ver a página!',
     newBadge: 'NOVO',
     cardBtn: 'Ver →',
     footerLabelNav: 'Navegar',
