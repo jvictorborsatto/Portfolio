@@ -1,528 +1,374 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Two Models, No Labels — ML Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>João Victor Borsatto · Machine Learning</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0E1512;
-    --surface:#161F1B;
-    --surface-alt:#1D2B25;
-    --ink:#EFEDE3;
-    --muted:#8FA39A;
-    --muted-dim:#5E6F68;
-    --hair:#2A3A33;
-    --violet:#C9A6FF;
-    --violet-dim:#8A6FBF;
-    --coral:#FF9B71;
-    --coral-dim:#C97854;
-    --ok:#7FD8A6;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'IBM Plex Sans', sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  ::selection{background:var(--violet); color:#0E1512;}
-  a{color:inherit;}
-  .mono{font-family:'IBM Plex Mono', monospace;}
-  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em;}
-
-  /* ---------- layout helpers ---------- */
-  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
-  section{position:relative;}
-
-  /* ---------- nav ---------- */
-  nav{
-    position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(14,21,18,0.82);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--hair);
-  }
-  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px;}
-  .brand{font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; letter-spacing:-0.01em; display:flex; align-items:center; gap:10px;}
-  .brand-dot{width:9px; height:9px; border-radius:50%; background:conic-gradient(from 180deg, var(--violet), var(--coral), var(--violet)); flex-shrink:0;}
-  .nav-links{display:flex; gap:28px; font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.04em;}
-  .nav-links a{text-decoration:none; color:var(--muted); transition:color .2s ease; padding:4px 2px; border-bottom:1px solid transparent;}
-  .nav-links a:hover, .nav-links a:focus-visible{color:var(--ink); border-bottom-color:var(--muted-dim);}
-  @media (max-width:640px){ .nav-links{display:none;} }
-
-  /* ---------- hero ---------- */
-  .hero{padding:168px 0 96px; position:relative;}
-  .hero-eyebrow{
-    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase;
-    color:var(--muted); margin-bottom:22px; display:flex; align-items:center; gap:10px;
-  }
-  .hero-eyebrow::before{content:''; width:26px; height:1px; background:var(--muted-dim); display:inline-block;}
-  .hero h1{
-    font-size:clamp(2.6rem, 6vw, 4.6rem); line-height:1.03; max-width:15ch; font-weight:600;
-  }
-  .hero h1 em{font-style:italic; font-weight:500; background:linear-gradient(100deg, var(--violet), var(--coral)); -webkit-background-clip:text; background-clip:text; color:transparent;}
-  .hero p.lede{
-    margin-top:28px; max-width:52ch; font-size:1.08rem; color:var(--muted); font-weight:400;
-  }
-  .hero-scatter{
-    position:absolute; top:120px; right:-40px; width:460px; height:420px; pointer-events:none;
-    opacity:0.9;
-  }
-  @media (max-width:980px){ .hero-scatter{display:none;} }
-  .hero-scatter svg{width:100%; height:100%;}
-  .dot{animation:drift 7s ease-in-out infinite;}
-  @keyframes drift{
-    0%,100%{ transform:translateY(0px); }
-    50%{ transform:translateY(-6px); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .dot{animation:none;}
-    html{scroll-behavior:auto;}
-  }
-
-  .hero-index{
-    margin-top:64px; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--hair);
-    border:1px solid var(--hair); max-width:640px;
-  }
-  .hero-index a{
-    background:var(--bg); padding:20px 22px; text-decoration:none; display:block; transition:background .2s ease;
-  }
-  .hero-index a:hover, .hero-index a:focus-visible{background:var(--surface);}
-  .hero-index .tag{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase;}
-  .hero-index .name{font-family:'Fraunces',serif; font-size:1.15rem; margin-top:6px;}
-  .hero-index .p1 .tag{color:var(--violet);}
-  .hero-index .p2 .tag{color:var(--coral);}
-
-  /* ---------- section frame ---------- */
-  .proj{padding:120px 0 40px; border-top:1px solid var(--hair);}
-  .proj-head{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:56px;}
-  .proj-eyebrow{
-    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
-  }
-  .p1 .proj-eyebrow{color:var(--violet);}
-  .p2 .proj-eyebrow{color:var(--coral);}
-  .proj h2{font-size:clamp(2rem, 4vw, 3rem); margin-top:14px; max-width:20ch;}
-  .proj-meta{font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--muted); text-align:right; max-width:220px;}
-  .proj-meta a{color:var(--muted); text-decoration:underline; text-underline-offset:3px;}
-  .proj-meta a:hover{color:var(--ink);}
-  .proj-desc{max-width:70ch; color:var(--muted); font-size:1.02rem; margin-bottom:56px;}
-  .proj-desc strong{color:var(--ink); font-weight:600;}
-
-  /* ---------- pipeline ---------- */
-  .pipeline{
-    display:flex; flex-wrap:wrap; gap:0; margin-bottom:64px; border:1px solid var(--hair);
-  }
-  .pipe-step{
-    flex:1 1 150px; padding:22px 18px; border-right:1px solid var(--hair); position:relative;
-  }
-  .pipe-step:last-child{border-right:none;}
-  .pipe-num{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--muted-dim);}
-  .pipe-label{font-size:0.92rem; margin-top:8px; color:var(--ink);}
-  .p1 .pipe-step:nth-child(odd){background:var(--surface);}
-  .p2 .pipe-step:nth-child(odd){background:var(--surface);}
-
-  /* ---------- metrics readout ---------- */
-  .readout{
-    display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:1px;
-    background:var(--hair); border:1px solid var(--hair); margin-bottom:64px;
-  }
-  .readout div{background:var(--bg); padding:24px 20px;}
-  .readout .val{font-family:'IBM Plex Mono',monospace; font-size:1.5rem; font-weight:600;}
-  .p1 .readout .val{color:var(--violet);}
-  .p2 .readout .val{color:var(--coral);}
-  .readout .lbl{font-size:0.76rem; color:var(--muted); margin-top:6px; text-transform:uppercase; letter-spacing:0.06em;}
-
-  /* ---------- figure ---------- */
-  figure{margin:0 0 20px 0;}
-  figure img{width:100%; height:auto; display:block; border:1px solid var(--hair); background:var(--surface);}
-  figcaption{font-family:'IBM Plex Mono',monospace; font-size:0.74rem; color:var(--muted-dim); margin-top:10px; letter-spacing:0.02em;}
-  .gallery{display:grid; grid-template-columns:1fr; gap:36px; margin-bottom:64px;}
-  .gallery.two{grid-template-columns:1fr 1fr;}
-  @media (max-width:760px){ .gallery.two{grid-template-columns:1fr;} }
-
-  /* ---------- data table ---------- */
-  table{width:100%; border-collapse:collapse; margin-bottom:64px; font-size:0.92rem;}
-  thead th{
-    text-align:left; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; text-transform:uppercase;
-    letter-spacing:0.06em; color:var(--muted); padding:12px 16px; border-bottom:1px solid var(--hair);
-  }
-  tbody td{padding:13px 16px; border-bottom:1px solid var(--hair); color:var(--muted);}
-  tbody tr td:first-child{color:var(--ink); font-weight:500;}
-  tbody tr.highlight td{color:var(--ink);}
-  .p1 tbody tr.highlight{background:rgba(201,166,255,0.07);}
-  .p2 tbody tr.highlight{background:rgba(255,155,113,0.07);}
-  td.num{font-family:'IBM Plex Mono',monospace; text-align:right;}
-  th.num{text-align:right;}
-
-  /* ---------- bar rows (profile distribution / region rmse) ---------- */
-  .barlist{margin-bottom:64px;}
-  .barrow{display:grid; grid-template-columns:220px 1fr 90px; align-items:center; gap:16px; padding:9px 0; border-bottom:1px solid var(--hair);}
-  .barrow:first-child{border-top:1px solid var(--hair);}
-  .barrow .label{font-size:0.86rem; color:var(--ink);}
-  .barrow .track{height:7px; background:var(--surface-alt); position:relative; overflow:hidden;}
-  .barrow .fill{height:100%; border-radius:0;}
-  .p1 .barrow .fill{background:linear-gradient(90deg, var(--violet-dim), var(--violet));}
-  .p2 .barrow .fill{background:linear-gradient(90deg, var(--coral-dim), var(--coral));}
-  .barrow .count{font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--muted); text-align:right;}
-
-  /* ---------- callout / findings ---------- */
-  .findings{
-    background:var(--surface); border:1px solid var(--hair); padding:36px 40px; margin-bottom:64px;
-  }
-  .findings h3{font-size:1.1rem; font-weight:500; margin-bottom:20px; color:var(--muted); font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:0.06em; font-size:0.78rem;}
-  .findings ul{list-style:none;}
-  .findings li{
-    padding:14px 0; border-top:1px solid var(--hair); display:flex; gap:16px; font-size:0.95rem; color:var(--muted);
-  }
-  .findings li:first-child{border-top:none;}
-  .findings li::before{content:'→'; flex-shrink:0; margin-top:1px;}
-  .p1 .findings li::before{color:var(--violet);}
-  .p2 .findings li::before{color:var(--coral);}
-  .findings li strong{color:var(--ink); font-weight:600;}
-
-  /* ---------- rules (recommendation logic) ---------- */
-  .rules{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:var(--hair); border:1px solid var(--hair); margin-bottom:64px;}
-  .rule{background:var(--bg); padding:24px;}
-  .rule .who{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--violet); text-transform:uppercase; letter-spacing:0.05em;}
-  .rule p{font-size:0.9rem; color:var(--muted); margin-top:10px;}
-
-  /* ---------- tech stack ---------- */
-  .stack{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px;}
-  .chip{
-    font-family:'IBM Plex Mono',monospace; font-size:0.76rem; padding:7px 13px; border:1px solid var(--hair);
-    color:var(--muted); letter-spacing:0.01em;
-  }
-
-  /* ---------- next steps note ---------- */
-  .note{
-    max-width:70ch; font-size:0.9rem; color:var(--muted-dim); border-left:2px solid var(--hair); padding-left:20px; margin:40px 0 0;
-  }
-
-  /* ---------- footer ---------- */
-  footer{
-    border-top:1px solid var(--hair); padding:64px 0 48px; margin-top:80px;
-  }
-  footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; align-items:flex-start;}
-  footer .foot-note{color:var(--muted-dim); font-size:0.85rem; max-width:44ch;}
-  footer .foot-note a{text-decoration:underline; text-underline-offset:3px; color:var(--muted);}
-  footer .foot-note a:hover{color:var(--ink);}
-  footer .signature{font-family:'Fraunces',serif; font-style:italic; color:var(--muted-dim); font-size:0.95rem;}
-
-  /* ---------- reveal on scroll ---------- */
-  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
-  .reveal.in{opacity:1; transform:translateY(0);}
-
-  /* ---------- focus visibility ---------- */
-  a:focus-visible, button:focus-visible{outline:2px solid var(--violet); outline-offset:2px;}
+:root{--bg:#0c1226;--panel:#141c38;--line:#26325a;--ink:#eaf0ff;--mute:#9eabcf;--a:#ffb547}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "IBM Plex Sans",system-ui,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid #ffb547;outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;margin:0;letter-spacing:-.03em}
+header{padding:64px 0 32px;animation:in .9s ease both}
+@keyframes in{from{opacity:0;transform:translateY(16px)}}
+@media(prefers-reduced-motion:reduce){header{animation:none}}
+h1{font-size:clamp(42px,8vw,96px);font-weight:800;line-height:.95}
+.hl{font:800 clamp(24px,3.6vw,40px)/1.1 "Bricolage Grotesque",sans-serif;color:#ffb547;margin:20px 0 12px;max-width:22ch}
+.lead{max-width:60ch;color:var(--mute);font-size:19px;margin:0 0 24px}
+.btn{display:inline-block;background:#ffb547;color:#0c1226;font-weight:500;padding:12px 24px;border-radius:8px;text-decoration:none}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:16px 0 40px}
+.how div{border-left:3px solid #ffb547;padding-left:16px;color:var(--mute);font-size:16px}
+.how b{display:block;font:800 20px/1.2 "Bricolage Grotesque",sans-serif;color:var(--ink);margin-bottom:4px}
+.bar-top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0}
+.bar-top .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+[role=tablist]{display:flex;gap:8px;flex-wrap:wrap;flex:1}
+[role=tab]{all:unset;cursor:pointer;padding:8px 18px;border-radius:8px;border:2px solid var(--a);color:var(--a);font:800 17px "Bricolage Grotesque",sans-serif}
+[role=tab][aria-selected=true]{background:var(--a);color:#0c1226}
+[role=tab]:focus-visible{outline:3px solid #fff}
+.lang{display:flex;background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:3px}
+.lang button{all:unset;cursor:pointer;padding:4px 14px;border-radius:99px;font-size:14px;font-weight:500;color:var(--mute)}
+.lang button[aria-pressed=true]{background:#ffb547;color:#0c1226}
+.panel{padding:56px 0 72px}
+.panel[hidden]{display:none}
+.panel h2{font-size:clamp(44px,8vw,96px);font-weight:800;line-height:.95;color:var(--a);max-width:13ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 8px;padding:0;list-style:none}
+.tags li{border:1px solid var(--a);color:var(--a);padding:2px 12px;border-radius:99px;font-size:14px}
+.sec{margin-top:56px}
+.sec>h3{font-size:30px;border-left:5px solid var(--a);padding-left:14px;margin-bottom:18px}
+.sec.key>h3::after{content:"";}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.card{background:var(--panel);border-radius:12px;padding:22px}
+.card h4{font:800 19px "Bricolage Grotesque",sans-serif;margin:0 0 4px}
+.card>p{margin:0 0 12px;color:var(--mute);font-size:14px}
+ul.pts{padding-left:20px;margin:0}
+ul.pts li{margin-bottom:9px}
+p{margin:0 0 12px}
+.impact{border:2px solid var(--a);border-radius:12px;padding:18px 22px;margin-top:20px;background:var(--panel)}
+.impact b{color:var(--a)}
+.bar{display:grid;grid-template-columns:170px 1fr 70px;gap:10px;align-items:center;margin:8px 0;font-size:14px}
+.bar i{display:block;height:18px;border-radius:4px;background:#2a3769;width:var(--w)}
+.bar.hi i{background:var(--a)}
+.bar.hi{color:var(--a);font-weight:500}
+.bar em{font-style:normal;text-align:right}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 10px;text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal}
+th{color:var(--mute);font-weight:500}
+td.b,tr.b td{color:var(--a);font-weight:500}
+td.neg{color:#ff8a8a}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.stats div{border-left:3px solid var(--a);padding-left:12px;font-size:14px;color:var(--mute);line-height:1.35}
+.stats b{display:block;font:800 26px/1.1 "Bricolage Grotesque",sans-serif;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0;padding:0;list-style:none}
+.chips li{background:#2a3769;border-radius:6px;padding:1px 10px;font-size:14px}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:24px}
+figure{margin:0;background:var(--panel);border-radius:12px;padding:10px}
+figure img{width:100%;height:auto;display:block;border-radius:6px;background:#fff;cursor:zoom-in}
+figcaption{font-size:14px;color:var(--mute);padding:8px 4px 2px}
+dialog{border:0;background:transparent;max-width:94vw;padding:0}
+dialog::backdrop{background:rgba(5,8,20,.88)}
+dialog img{max-width:94vw;max-height:90vh;border-radius:8px;background:#fff}
+footer{border-top:1px solid var(--line);padding:56px 0 72px}
+footer h2{font-size:clamp(32px,6vw,60px);font-weight:800;line-height:1;margin-bottom:18px}
+@media(max-width:860px){.how,.g2{grid-template-columns:1fr}.bar{grid-template-columns:120px 1fr 62px}.stats b{font-size:21px}}
 </style>
 </head>
 <body>
-
-<nav>
-  <div class="wrap">
-    <div class="brand"><span class="brand-dot"></span>portfolio / notebooks</div>
-    <div class="nav-links">
-      <a href="#clustering">01 · Movie Clustering</a>
-      <a href="#pricing">02 · Price Prediction</a>
-    </div>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="hero-eyebrow">Two unsupervised &amp; supervised ML case studies</div>
-    <h1>Data Science Portifolio</h1>
-    <p class="lede">A pair of portfolio projects working through the same instinct from two angles: cluster 33 million movie ratings into behavioral segments with zero ground truth, then predict Airbnb prices where the ground truth exists but geography does most of the talking.</p>
-
-    <div class="hero-index">
-      <a href="#clustering" class="p1">
-        <div class="tag">01 — Unsupervised</div>
-        <div class="name">Movie Clustering &amp; User Profiles</div>
-      </a>
-      <a href="#pricing" class="p2">
-        <div class="tag">02 — Regression</div>
-        <div class="name">Short-Stay Price Prediction</div>
-      </a>
-    </div>
-  </div>
-
-  <div class="hero-scatter" aria-hidden="true">
-    <svg viewBox="0 0 460 420" fill="none">
-      <g opacity="0.85">
-        <circle class="dot" cx="80" cy="70" r="5" fill="#C9A6FF" style="animation-delay:0s"/>
-        <circle class="dot" cx="105" cy="95" r="3.5" fill="#C9A6FF" style="animation-delay:.4s"/>
-        <circle class="dot" cx="65" cy="110" r="4" fill="#C9A6FF" style="animation-delay:.8s"/>
-        <circle class="dot" cx="120" cy="60" r="3" fill="#C9A6FF" style="animation-delay:1.2s"/>
-        <circle class="dot" cx="95" cy="45" r="2.5" fill="#8A6FBF" style="animation-delay:.2s"/>
-      </g>
-      <g opacity="0.85">
-        <circle class="dot" cx="260" cy="150" r="5" fill="#C9A6FF" style="animation-delay:.3s"/>
-        <circle class="dot" cx="290" cy="170" r="3" fill="#8A6FBF" style="animation-delay:.9s"/>
-        <circle class="dot" cx="245" cy="185" r="4" fill="#C9A6FF" style="animation-delay:1.5s"/>
-        <circle class="dot" cx="300" cy="140" r="2.5" fill="#C9A6FF" style="animation-delay:.6s"/>
-      </g>
-      <g opacity="0.9">
-        <circle class="dot" cx="340" cy="280" r="6" fill="#FF9B71" style="animation-delay:.5s"/>
-        <circle class="dot" cx="375" cy="300" r="3.5" fill="#C97854" style="animation-delay:1.1s"/>
-        <circle class="dot" cx="355" cy="325" r="4" fill="#FF9B71" style="animation-delay:.1s"/>
-        <circle class="dot" cx="390" cy="260" r="2.5" fill="#FF9B71" style="animation-delay:1.4s"/>
-      </g>
-      <g opacity="0.8">
-        <circle class="dot" cx="150" cy="290" r="4.5" fill="#FF9B71" style="animation-delay:.7s"/>
-        <circle class="dot" cx="180" cy="310" r="3" fill="#C97854" style="animation-delay:1.3s"/>
-        <circle class="dot" cx="130" cy="330" r="3" fill="#FF9B71" style="animation-delay:.2s"/>
-      </g>
-      <circle cx="60" cy="200" r="2" fill="#5E6F68"/>
-      <circle cx="410" cy="120" r="2" fill="#5E6F68"/>
-      <circle cx="220" cy="380" r="2" fill="#5E6F68"/>
-      <circle cx="20" cy="360" r="2" fill="#5E6F68"/>
-    </svg>
-  </div>
+<div class="wrap">
+<header>
+<h1>João Victor Borsatto</h1>
+<p class="hl" data-en="Models that hold up outside the notebook.">Modelos que se sustentam fora do notebook.</p>
+<p class="lead" data-en="I work with machine learning on tabular data: I clean, impute, compare, tune and validate every model, and I write down what it does not do well.">Trabalho com machine learning em dados tabulares: limpo, imputo, comparo, ajusto e valido cada modelo, e escrevo o que ele não faz bem.</p>
+<a class="btn" href="https://github.com/jvictorborsatto" data-en="See my GitHub">Ver meu GitHub</a>
+<!-- Adicione aqui seu e-mail e LinkedIn / Add your email and LinkedIn here -->
 </header>
+<div class="how">
+<div><b data-en="I treat data with a reason">Trato os dados com critério</b><span data-en="Every imputation or drop is tested and its effect on the final model is measured.">Cada imputação ou descarte é testado e o efeito no modelo final é medido.</span></div>
+<div><b data-en="I prevent leakage">Evito vazamento</b><span data-en="I removed the mmr column from the car model because it gave away almost the price itself.">Tirei a coluna mmr do modelo de carros porque ela entregava quase o próprio preço.</span></div>
+<div><b data-en="I own the limitations">Assumo as limitações</b><span data-en="Every project says where the model errs most and what I would do next.">Cada projeto diz onde o modelo erra mais e o que eu faria em seguida.</span></div>
+</div>
+</div>
 
-<!-- ======================= PROJECT 1 ======================= -->
-<section class="proj p1" id="clustering">
-  <div class="wrap">
-    <div class="proj-head reveal">
-      <div>
-        <div class="proj-eyebrow">Unsupervised Learning · MovieLens 33M</div>
-        <h2>Hybrid Movie Recommendation via Clustering &amp; Behavioral Profiles</h2>
-      </div>
-    </div>
+<div class="bar-top"><div class="wrap">
+<div role="tablist" aria-label="Projetos">
+<button role="tab" id="t-aviao" aria-controls="p-aviao" aria-selected="true" style="--a:#ffb547" data-en="Aircraft price">Preço de aviões</button>
+<button role="tab" id="t-filmes" aria-controls="p-filmes" aria-selected="false" style="--a:#ff7a9c" data-en="Movie recommendation">Recomendação de filmes</button>
+<button role="tab" id="t-carros" aria-controls="p-carros" aria-selected="false" style="--a:#3ddbd9" data-en="Used car prices">Preço de carros usados</button>
+</div>
+<div class="lang" role="group" aria-label="Idioma / Language"><button data-l="pt" aria-pressed="true">PT</button><button data-l="en" aria-pressed="false">EN</button></div>
+</div></div>
 
-    <p class="proj-desc reveal">Built on the <strong>MovieLens 33M</strong> dataset — titles, genres, and ratings only, no genome-tag scores. The goal: group movies by genre similarity with no supervision at all, then use those clusters as the backbone of a <strong>behavioral profile</strong> for every user, and let that profile drive a rule-based recommendation strategy. Movies released before 2015 trained the model; everything from 2015 onward was held out as validation, simulating new titles arriving after deployment.</p>
+<main class="wrap">
 
-    <div class="pipeline reveal">
-      <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-label">Genre parsing (MultiLabelBinarizer) + year extraction</div></div>
-      <div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-label">PCA — 10 components on the binary genre matrix</div></div>
-      <div class="pipe-step"><div class="pipe-num">03</div><div class="pipe-label">K-Means — 30 clusters → each movie gets a "latent genre"</div></div>
-      <div class="pipe-step"><div class="pipe-num">04</div><div class="pipe-label">User behavior profile — diversity, generosity, frequency</div></div>
-      <div class="pipe-step"><div class="pipe-num">05</div><div class="pipe-label">Segmentation into 8 user-profile octants</div></div>
-      <div class="pipe-step"><div class="pipe-num">06</div><div class="pipe-label">Per-cluster ranking + rule-based recommendation</div></div>
-    </div>
+<!-- ================= AVIÕES ================= -->
+<div class="panel" id="p-aviao" role="tabpanel" aria-labelledby="t-aviao" style="--a:#ffb547">
+<h2 data-en="Aircraft price">Preço de aviões</h2>
+<ul class="tags"><li>XGBoost</li><li>DOE</li><li>RFECV</li><li>Imputation</li><li>scikit-learn</li></ul>
 
-    <h3 class="reveal" style="font-size:1.2rem; margin-bottom:24px;">Clustering quality</h3>
-    <div class="readout reveal">
-      <div><div class="val">30</div><div class="lbl">Clusters (k)</div></div>
-      <div><div class="val">83.6%</div><div class="lbl">PCA variance retained</div></div>
-      <div><div class="val">0.6505</div><div class="lbl">Silhouette score</div></div>
-      <div><div class="val">0.9460</div><div class="lbl">Davies–Bouldin index</div></div>
-      <div><div class="val">11,161.5</div><div class="lbl">Calinski–Harabasz</div></div>
-      <div><div class="val">10,869.8</div><div class="lbl">Inertia (WCSS)</div></div>
-    </div>
+<div class="sec"><h3 data-en="Overview">Visão geral</h3>
+<p data-en="Estimates the list price of 517 aircraft (piston, propjet and jet) from engine, speed, weight, range and dimensions. Data: Kaggle Plane Price Prediction, 16 columns. The goal was to build the model without throwing away incomplete rows and to validate it without leakage.">Estima o preço de lista de 517 aeronaves (pistão, turbo-hélice e jato) a partir de motor, velocidade, peso, alcance e dimensões. Dados: Kaggle Plane Price Prediction, 16 colunas. O objetivo foi montar o modelo sem jogar fora linhas incompletas e validá-lo sem vazamento.</p></div>
 
-    <figure class="reveal">
-      <img src="https://github.com/user-attachments/assets/31b9d10d-0484-46e5-b869-2a10434ec6a2" alt="2D PCA projection of the 30 movie clusters, grouped by genre similarity" loading="lazy">
-      <figcaption>Fig. 1 — 2D PCA projection of the 30 movie clusters, colored by genre similarity. Validation-era movies (post-2015) were assigned via transform/predict, no retraining.</figcaption>
-    </figure>
+<div class="sec"><h3 data-en="Data treatment">Tratamento de dados</h3>
+<div class="g2">
+<ul class="pts">
+<li data-en="Length and wingspan came as feet/inches text and were converted to meters.">Comprimento e envergadura vinham como texto em pés/polegadas e foram convertidos para metros.</li>
+<li data-en="Numeric columns stored as text (thousand separators) were cast to float.">Colunas numéricas guardadas como texto (separador de milhar) viraram float.</li>
+<li data-en="Dropped Model Name (identifier) and Fuel gal/lbs (gallons for piston, pounds for jets: mixed units).">Removi Model Name (identificador) e Fuel gal/lbs (galões nos pistão, libras nos jatos: unidades misturadas).</li>
+<li data-en="One-hot encoded Engine Type. Rows without Price were removed: the target is never imputed.">One-hot em Engine Type. Linhas sem Price saíram: o alvo nunca é imputado.</li>
+</ul>
+<div class="card"><h4 data-en="Why impute instead of dropping rows">Por que imputar em vez de descartar linhas</h4>
+<p data-en="Rows kept">Linhas mantidas</p>
+<div class="bar"><span data-en="Original dataset">Base original</span><i style="--w:100%"></i><em class="n">517</em></div>
+<div class="bar"><span data-en="Plain dropna()">dropna() simples</span><i style="--w:81.4%"></i><em class="n">421</em></div>
+<p style="margin-top:10px" data-en="A plain dropna would discard about 20% of the data, which motivated the imputation study.">Um dropna simples descartaria cerca de 20% dos dados. Isso motivou o estudo de imputação.</p></div>
+</div>
 
-    <h3 class="reveal" style="font-size:1.2rem; margin-bottom:24px;">Turning ratings into a behavior profile</h3>
-    <p class="proj-desc reveal" style="margin-bottom:40px;">Every user's rating history was reduced to three axes — <strong>diversity</strong> (how many of the 30 clusters they explore), <strong>generosity</strong> (z-scored average rating, to cancel out users who simply rate everything highly), and <strong>frequency</strong> (total ratings, normalized). Splitting each axis at its median sorts every one of the ~200,947 users into one of 8 octants: <strong>{Eclectic|Focused} × {Generous|Critical} × {Frequent|Casual}</strong>.</p>
+<div class="card" style="margin-top:24px"><h4 data-en="Imputation study, column by column">Estudo de imputação, coluna por coluna</h4>
+<p data-en="R² of each method predicting the missing values from the other columns.">R² de cada método ao prever os valores faltantes com as outras colunas.</p>
+<div class="tw"><table>
+<tr><th data-en="Column">Coluna</th><th>XGBoost</th><th data-en="Linear Reg.">Reg. linear</th><th data-en="Mode">Moda</th></tr>
+<tr><td data-en="HP / thrust per engine">HP / empuxo por motor</td><td class="n b">0.970</td><td class="n">0.892</td><td class="n neg">-0.117</td></tr>
+<tr><td data-en="Max speed">Velocidade máxima</td><td class="n b">0.991</td><td class="n">0.978</td><td class="n neg">-0.316</td></tr>
+<tr><td data-en="Stall speed">Velocidade de estol</td><td class="n b">0.887</td><td class="n">0.863</td><td class="n neg">-0.356</td></tr>
+<tr><td data-en="Engine-out rate of climb">Razão de subida, um motor inoperante</td><td class="n b">0.925</td><td class="n">0.857</td><td class="n neg">-0.489</td></tr>
+<tr><td data-en="Takeoff over 50 ft">Decolagem sobre 50 ft</td><td class="n b">0.845</td><td class="n">0.771</td><td class="n neg">-3.433</td></tr>
+<tr><td data-en="Range (N.M.)">Alcance (N.M.)</td><td class="n b">0.866</td><td class="n">0.792</td><td class="n neg">-0.392</td></tr>
+<tr><td data-en="Length (m)">Comprimento (m)</td><td class="n b">0.939</td><td class="n">0.881</td><td class="n neg">-0.444</td></tr>
+</table></div>
+<p style="margin-top:10px" data-en="Using the mode is worse than guessing the mean (negative R²). I then built a hybrid: XGBoost for most columns, linear regression for landing distance and mode for recommended cruise speed.">A moda é pior que chutar a média (R² negativo). Montei então um método híbrido: XGBoost na maioria das colunas, regressão linear na distância de pouso e moda na velocidade de cruzeiro recomendada.</p></div>
 
-    <div class="gallery two reveal">
-      <figure>
-        <img src="https://github.com/user-attachments/assets/431bb99f-4470-4383-99b6-e8e433dd6edb" alt="3D distribution of users across the diversity, generosity, and frequency axes" loading="lazy">
-        <figcaption>Fig. 2 — 3D distribution of users across the three behavioral axes.</figcaption>
-      </figure>
-      <figure>
-        <img src="https://github.com/user-attachments/assets/bfff168f-fb31-4e57-9f85-25ec98635d9f" alt="Boxplot of generosity grouped by number of clusters explored" loading="lazy">
-        <figcaption>Fig. 3 — Generosity distribution, grouped by number of clusters explored.</figcaption>
-      </figure>
-    </div>
+<div class="card" style="margin-top:24px"><h4 data-en="Effect on the final price model">Efeito no modelo final de preço</h4>
+<p data-en="Same XGBoost, same split.">Mesmo XGBoost, mesmo split.</p>
+<div class="tw"><table>
+<tr><th data-en="Imputation">Imputação</th><th>MAE (US$)</th><th>RMSE (US$)</th><th>R²</th></tr>
+<tr class="b"><td data-en="Hybrid (best per column)">Híbrida (melhor por coluna)</td><td class="n">202108</td><td class="n">261455</td><td class="n">0.8764</td></tr>
+<tr><td>XGBoost</td><td class="n">201601</td><td class="n">263247</td><td class="n">0.8747</td></tr>
+<tr><td data-en="Linear Regression">Regressão linear</td><td class="n">206240</td><td class="n">265805</td><td class="n">0.8723</td></tr>
+<tr><td data-en="Simple (median / mode)">Simples (mediana / moda)</td><td class="n">210734</td><td class="n">266908</td><td class="n">0.8712</td></tr>
+</table></div>
+<div class="impact" data-en="<b>What I learned:</b> model-based imputation clearly wins at the column level, but it moved the final price R² by only about 0.005, within what a single split can resolve. It still pays off because it keeps the 20% of rows that dropna would lose, and I report the gain as modest instead of overselling it."><b>O que aprendi:</b> a imputação com modelo ganha com folga na coluna, mas moveu o R² final do preço em apenas cerca de 0,005, dentro do que um único split consegue distinguir. Ela compensa porque preserva os 20% de linhas que o dropna perderia, e reporto o ganho como modesto em vez de exagerar.</div></div>
+</div>
 
-    <div class="gallery two reveal">
-      <figure>
-        <img src="https://github.com/user-attachments/assets/ba660e9c-e67b-4e1d-9e47-4963cdb9dcd7" alt="Frequency vs generosity scatter of user profiles" loading="lazy">
-        <figcaption>Fig. 4 — Frequency × generosity.</figcaption>
-      </figure>
-      <figure>
-        <img src="https://github.com/user-attachments/assets/5b25ba47-0644-472f-9105-f625f334e2d1" alt="Diversity vs generosity scatter of user profiles" loading="lazy">
-        <figcaption>Fig. 5 — Diversity × generosity.</figcaption>
-      </figure>
-    </div>
-    <div class="gallery reveal" style="max-width:560px; margin-left:auto; margin-right:auto;">
-      <figure>
-        <img src="https://github.com/user-attachments/assets/ad2a571e-f668-4662-ab62-09a9b90ab0b3" alt="Diversity vs frequency scatter of user profiles" loading="lazy">
-        <figcaption>Fig. 6 — Diversity × frequency.</figcaption>
-      </figure>
-    </div>
+<div class="sec"><h3 data-en="Modeling">Modelagem</h3>
+<div class="g2">
+<div class="card"><h4 data-en="Algorithms compared">Algoritmos comparados</h4><p data-en="R² on the same split. The axis starts at 0.80.">R² no mesmo split. O eixo começa em 0,80.</p>
+<div class="bar hi"><span>XGBoost</span><i style="--w:46%"></i><em class="n">0.8929</em></div>
+<div class="bar"><span>Gradient Boosting</span><i style="--w:17%"></i><em class="n">0.8834</em></div>
+<div class="bar"><span>CatBoost</span><i style="--w:3%"></i><em class="n">0.8806</em></div>
+<div class="bar"><span>LightGBM</span><i style="--w:1%"></i><em class="n">0.8785</em></div>
+<div class="bar"><span data-en="Linear Reg.">Reg. linear</span><i style="--w:0%"></i><em class="n">0.8777</em></div>
+<div class="bar"><span>Random Forest</span><i style="--w:0%"></i><em class="n">0.8701</em></div></div>
+<div>
+<p data-en="<b>Feature selection:</b> forward selection and RFECV, using only development data. RFECV kept 10 of 14 features:"><b>Seleção de variáveis:</b> forward selection e RFECV, usando só dados de desenvolvimento. O RFECV manteve 10 de 14 variáveis:</p>
+<ul class="chips"><li>HP/thrust</li><li>Max speed</li><li>Cruise speed</li><li>Climb rate</li><li>Engine-out climb</li><li>Empty weight</li><li>Range</li><li>Length</li><li>Wing span</li><li>Engine: Piston</li></ul>
+<p style="margin-top:16px" data-en="<b>Tuning with DOE:</b> 9 hyperparameters x 7 levels would need 40,353,607 runs. A fractional design needed only 49. Best configuration:"><b>Ajuste com DOE:</b> 9 hiperparâmetros x 7 níveis exigiriam 40.353.607 rodadas. O fatorial fracionado usou 49. Melhor configuração:</p>
+<ul class="chips"><li>n_estimators 650</li><li>max_depth 6</li><li>learning_rate 0.05</li><li>subsample 1.0</li><li>colsample 0.6</li><li>min_child_weight 4</li><li>gamma 0.03</li><li>alpha 0.1</li><li>lambda 1.5</li></ul></div>
+</div></div>
 
-    <h3 class="reveal" style="font-size:1.2rem; margin-bottom:8px;">Profile distribution</h3>
-    <p style="color:var(--muted-dim); font-size:0.85rem; margin-bottom:20px;" class="reveal">~200,947 users total, sorted into 8 octants</p>
-    <div class="barlist reveal">
-      <div class="barrow"><div class="label">Eclectic · Critical · Frequent</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="count">32,937</div></div>
-      <div class="barrow"><div class="label">Eclectic · Generous · Casual</div><div class="track"><div class="fill" style="width:95.7%"></div></div><div class="count">31,519</div></div>
-      <div class="barrow"><div class="label">Eclectic · Critical · Casual</div><div class="track"><div class="fill" style="width:85.5%"></div></div><div class="count">28,166</div></div>
-      <div class="barrow"><div class="label">Eclectic · Generous · Frequent</div><div class="track"><div class="fill" style="width:80.7%"></div></div><div class="count">26,581</div></div>
-      <div class="barrow"><div class="label">Focused · Generous · Casual</div><div class="track"><div class="fill" style="width:71.0%"></div></div><div class="count">23,375</div></div>
-      <div class="barrow"><div class="label">Focused · Critical · Frequent</div><div class="track"><div class="fill" style="width:69.4%"></div></div><div class="count">22,846</div></div>
-      <div class="barrow"><div class="label">Focused · Generous · Frequent</div><div class="track"><div class="fill" style="width:57.9%"></div></div><div class="count">19,080</div></div>
-      <div class="barrow"><div class="label">Focused · Critical · Casual</div><div class="track"><div class="fill" style="width:49.9%"></div></div><div class="count">16,443</div></div>
-    </div>
+<div class="sec"><h3 data-en="Results">Resultados</h3>
+<div class="card"><div class="tw"><table>
+<tr><th data-en="Evaluation">Avaliação</th><th>MAE (US$)</th><th>RMSE (US$)</th><th>R²</th></tr>
+<tr><td data-en="DOE validation set">Validação do DOE</td><td class="n">183093</td><td class="n">242953</td><td class="n">0.934</td></tr>
+<tr class="b"><td data-en="5-fold cross-validation (headline)">Validação cruzada 5 folds (principal)</td><td class="n">201355</td><td class="n">280479</td><td class="n">0.925</td></tr>
+<tr><td data-en="Hold-out, internal split (n = 65)">Hold-out interno (n = 65)</td><td class="n">178952</td><td class="n">235860</td><td class="n">0.899</td></tr>
+<tr><td data-en="Hold-out, external set (n = 66)">Hold-out externo (n = 66)</td><td class="n">157891</td><td class="n">215083</td><td class="n">0.958</td></tr>
+</table></div>
+<p style="margin-top:10px" data-en="Cross-validation is the most reliable number (R² 0.925 ± 0.010). The two small test sets bracket it, as expected with about 65 samples.">A validação cruzada é o número mais confiável (R² 0,925 ± 0,010). Os dois testes pequenos ficam um de cada lado, como esperado com cerca de 65 amostras.</p></div></div>
 
-    <h3 class="reveal" style="font-size:1.2rem; margin-bottom:24px;">Recommendation logic</h3>
-    <div class="rules reveal">
-      <div class="rule"><div class="who">Focused</div><p>Recommend only within the user's preferred clusters.</p></div>
-      <div class="rule"><div class="who">Eclectic</div><p>Mix preferred clusters with movies from outside them, for exploration.</p></div>
-      <div class="rule"><div class="who">Frequent</div><p>Gets a larger list — 20 movies.</p></div>
-      <div class="rule"><div class="who">Casual</div><p>Gets a shorter list — 10 movies.</p></div>
-    </div>
-    <p style="color:var(--muted-dim); font-size:0.88rem; margin-bottom:64px;" class="reveal">Ranking is built per cluster from average rating, filtered to movies with 100+ ratings. It's a simple business-rules layer over the segmentation — not a trained supervised model — but it shows how unsupervised structure can feed straight into personalization.</p>
+<div class="sec"><h3 data-en="Limits and next steps">Limites e próximos passos</h3>
+<ul class="pts">
+<li data-en="Repeated aircraft models can sit in both train and test. Next: GroupKFold by model name.">Modelos repetidos podem cair em treino e teste. Próximo: GroupKFold por modelo.</li>
+<li data-en="The external test set used complete cases only, which makes it easier than real data.">O teste externo usou só casos completos, o que o torna mais fácil que dados reais.</li>
+<li data-en="The 49-run DOE confounds some effects (gamma with reg_alpha, min_child_weight with reg_lambda).">O DOE de 49 rodadas confunde alguns efeitos (gamma com reg_alpha, min_child_weight com reg_lambda).</li>
+<li data-en="Next: predict log(Price), report relative error by engine type, wrap everything in a Pipeline.">Próximo: prever log(Price), medir erro relativo por tipo de motor e juntar tudo em um Pipeline.</li>
+</ul>
+<div class="gal">
+<figure><img src="images/correlation_matrix.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Correlation matrix">Matriz de correlação</figcaption></figure>
+<figure><img src="images/price_by_engine_type.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Price by engine type">Preço por tipo de motor</figcaption></figure>
+<figure><img src="images/actual_vs_predicted.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Actual vs. predicted">Real contra previsto</figcaption></figure>
+<figure><img src="images/feature_importance.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Feature importance">Importância das variáveis</figcaption></figure>
+</div></div>
+</div>
 
-    <div class="reveal">
-      <div class="stack">
-        <span class="chip">Python</span><span class="chip">pandas / numpy</span><span class="chip">scikit-learn</span>
-        <span class="chip">MultiLabelBinarizer</span><span class="chip">PCA</span><span class="chip">KMeans</span>
-        <span class="chip">StandardScaler / MinMaxScaler</span><span class="chip">Matplotlib / Plotly</span><span class="chip">Joblib</span>
-      </div>
-    </div>
+<!-- ================= FILMES ================= -->
+<div class="panel" id="p-filmes" role="tabpanel" aria-labelledby="t-filmes" style="--a:#ff7a9c" hidden>
+<h2 data-en="Movie recommendation">Recomendação de filmes</h2>
+<ul class="tags"><li>PCA</li><li>K-Means</li><li>User profiling</li><li>pandas</li><li>Plotly</li></ul>
 
-    <p class="note reveal">Next: testing other values of <em>k</em>, clustering user profiles directly rather than just movies, and swapping the rule-based layer for a trained supervised recommender.</p>
-  </div>
-</section>
+<div class="sec"><h3 data-en="Overview">Visão geral</h3>
+<p data-en="Unsupervised learning on MovieLens 33M (no genomics: title, genres and ratings only). Movies are grouped by genre, and the groups feed behavioral profiles for about 200 thousand users that drive a rule-based recommendation.">Aprendizado não supervisionado no MovieLens 33M (sem genomas: só título, gêneros e notas). Os filmes são agrupados por gênero, e os grupos alimentam perfis de comportamento de cerca de 200 mil usuários que guiam uma recomendação por regras.</p></div>
 
-<!-- ======================= PROJECT 2 ======================= -->
-<section class="proj p2" id="pricing">
-  <div class="wrap">
-    <div class="proj-head reveal">
-      <div>
-        <div class="proj-eyebrow">Applied Regression · Kaggle Airbnb 2025</div>
-        <h2>Short-Stay Price Prediction — Global Model vs. Region-Sensitive Models</h2>
-      </div>
-    </div>
+<div class="sec"><h3 data-en="Data treatment">Tratamento de dados</h3>
+<div class="g2">
+<ul class="pts">
+<li data-en="Genres like Action|Comedy|Drama were split and one-hot encoded with MultiLabelBinarizer; the release year was extracted from the title.">Gêneros como Action|Comedy|Drama foram separados e codificados com MultiLabelBinarizer; o ano foi extraído do título.</li>
+<li data-en="<b>Temporal split:</b> movies before 2015 train the model, 2015 onward is validation. It simulates new movies arriving after training."><b>Split temporal:</b> filmes antes de 2015 treinam o modelo e de 2015 em diante ficam na validação. Simula filmes novos chegando depois do treino.</li>
+<li data-en="PCA reduced the binary genre matrix to 10 components, keeping 83.6% of the variance, before clustering.">O PCA reduziu a matriz binária de gêneros a 10 componentes, mantendo 83,6% da variância, antes do agrupamento.</li>
+<li data-en="Validation movies were assigned with transform/predict on the trained model: no retraining, as in production.">Os filmes de validação foram atribuídos com transform/predict no modelo treinado: sem retreino, como em produção.</li>
+</ul>
+<div class="card"><h4 data-en="Features of the user profile">Variáveis do perfil de usuário</h4>
+<ul class="pts" style="margin-top:8px">
+<li data-en="<b>Diversity:</b> how many of the 30 clusters the user explores, normalized.">Diversidade: quantos dos 30 clusters o usuário explora, normalizado.</li>
+<li data-en="<b>Generosity:</b> average rating as a per-user z-score, to remove the bias of people who rate everything high.">Generosidade: nota média em z-score por usuário, para tirar o viés de quem dá nota alta a tudo.</li>
+<li data-en="<b>Frequency:</b> number of movies rated, normalized.">Frequência: número de filmes avaliados, normalizado.</li>
+</ul></div>
+</div>
+<div class="impact" data-en="<b>Effect on the project:</b> the z-score keeps generosity from being confused with taste, the median split on the three axes produced 8 balanced profiles (none under 8% of users), and the 100-ratings filter keeps the per-cluster ranking stable."><b>Efeito no projeto:</b> o z-score evita confundir generosidade com gosto, a divisão pela mediana nos três eixos gerou 8 perfis equilibrados (nenhum com menos de 8% dos usuários) e o filtro de 100 avaliações mantém o ranking por cluster estável.</div>
+</div>
 
-    <p class="proj-desc reveal">Predicting nightly Airbnb prices for 200,000+ listings worldwide, moving through cleaning, geographic exploration, and iterative tree-ensemble modeling. The core question: is one <strong>global model</strong> using latitude/longitude as features enough, or does training <strong>separate models per region</strong> — Europe, America, Australia — capture market-specific pricing dynamics that a single model misses?</p>
+<div class="sec"><h3 data-en="Modeling">Modelagem</h3>
+<div class="g2">
+<div class="card"><h4 data-en="K-Means with 30 clusters">K-Means com 30 clusters</h4>
+<div class="tw"><table>
+<tr><th data-en="Metric">Métrica</th><th data-en="Value">Valor</th></tr>
+<tr><td data-en="Inertia (WCSS)">Inércia (WCSS)</td><td class="n">10869.83</td></tr>
+<tr class="b"><td>Silhouette</td><td class="n">0.6505</td></tr>
+<tr><td>Davies-Bouldin</td><td class="n">0.9460</td></tr>
+<tr><td>Calinski-Harabasz</td><td class="n">11161.46</td></tr>
+</table></div></div>
+<ul class="pts">
+<li data-en="Per-cluster ranking by average rating, only movies with 100+ ratings.">Ranking por cluster pela nota média, só filmes com 100+ avaliações.</li>
+<li data-en="<b>Focused</b> users get recommendations inside their preferred clusters; <b>Eclectic</b> users also get movies from outside them.">Usuários <b>focados</b> recebem filmes dos clusters preferidos; <b>ecléticos</b> recebem também filmes de fora.</li>
+<li data-en="<b>Frequent</b> users get 20 movies, <b>casual</b> users get 10.">Usuários <b>frequentes</b> recebem 20 filmes e <b>casuais</b>, 10.</li>
+</ul></div></div>
 
-    <div class="pipeline reveal">
-      <div class="pipe-step"><div class="pipe-num">01</div><div class="pipe-label">Data_exploration_clean_up.ipynb — load, clean, segment by region</div></div>
-      <div class="pipe-step"><div class="pipe-num">02</div><div class="pipe-label">Predictions_considering_latitude_and_longtude.ipynb — Full Set (global)</div></div>
-      <div class="pipe-step"><div class="pipe-num">03</div><div class="pipe-label">Mult_Region_Model.ipynb — Region Sensitive, one LightGBM per region</div></div>
-    </div>
+<div class="sec"><h3 data-en="Results">Resultados</h3>
+<div class="card"><h4 data-en="Users per profile">Usuários por perfil</h4><p data-en="200,947 users in total.">Total de 200.947 usuários.</p>
+<div class="bar hi"><span data-en="Eclectic, critical, frequent">Eclético, crítico, frequente</span><i style="--w:100%"></i><em class="n">32937</em></div>
+<div class="bar"><span data-en="Eclectic, generous, casual">Eclético, generoso, casual</span><i style="--w:96%"></i><em class="n">31519</em></div>
+<div class="bar"><span data-en="Eclectic, critical, casual">Eclético, crítico, casual</span><i style="--w:86%"></i><em class="n">28166</em></div>
+<div class="bar"><span data-en="Eclectic, generous, frequent">Eclético, generoso, frequente</span><i style="--w:81%"></i><em class="n">26581</em></div>
+<div class="bar"><span data-en="Focused, generous, casual">Focado, generoso, casual</span><i style="--w:71%"></i><em class="n">23375</em></div>
+<div class="bar"><span data-en="Focused, critical, frequent">Focado, crítico, frequente</span><i style="--w:69%"></i><em class="n">22846</em></div>
+<div class="bar"><span data-en="Focused, generous, frequent">Focado, generoso, frequente</span><i style="--w:58%"></i><em class="n">19080</em></div>
+<div class="bar"><span data-en="Focused, critical, casual">Focado, crítico, casual</span><i style="--w:50%"></i><em class="n">16443</em></div></div>
+</div>
 
-    <h3 class="reveal" style="font-size:1.2rem; margin-bottom:24px;">01 — Cleaning &amp; regional segmentation</h3>
-    <div class="readout reveal">
-      <div><div class="val">208,856</div><div class="lbl">Raw rows loaded</div></div>
-      <div><div class="val">180,695</div><div class="lbl">Rows after dropping NaNs</div></div>
-      <div><div class="val">15%</div><div class="lbl">Missing-value column threshold</div></div>
-      <div><div class="val">3</div><div class="lbl">Regional subsets built</div></div>
-    </div>
-    <p class="proj-desc reveal" style="margin-bottom:48px;">Columns with more than 15% missing values were dropped, then remaining rows with any missing values (208,757 → 180,695 rows). Plotly scatter plots of longitude vs. latitude — before and after dropping NaNs — showed the cleanup was quietly cutting out parts of Western Australia, the Mediterranean, and the US, which is what motivated filtering into regional bounding boxes: Europe (lat 20–80, long -50–50), America (lat -40–80, long -150–-50), Australia (lat -50–-10, long 100–150).</p>
+<div class="sec"><h3 data-en="Limits and next steps">Limites e próximos passos</h3>
+<ul class="pts">
+<li data-en="The recommendation is rule-based and was not compared with a supervised model. That is the next project.">A recomendação é por regras e não foi comparada com um modelo supervisionado. É o próximo projeto.</li>
+<li data-en="k = 30 was fixed; testing other values of k and clustering the user profiles directly are next steps.">O k = 30 foi fixado; testar outros valores de k e agrupar os perfis de usuário diretamente são próximos passos.</li>
+</ul>
+<div class="gal">
+<figure><img src="https://github.com/user-attachments/assets/31b9d10d-0484-46e5-b869-2a10434ec6a2" alt="" loading="lazy"><figcaption data-en="2D projection of the 30 clusters">Projeção 2D dos 30 clusters</figcaption></figure>
+<figure><img src="https://github.com/user-attachments/assets/431bb99f-4470-4383-99b6-e8e433dd6edb" alt="" loading="lazy"><figcaption data-en="Users on the three axes">Usuários nos três eixos</figcaption></figure>
+<figure><img src="https://github.com/user-attachments/assets/ba660e9c-e67b-4e1d-9e47-4963cdb9dcd7" alt="" loading="lazy"><figcaption data-en="Frequency x generosity">Frequência × generosidade</figcaption></figure>
+<figure><img src="https://github.com/user-attachments/assets/5b25ba47-0644-472f-9105-f625f334e2d1" alt="" loading="lazy"><figcaption data-en="Diversity x generosity">Diversidade × generosidade</figcaption></figure>
+<figure><img src="https://github.com/user-attachments/assets/ad2a571e-f668-4662-ab62-09a9b90ab0b3" alt="" loading="lazy"><figcaption data-en="Diversity x frequency">Diversidade × frequência</figcaption></figure>
+<figure><img src="https://github.com/user-attachments/assets/bfff168f-fb31-4e57-9f85-25ec98635d9f" alt="" loading="lazy"><figcaption data-en="Generosity by number of clusters">Generosidade por número de clusters</figcaption></figure>
+</div></div>
+</div>
 
-    <h3 class="reveal" style="font-size:1.2rem; margin-bottom:24px;">02 — Full Set: one global model</h3>
-    <table class="reveal">
-      <thead><tr><th>Model</th><th class="num">MAE</th><th class="num">RMSE</th><th class="num">R²</th></tr></thead>
-      <tbody>
-        <tr><td>Linear Regression</td><td class="num">111.15</td><td class="num">171.96</td><td class="num">0.224</td></tr>
-        <tr><td>Decision Tree</td><td class="num">101.89</td><td class="num">166.62</td><td class="num">0.272</td></tr>
-        <tr class="highlight"><td>Random Forest</td><td class="num">72.12</td><td class="num">112.69</td><td class="num">0.667</td></tr>
-        <tr><td>Gradient Boosting</td><td class="num">81.17</td><td class="num">124.71</td><td class="num">0.592</td></tr>
-        <tr class="highlight"><td>LightGBM</td><td class="num">72.16</td><td class="num">112.73</td><td class="num">0.667</td></tr>
-      </tbody>
-    </table>
+<!-- ================= CARROS ================= -->
+<div class="panel" id="p-carros" role="tabpanel" aria-labelledby="t-carros" style="--a:#3ddbd9" hidden>
+<h2 data-en="Used car prices">Preço de carros usados</h2>
+<ul class="tags"><li>XGBoost</li><li>LightGBM</li><li>RandomizedSearchCV</li><li>Learning curve</li><li>pandas</li></ul>
 
-    <figure class="reveal">
-      <img src="https://github.com/user-attachments/assets/4ecaaa94-8235-43dd-83e1-6213db3a83f6" alt="Bar chart comparing MAE, RMSE and R² across Linear Regression, Decision Tree, Random Forest, Gradient Boosting and LightGBM" loading="lazy">
-      <figcaption>Fig. 1 — Baseline model comparison on numeric features.</figcaption>
-    </figure>
+<div class="sec"><h3 data-en="Overview">Visão geral</h3>
+<p data-en="Predicts the selling price of used vehicles from make, model, year, mileage, condition and body type. Data: Kaggle Vehicle Sales Data, 558,837 records and 16 attributes. The focus was a careful pipeline: missing data, leakage and validation that proves the model generalizes.">Prevê o preço de venda de veículos usados por marca, modelo, ano, quilometragem, condição e carroceria. Dados: Kaggle Vehicle Sales Data, 558.837 registros e 16 atributos. O foco foi um pipeline cuidadoso: dados faltantes, vazamento e validação que prove que o modelo generaliza.</p></div>
 
-    <p class="proj-desc reveal">LightGBM matched Random Forest's accuracy at a fraction of the training time, so it carried the rest of the investigation. Feature-importance analysis flagged <code class="mono">id</code> and <code class="mono">host_id</code> with suspiciously high importance — data leakage from identifier columns, not real signal — so both were dropped, while latitude and longitude stayed in as genuinely predictive geography.</p>
+<div class="sec"><h3 data-en="Data treatment">Tratamento de dados</h3>
+<p data-en="<b>Missing values.</b> Most columns had under 3% missing. The exception was transmission, with 11.69%, which needed its own strategy."><b>Valores faltantes.</b> A maioria das colunas tinha menos de 3% de ausentes. A exceção foi transmission, com 11,69%, que pediu uma estratégia própria.</p>
+<div class="g2">
+<div class="card"><h4 data-en="Test: predict transmission with a classifier">Teste: prever a transmissão com um classificador</h4>
+<p data-en="Logistic Regression on make, year, trim, model and body (percent).">Regressão logística com make, year, trim, model e body (em %).</p>
+<div class="bar"><span data-en="Accuracy, no weights">Acurácia, sem pesos</span><i style="--w:96.49%"></i><em class="n">96.49</em></div>
+<div class="bar"><span data-en="Precision, no weights">Precisão, sem pesos</span><i style="--w:0%"></i><em class="n">0.0</em></div>
+<div class="bar"><span data-en="Accuracy, balanced">Acurácia, balanceado</span><i style="--w:65.9%"></i><em class="n">65.9</em></div>
+<div class="bar"><span data-en="Precision, balanced">Precisão, balanceado</span><i style="--w:6%"></i><em class="n">6.0</em></div></div>
+<ul class="pts">
+<li data-en="The 96.49% accuracy was an illusion: precision was 0.0 because the model always predicted the majority class (automatic).">A acurácia de 96,49% era uma ilusão: a precisão era 0,0 porque o modelo sempre previa a classe majoritária (automatic).</li>
+<li data-en="With class_weight=balanced accuracy fell to 65.90% and precision rose only to 0.06.">Com class_weight=balanced a acurácia caiu para 65,90% e a precisão subiu só para 0,06.</li>
+<li data-en="<b>Decision:</b> impute the mode (automatic). It is simpler, cheaper and just as reliable, since the model added nothing over the majority class.">Decisão: imputar a moda (automatic). É mais simples, mais barato e igualmente confiável, já que o modelo não acrescentava nada à classe majoritária.</li>
+</ul></div>
 
-    <p class="proj-desc reveal">Hyperparameters were then swept step by step: <strong>n_estimators</strong> 50/75/100/300/500/600 (best at 500–600, diminishing returns beyond), <strong>max_depth</strong> 2/4/8/10/12 (little gain past 8), <strong>num_leaves</strong> 32/42/64/86/128 (settled at 64), <strong>learning_rate</strong> 0.01/0.03/0.05/0.1/0.2 (settled at 0.1).</p>
+<div class="g2" style="margin-top:24px">
+<div class="card"><h4 data-en="Dropped columns and rows">Colunas e linhas removidas</h4>
+<ul class="pts" style="margin-top:8px">
+<li data-en="<b>vin:</b> unique identifier."><b>vin:</b> identificador único.</li>
+<li data-en="<b>seller:</b> very high cardinality, low information."><b>seller:</b> cardinalidade altíssima e pouca informação.</li>
+<li data-en="<b>mmr:</b> a market price estimate for the same vehicle. It leaks almost the target."><b>mmr:</b> estimativa de preço de mercado do mesmo veículo. Vazaria quase o alvo.</li>
+<li data-en="<b>saledate:</b> not used as a feature."><b>saledate:</b> não usada como variável.</li>
+</ul>
+<p style="margin-top:12px" data-en="Rows">Linhas</p>
+<div class="bar"><span data-en="Original">Original</span><i style="--w:100%"></i><em class="n">558837</em></div>
+<div class="bar hi"><span data-en="After dropping nulls">Após remover nulos</span><i style="--w:97.9%"></i><em class="n">546976</em></div>
+<p style="margin-top:8px" data-en="Only 2.12% of rows lost; columns went from 16 to 12.">Perdi só 2,12% das linhas; as colunas foram de 16 para 12.</p></div>
+<div class="card"><h4 data-en="Encoding categorical variables">Codificação das categóricas</h4>
+<div class="stats" style="margin-top:4px"><div><b class="n">53</b><span data-en="makes">marcas</span></div><div><b class="n">768</b><span data-en="models">modelos</span></div><div><b class="n">1494</b><span data-en="trims">versões</span></div></div>
+<p style="margin-top:14px" data-en="With 85 body types too, one-hot would be impractical, so I used LabelEncoder (make, model, trim, body, transmission, state).">Com 85 carrocerias também, o one-hot seria inviável, então usei LabelEncoder (make, model, trim, body, transmission, state).</p>
+<p data-en="Trade-off: it creates an artificial order. Linear regression suffered (R² about 0.40) while boosting handled it well.">Contrapartida: cria uma ordem artificial. A regressão linear sofreu (R² cerca de 0,40) e o boosting lidou bem.</p></div></div>
+<div class="impact" data-en="<b>Effect on the project:</b> the leakage cut (mmr) keeps the 0.947 R² honest, the mode imputation avoided a model that looked great and learned nothing, and the cleanup cost only 2.12% of the data. I did not measure the isolated effect of the imputation on price; that is listed as a limit below."><b>Efeito no projeto:</b> o corte do vazamento (mmr) mantém o R² de 0,947 honesto, a imputação pela moda evitou um modelo que parecia ótimo e não aprendia nada, e a limpeza custou só 2,12% dos dados. Não medi o efeito isolado da imputação no preço; isso aparece como limite abaixo.</div>
+<div class="gal">
+<figure><img src="transmission_before_imputation.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Transmission before imputation">Transmissão antes da imputação</figcaption></figure>
+<figure><img src="transmission_after_imputation.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Transmission after mode imputation">Transmissão após imputação pela moda</figcaption></figure>
+</div></div>
 
-    <figure class="reveal">
-      <img src="https://github.com/user-attachments/assets/acb69e3a-f314-4d09-abb3-5d654301738c" alt="Line charts of RMSE across hyperparameter sweeps for n_estimators, max_depth, num_leaves and learning_rate" loading="lazy">
-      <figcaption>Fig. 2 — Step-by-step hyperparameter tuning for the LightGBM Full Set model.</figcaption>
-    </figure>
+<div class="sec"><h3 data-en="Modeling">Modelagem</h3>
+<div class="g2">
+<div class="card"><h4 data-en="Model progression">Evolução do modelo</h4><p data-en="R² on the test set.">R² no conjunto de teste.</p>
+<div class="bar"><span data-en="Linear Reg.">Reg. linear</span><i style="--w:40%"></i><em class="n">0.40</em></div>
+<div class="bar"><span>LightGBM</span><i style="--w:88.4%"></i><em class="n">0.884</em></div>
+<div class="bar"><span>XGBoost</span><i style="--w:91.9%"></i><em class="n">0.919</em></div>
+<div class="bar hi"><span data-en="Tuned XGBoost">XGBoost ajustado</span><i style="--w:94.7%"></i><em class="n">0.947</em></div></div>
+<ul class="pts">
+<li data-en="XGBoost tuned with RandomizedSearchCV: 15 iterations, 3-fold CV, minimizing RMSE.">XGBoost ajustado com RandomizedSearchCV: 15 iterações, CV de 3 folds, minimizando o RMSE.</li>
+<li data-en="Most important features: year, make, odometer and body, in line with depreciation and market segmentation.">Variáveis mais importantes: year, make, odometer e body, coerentes com depreciação e segmentação de mercado.</li>
+</ul></div></div>
 
-    <div class="readout reveal">
-      <div><div class="val">67.02</div><div class="lbl">Final MAE</div></div>
-      <div><div class="val">108.50</div><div class="lbl">Final RMSE</div></div>
-      <div><div class="val">0.694</div><div class="lbl">Final R²</div></div>
-      <div><div class="val">108.30</div><div class="lbl">5-fold CV RMSE (± 0.93)</div></div>
-    </div>
+<div class="sec"><h3 data-en="Results">Resultados</h3>
+<div class="stats"><div><b class="n">0.947</b>R²</div><div><b>US$ <span class="n">1323</span></b><span data-en="mean error (MAE)">erro médio (MAE)</span></div><div><b>US$ <span class="n">2235</span></b>RMSE</div></div>
+<ul class="pts" style="margin-top:18px">
+<li data-en="Repeated 5-fold cross-validation kept R² between 0.943 and 0.947.">A validação cruzada de 5 folds repetida manteve o R² entre 0,943 e 0,947.</li>
+<li data-en="Learning curve: the train/validation gap shrank from about 0.08 to 0.02 and validation was still rising, so it is not overfit and could use more data.">Curva de aprendizado: a diferença treino/validação caiu de cerca de 0,08 para 0,02 e a validação ainda subia, ou seja, sem overfitting e com espaço para mais dados.</li>
+<li data-en="Residuals have no systematic bias, but the error grows at higher predicted prices.">Os resíduos não têm viés sistemático, mas o erro cresce nos preços previstos mais altos.</li>
+</ul></div>
 
-    <div class="gallery two reveal">
-      <figure>
-        <img src="https://github.com/user-attachments/assets/fcd58b01-a827-41db-b7aa-9c5e575004fb" alt="5-fold cross validation RMSE per fold" loading="lazy">
-        <figcaption>Fig. 3 — 5-fold cross-validation, RMSE stable across folds.</figcaption>
-      </figure>
-      <figure>
-        <img src="https://github.com/user-attachments/assets/7a027bba-fe0b-4ccb-833d-a37f5eb2b3b0" alt="Feature importance chart for the final Full Set LightGBM model" loading="lazy">
-        <figcaption>Fig. 4 — Feature importance: longitude and latitude lead, followed by host_total_listings_count and number_of_reviews.</figcaption>
-      </figure>
-    </div>
+<div class="sec"><h3 data-en="Limits and next steps">Limites e próximos passos</h3>
+<ul class="pts">
+<li data-en="Label encoding imposes an order on nominal variables; target or frequency encoding could help.">O label encoding impõe ordem a variáveis nominais; target ou frequency encoding poderiam ajudar.</li>
+<li data-en="The price was not log-transformed, which may explain the heteroscedasticity on expensive cars (underestimates between US$ 40k and 90k).">O preço não foi transformado em log, o que pode explicar a heterocedasticidade em carros caros (subestimativas entre US$ 40 mil e 90 mil).</li>
+<li data-en="Not measured: the isolated effect of the transmission imputation on the final error.">Não medido: o efeito isolado da imputação da transmissão no erro final.</li>
+</ul>
+<div class="gal">
+<figure><img src="model_comparison.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Model comparison">Comparação de modelos</figcaption></figure>
+<figure><img src="cross_validation.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Cross-validation">Validação cruzada</figcaption></figure>
+<figure><img src="learning_curve.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Learning curve">Curva de aprendizado</figcaption></figure>
+<figure><img src="feature_importance.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Feature importance">Importância das variáveis</figcaption></figure>
+<figure><img src="residuals_plot.png" alt="" loading="lazy" onerror="this.closest('figure').hidden=true"><figcaption data-en="Residuals">Resíduos</figcaption></figure>
+</div></div>
+</div>
+</main>
 
-    <h3 class="reveal" style="font-size:1.2rem; margin-bottom:24px;">03 — Region Sensitive: one LightGBM per market</h3>
-    <p class="proj-desc reveal">Each region got its own LightGBM (<code class="mono">objective='poisson'</code> — a better fit than default regression for a strictly positive, right-skewed target like price — 500 estimators, learning_rate 0.2, num_leaves 64, max_depth 8), plus two categorical features the global model didn't use: <code class="mono">room_type</code> and <code class="mono">property_type</code>, label-encoded for LightGBM.</p>
-
-    <table class="reveal">
-      <thead><tr><th>Region</th><th class="num">Train size</th><th class="num">MAE</th><th class="num">RMSE</th><th class="num">R²</th></tr></thead>
-      <tbody>
-        <tr class="highlight"><td>Europe</td><td class="num">83,854</td><td class="num">53.09</td><td class="num">94.19</td><td class="num">0.656</td></tr>
-        <tr><td>America</td><td class="num">37,398</td><td class="num">61.55</td><td class="num">99.09</td><td class="num">0.701</td></tr>
-        <tr><td>Australia</td><td class="num">7,006</td><td class="num">76.58</td><td class="num">112.70</td><td class="num">0.657</td></tr>
-      </tbody>
-    </table>
-
-    <div class="barlist reveal" style="margin-bottom:48px;">
-      <div class="barrow"><div class="label">Europe — RMSE 94.19</div><div class="track"><div class="fill" style="width:83.5%"></div></div><div class="count">83,854 rows</div></div>
-      <div class="barrow"><div class="label">America — RMSE 99.09</div><div class="track"><div class="fill" style="width:87.9%"></div></div><div class="count">37,398 rows</div></div>
-      <div class="barrow"><div class="label">Australia — RMSE 112.70</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="count">7,006 rows</div></div>
-    </div>
-
-    <figure class="reveal">
-      <img src="https://github.com/user-attachments/assets/ef35ba5c-3f7c-41da-9597-a250b0bb7d9e" alt="Feature importance for the Europe region model" loading="lazy">
-      <figcaption>Fig. 5 — Feature importance, Europe model: longitude, latitude and host_total_listings_count still lead, with property_type contributing more than room_type.</figcaption>
-    </figure>
-
-    <div class="findings reveal">
-      <h3>Key findings</h3>
-      <ul>
-        <li><strong>Tree ensembles win outright</strong> — Random Forest and LightGBM massively outperform Linear Regression and single Decision Trees on this task.</li>
-        <li><strong>LightGBM was the best accuracy/speed trade-off</strong> and carried the rest of the investigation.</li>
-        <li><strong>Geography dominates</strong> — latitude/longitude are consistently the strongest predictors, ahead of bedrooms, bathrooms, or any physical listing attribute.</li>
-        <li><strong>Identifier columns leak</strong> — <code class="mono">id</code> and <code class="mono">host_id</code> inflated feature importance without carrying real signal, and had to be caught and dropped.</li>
-        <li><strong>Region-sensitive models win where there's enough data</strong> — Europe and America beat the global model on both RMSE and R²; Australia, with a far smaller training set, lands roughly on par.</li>
-      </ul>
-    </div>
-
-    <div class="reveal">
-      <div class="stack">
-        <span class="chip">Python</span><span class="chip">pandas / numpy</span><span class="chip">plotly.express</span>
-        <span class="chip">scikit-learn</span><span class="chip">LightGBM</span><span class="chip">LabelEncoder</span>
-        <span class="chip">train_test_split</span><span class="chip">KFold CV</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-note">
-      Two independent case studies — unsupervised segmentation on MovieLens 33M, and supervised regression on the <a href="https://www.kaggle.com/competitions/rent-prediction-2025/overview" target="_blank" rel="noopener">Kaggle Airbnb 2025</a> competition dataset. Charts and metrics pulled directly from each project's executed notebook output.
-    </div>
-    <div class="signature">— built from two lab notebooks</div>
-  </div>
-</footer>
-
+<footer><div class="wrap">
+<h2 data-en="Let’s talk.">Vamos conversar.</h2>
+<a class="btn" href="https://github.com/jvictorborsatto">github.com/jvictorborsatto</a>
+</div></footer>
+<dialog id="zoom"><img alt=""></dialog>
 <script>
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-  revealEls.forEach(el => io.observe(el));
+const h=document.documentElement;
+function fmt(){const l=h.lang==='pt'?'pt-BR':'en-US';document.querySelectorAll('.n').forEach(e=>{const r=e.dataset.v||(e.dataset.v=e.textContent.trim()),d=(r.split('.')[1]||'').length;e.textContent=Number(r).toLocaleString(l,{minimumFractionDigits:d,maximumFractionDigits:d})})}
+function setL(l){h.lang=l;
+document.querySelectorAll('[data-en]').forEach(e=>{if(e.dataset.pt===undefined)e.dataset.pt=e.innerHTML;e.innerHTML=l==='en'?e.dataset.en:e.dataset.pt});
+document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
+fmt();try{localStorage.setItem('l',l)}catch(e){}}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setL(b.dataset.l)));
+const tabs=[...document.querySelectorAll('[role=tab]')];
+function show(t){tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);document.getElementById(x.getAttribute('aria-controls')).hidden=!on})}
+tabs.forEach(t=>t.addEventListener('click',()=>{show(t);window.scrollTo({top:document.querySelector('.bar-top').offsetTop,behavior:'smooth'})}));
+let s;try{s=localStorage.getItem('l')}catch(e){}
+setL(s||((navigator.language||'').toLowerCase().startsWith('pt')?'pt':'en'));
+const d=document.getElementById('zoom'),z=d.querySelector('img');
+document.querySelectorAll('.gal img').forEach(i=>i.addEventListener('click',()=>{z.src=i.src;d.showModal()}));
+d.addEventListener('click',()=>d.close());
 </script>
-
 </body>
 </html>
